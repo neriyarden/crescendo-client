@@ -1,0 +1,17 @@
+.remember-me-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-family: $main-font;
+}
+
+.remember-me-checkbox {
+  /* style later */
+}
+
+.remember-me-label {
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+}

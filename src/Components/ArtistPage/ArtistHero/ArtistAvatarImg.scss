@@ -1,0 +1,17 @@
+.artist-avatar-image {
+  display: none;
+  @include size(150px);
+  z-index: 1;
+  
+  @include breakpoint-sm {
+    display: block;
+  }
+
+  & img {
+    box-shadow: $low-blur-shadow;
+    @include size(100%);
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+  }
+}

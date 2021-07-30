@@ -1,0 +1,46 @@
+.new-event {
+  justify-content: center;
+  align-items: center;
+}
+
+.new-event-form {
+  animation: heightFlow 0.8s ease;
+}
+
+@keyframes heightFlow {
+  from {
+    transform: translateY(33%);
+    opacity: 0;
+  } to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.add-new-event {
+  text-transform: uppercase;
+  padding-top: 1rem;
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  
+  
+  &:hover {
+    color: $third-color;
+  }
+}
+.form-buttons{
+  display: flex;
+  flex-direction: row;
+}
+
+.form-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+  & .tag-label {
+    padding-inline: 1.2em;
+  }
+  
+}

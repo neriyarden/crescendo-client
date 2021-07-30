@@ -1,0 +1,23 @@
+.artist-page-bio-header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  
+  @include breakpoint-xs {
+    flex-direction: row;
+  }
+  
+  & p {
+    font-family: $secondary-font;
+    align-self: flex-end;
+  }
+}
+
+.artist-page-bio-text {
+  padding-block: 2rem;
+  letter-spacing: 1px;
+  line-height: 2;
+  font-size: 1.2rem;
+  font-weight: 300;
+
+}

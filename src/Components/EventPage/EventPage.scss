@@ -1,0 +1,109 @@
+.event-page {
+  position: relative;
+  width: 100%;
+  min-height: 800px;
+  height: 100vh;
+  margin-top: -90px;
+  color: $main-color;
+}
+
+.event-page-bg {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    @include size(100%);
+    background: linear-gradient(to left, rgba(0,0,0,0) , rgb(0,0,0));
+  }
+}
+
+.event-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  top: 20%;
+  @include horizontal-center;
+  width: 60%;
+  
+}
+
+.event-name {
+  padding: 0.5em 2rem;
+  font-family: $third-font;
+  font-size: 2rem;
+  font-weight: 200;
+  letter-spacing: 2px;
+  box-shadow: $low-blur-shadow;
+  text-transform: uppercase;
+  background: $third-color; 
+  border-radius: 10px;
+  width: fit-content;
+}
+
+.event-description {
+  margin-top: 1rem;
+  padding: 0.5em 1em;
+  font-size: 1.2rem;
+  width: fit-content;
+  font-family: $third-font;
+  color: $solid-black;
+  background: $main-color;
+  border-radius: 10px;
+  box-shadow: $low-blur-shadow;
+}
+
+.event-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem;
+  
+  & .event-info-details {
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
+    // margin: 2rem;
+    text-shadow: $text-shadow-light;
+  }
+  
+  & .event-artist-name {
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+  }
+
+
+  & .event-detail {
+    padding-block: 0.5em;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+
+    &:last-child {
+      font-weight: 600;
+      text-decoration: double overline underline $third-color;
+    }
+  }
+}
+
+.link-to-buy-tickets {
+  color: $main-color;
+  font-size: 1.5rem;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  background: $third-color;
+  height: fit-content;
+  border-radius: 5px;
+  margin-top: auto;
+}

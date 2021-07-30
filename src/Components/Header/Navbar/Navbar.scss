@@ -1,0 +1,245 @@
+header {
+  position: fixed;
+  width: 100%;
+  background: $main-color;
+  box-shadow: $med-blur-shadow;
+  z-index: 5;
+  
+  @include breakpoint-md {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.8rem 1.2rem;
+  font-family: $third-font;
+  font-size: 1.1rem;
+  font-style: normal;
+  min-height: 90px;
+  // letter-spacing: 1px;
+  
+  @include breakpoint-md {
+    flex-direction: row;
+    align-items: center;
+
+    &:hover .sign-out-link {
+      width: 38px;
+      opacity: 1;
+    }
+  }
+}
+
+.navbar-logo {
+  height: 60px;
+  padding-block: 3px;
+  transition: all .2s;
+  visibility: hidden;
+
+  @include breakpoint-xs {
+    visibility: visible;
+  }
+  
+  &:hover,
+  &:focus {
+    filter: drop-shadow(2px -2px 1px $third-color) 
+    drop-shadow(0px -0px 1px $fourth-color);
+    transform: skewX(-10deg);
+  }
+}
+
+
+.navbar-links {
+  display: none;
+  
+  
+  @include breakpoint-md {
+    & {
+      margin-left: auto;
+      display: flex;
+    }
+  }
+  
+  &.display-menu {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint-md {
+    flex-direction: row;
+
+    }
+
+    & li {
+      animation: dropdown 0.5s ease-in backwards;
+    }
+  }
+
+  & ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    // margin: 0 3rem 0 0;
+
+    @include breakpoint-md {
+      & {
+        flex-direction: row;
+      }
+    }
+  }
+}
+ 
+
+.navbar-link {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 41px;
+  padding-inline: 0.4vw;
+
+  @include breakpoint-md {
+    & {
+      text-align: center;
+    }
+  }
+  
+  & a {
+    display: block;
+    color: $secondary-color;
+    // font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    // text-shadow: $text-shadow-light;
+
+    &:hover {
+      color: $third-color;
+    }
+
+      @include breakpoint-md {
+        & {
+          font-weight: 500;
+        }
+        &:hover::after {
+          width: 85%;
+          background: $third-color;
+          transition: width 0.3s;
+        }
+      }
+      
+        
+      &::after {
+        @include horizontal-center;
+        content: '';
+        bottom: 5%;
+        height: 3px;
+        width: 0;
+        border-radius: 50px;
+        background: $secondary-color;
+      }
+
+      &.active-link {
+        color: $third-color;
+      }
+    }
+}
+
+.display-menu li:nth-child(2) {animation-delay: 0.1s;}
+.display-menu li:nth-child(3) {animation-delay: 0.2s;}
+.display-menu li:nth-child(4) {animation-delay: 0.3s;}
+.display-menu li:nth-child(5) {animation-delay: 0.4s;}
+.display-menu li:nth-child(6) {animation-delay: 0.5s;}
+
+.navbar-toggle-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 36px;
+  right: 1.2rem;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+
+  &::after {
+    width: 0;
+    height: 0;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    height: 25px;
+    transition: 0.2s all;
+  }
+
+  @include breakpoint-md {
+    & {
+      display: none;
+    }
+  }
+}
+
+.navbar-toggle-button-bar {
+  height: 3px;
+  width: 100%;
+  background: $secondary-color;
+  border-radius: 50px;
+}
+
+@keyframes dropdown {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}
+
+
+.navbar-user-img {
+  position: absolute;
+  right: 70px;
+  top: 25px;
+
+  @include breakpoint-md {
+    position: static;
+  }
+
+  & a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  & img {
+    @include size(30px);
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    margin-right: 1rem;
+
+    @include breakpoint-md {
+    margin-right: 0.1rem;
+
+    }
+  }
+  
+  @include breakpoint-md {
+    & a:hover::after {
+      width: 0;
+      height: 0;
+    }
+  }
+}
+
+.sign-out-link {
+  transition: all 0.5s ease;
+  overflow: hidden;
+  font-size: 0.9rem;
+  white-space: normal;
+  
+  @include breakpoint-md {
+    opacity: 0;
+    width: 0;
+  }
+}

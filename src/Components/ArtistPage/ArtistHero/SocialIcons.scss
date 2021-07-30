@@ -1,0 +1,11 @@
+.artist-hero-icons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
+  
+  & a svg {
+    color: $main-color;
+    display: block;
+  }
+}

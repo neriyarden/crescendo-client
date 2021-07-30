@@ -1,0 +1,58 @@
+.artist-page-hero {
+  position: relative;
+  width: 100%;
+  height: calc(250px + 10vw)
+}
+
+.artist-page-hero-bg {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    @include size(100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) , rgb(0,0,0));
+  }
+}
+
+.artist-hero-content {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 20%;
+  @include horizontal-center;
+  height: 150px;
+  
+  @include breakpoint-sm {
+    left: 8%;
+    top: 40%;
+    border-radius: 50%;
+    transform: unset;
+  }
+}
+
+.artist-hero-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-around;
+  margin-inline: 2rem;
+}
+
+.artist-hero-name {
+  padding-block: 1rem;
+  color: $main-color;
+  font-family: $main-font;
+  font-size: 3rem;
+  font-weight: 200;
+  letter-spacing: 2px;
+  text-shadow: $text-shadow-dark;
+  white-space: nowrap;
+}

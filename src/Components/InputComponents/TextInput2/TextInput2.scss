@@ -1,0 +1,63 @@
+.text-input-2 {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
+  
+  @include breakpoint-sm {
+  flex-direction: row;
+  }
+
+  & label {
+    min-width: 150px;
+    text-transform: capitalize;
+    align-self: start;
+  }
+  
+  & input {
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    border: 2px dashed #ddd;
+    border-radius: 5px;
+    margin-block: 0.3em;
+    font-family: $main-font;
+    font-size: 1rem;
+    outline: none;
+    background: $main-color;
+    padding-inline: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    
+    &:focus ~ svg{
+      display: none;
+    }
+    &:hover {
+      border: 2px dashed #999;
+    }
+  }
+
+    & svg {
+      position: absolute;
+      @include vertical-center;
+      right: 5px;
+      color: #ddd;
+      
+    }
+
+    &:hover svg {
+      color: #999;
+    }
+}
+      
+
+
+.error {
+font-weight: 300;
+letter-spacing: 1px;
+color: #757575;
+font-size: 0.8rem;
+}

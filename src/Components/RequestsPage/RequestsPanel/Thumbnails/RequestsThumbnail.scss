@@ -1,0 +1,19 @@
+.request-thumb {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  margin-inline: auto;
+  width: 100%;
+  max-width: 280px;
+  height: 315px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  
+  
+    // box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}

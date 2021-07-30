@@ -1,0 +1,12 @@
+.category-tags {
+  padding: 2rem;
+  margin-bottom: -1rem;
+  border-radius: 5px;
+}
+
+.tags-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 1em;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,177 @@
+$bg-height: 1000px;
+
+
+
+.featured-events {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: $main-color;
+  background: $secondary-color;
+  width: 100%;
+  font-family: $main-font;
+  min-height: $bg-height;
+  margin-bottom: 4rem;
+  
+  @include breakpoint-sm {
+    min-height: $bg-height;
+  }
+}
+
+.featured-events-bg {
+  position: absolute;
+  top: 90px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  filter: blur(10px) brightness(0.8);
+  min-height: $bg-height;
+  
+  @include breakpoint-sm {
+    min-height: $bg-height;
+  }
+}
+
+.featured-event {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  width: 70%;
+  max-width: 400px;
+  aspect-ratio: 3/4;
+  box-shadow: inset 0px 0px 200px 30px rgba(0,0,0,0.5), $low-blur-shadow;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 2;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+}
+
+.featured-event-details {
+  position: relative;
+  color: $solid-white;
+  
+  & h3 {
+    font-size: 1.5rem;
+    padding: 0.5em 1em;
+    font-family: $third-font;
+    background-color: $third-color;
+    text-align: center;
+    // width: 110%;
+    transform: scaleX(1.1);
+    box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    
+    @include breakpoint-sm {
+      font-size: 2rem;
+    }
+  }
+  & .dets {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    
+    @include breakpoint-sm {
+      padding: 1.5rem;
+    }
+    
+  }
+  
+  & .date {
+    font-size: 1.5rem;
+    font-family: $third-font;
+
+    text-shadow: 4px -2px 3px $third-color;
+    padding-inline: 0.3em;
+    
+    @include breakpoint-sm {
+      font-size: 3rem;
+    }
+  }
+  
+  & .venue {
+    font-size: 0.8rem;
+    text-decoration: overline underline double $third-color;
+    padding-inline: 0.3em;
+
+      @include breakpoint-sm {
+        font-size: 1.5rem;
+      }
+  }
+
+  & .triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 100%;
+    border-bottom: 3vw solid $third-color;
+    transition: all .5s;
+    z-index: -1;
+
+    &.l-triangle {
+      left: -5%;
+      border-left: 3.4vw solid transparent;
+      
+    }
+    
+    &.r-triangle {
+      right: -5%;
+      border-right: 3.4vw solid transparent;
+    }
+    
+    @include breakpoint-sm {
+      border-bottom: 20px solid $third-color;
+
+      &.l-triangle {
+        border-left: 20px solid transparent;
+      }
+      
+      &.r-triangle {
+        border-right: 20px solid transparent;
+      
+      }
+    }
+  }
+  
+}
+
+.featured {
+  margin-block: 2rem;
+  color: $main-color;
+  letter-spacing: 5px;
+  font-size: 1.3rem;
+  font-weight: 400;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.25em 0.5em;
+}
+
+.featured-event-extra-details {
+  text-align: center;
+  z-index: 1;
+  
+  & > *:not(:first-child) {
+    padding-block: 0.3rem;
+    font-size: 1.5rem;
+    
+  }
+  
+  & .description {
+    font-family: $third-font;
+    font-size: 1.2rem;
+  }
+}
+

@@ -1,0 +1,19 @@
+.user-data-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: $solid-white;
+  font-family: $secondary-font;
+
+  .user-avatar img {
+    @include size(100px);
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    margin: 1rem;
+    box-shadow: $med-blur-shadow;
+  }
+
+}

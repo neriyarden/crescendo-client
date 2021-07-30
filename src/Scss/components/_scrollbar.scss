@@ -1,0 +1,22 @@
+body {
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: $main-color;
+    border-radius: 5px;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
+
+    &:hover {
+      background: $third-color;
+      box-shadow: none;
+    }
+  }
+}

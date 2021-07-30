@@ -1,0 +1,14 @@
+$thumb-width: 250px;
+
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($thumb-width, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax($thumb-width, 1fr));
+  justify-content: center;
+  gap: .5rem;
+  padding: 0.5rem;
+  margin-top: 2rem;
+  border-radius: 5px;
+  background: $solid-white;
+  box-shadow: $high-blur-shadow;
+}

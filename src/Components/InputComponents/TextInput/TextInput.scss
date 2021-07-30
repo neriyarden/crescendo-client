@@ -1,0 +1,88 @@
+.form-input-group-container {
+  max-width: 100%;
+  min-width: 180px;
+  
+  & .error {
+    text-align: center;
+    color: #757575;
+    max-width: unset;
+    
+  }
+}
+
+.form-input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  gap: 1rem;
+  padding-block: 0.5rem;
+  
+}
+
+.general-input-label {
+  white-space: nowrap;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 130px;
+  display: none;
+  text-transform: capitalize;
+  
+  @include breakpoint-lg {
+      display: block;
+  }
+
+  & span {
+    color: $third-color;
+  }
+}
+
+
+
+.general-input {
+  height: 40px;
+  flex-basis: 280px;
+  min-width: 180px;
+  background: #fff;
+  display: flex;
+  border-bottom: 2px solid $third-color;
+  gap: 0.8rem;
+}
+
+.general-input-icon {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-top: 3px;
+  
+  & svg {
+    font-size: 1rem;
+    background: #fff;
+    color: $third-color;
+  }
+}
+
+
+.general-input-field {
+  height: 40px;
+  background: none;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.subtexts {
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: #757575;
+  font-size: 0.8rem;
+  
+  & span {
+    color: $third-color;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}
+

@@ -1,0 +1,18 @@
+.signup-form-container {
+  width: clamp(280px, 50%, 600px);
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: $low-blur-shadow; 
+  padding: 3rem;
+  
+}
+
+.signup-form {
+  width: clamp(180px, 80%, 450px);
+  margin-inline: auto;
+  padding-block: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+}

@@ -1,0 +1,33 @@
+/// @author Kitty Giraudel
+/// @param {Length} $width
+/// @param {Length} $height
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+/// @author https://www.developerdrive.com/10-best-sass-mixins-for-web-developers/
+@mixin vertical-center {
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/// @author https://www.developerdrive.com/10-best-sass-mixins-for-web-developers/
+@mixin horizontal-center {
+  position: absolute;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+/// @author - ME
+@mixin user-select($value) {
+  -webkit-user-select: $value;
+  -moz-user-select: $value;
+   -ms-user-select: $value;
+       user-select: $value;
+}

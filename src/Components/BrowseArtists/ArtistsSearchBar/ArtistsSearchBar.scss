@@ -1,0 +1,9 @@
+.browse-artists-search {
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: $high-blur-shadow;
+  border-radius: 5px;
+  background: $solid-white;
+}

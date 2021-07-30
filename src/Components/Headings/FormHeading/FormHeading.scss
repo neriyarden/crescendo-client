@@ -1,0 +1,26 @@
+.login-signup-header {
+  position: relative;
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.login-signup-heading {
+  font-family: $main-font;
+  font-weight: 300;
+  font-size: 3rem;
+  letter-spacing: 3px;
+  text-align: center;
+  padding-bottom: 20px;
+  width: 100%;
+  text-transform: uppercase;
+
+  &::after {
+    @include horizontal-center;
+    content: '';
+    position: absolute;
+    bottom: 13px;
+    width: 10vw;
+    height: 3px;
+    background: $third-color;
+  }
+}

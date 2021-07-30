@@ -1,0 +1,60 @@
+.upcoming-event-artist-tour {
+  padding: 1.5em 1rem 0.2rem 1rem;
+  color: $main-color;
+  font-family: $third-font;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-align: center;
+  font-style: italic;
+  // letter-spacing: 2px;
+  background: linear-gradient(to top, 
+  rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0));
+}
+
+.upcoming-event-details {
+  display: flex;
+  align-items: center;
+  color: $solid-white;
+  background: rgba(0, 0, 0, 0.7);
+  padding-block: 0.5rem;
+  // backdrop-filter: blur(10px);
+}
+
+.upcoming-event-artist-name {
+  padding: 0.5rem 0 0.5rem 1rem;
+  color: $main-color;
+  font-family: $main-font;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  line-height: 1.3;
+  max-width: 130px;
+}
+
+.upcoming-event-details-sub {
+  padding-block: 0.5rem;
+  width: fit-content;
+  margin-left: auto;
+  font-family: $main-font;
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  
+  & > span {
+    display: block;
+    padding-inline: 1rem;
+    text-align: start;
+  }  
+  
+  & svg {
+    margin-right: 0.5rem;
+
+  }
+  & span:hover svg {
+    color: $third-color;
+  }
+}
+
+.upcoming-event-location {
+  display: block;
+}

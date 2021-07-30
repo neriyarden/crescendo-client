@@ -1,0 +1,33 @@
+.app-body {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: 100%;
+  
+  min-height: 100vh;
+  color: $secondary-color;
+  padding-top: 90px;
+  background: $main-color;
+  z-index: -1;
+  font-family: $main-font;
+  @include user-select(none);
+}
+
+.section {
+  /* padding-top:5rem; */
+  padding-inline: 1.5rem;
+  padding-top: 1rem;
+  font-family: var(--font-two);
+  padding-bottom: 5rem;
+}
+
+.grid-panel {
+  margin-top: 2rem;
+  padding: 2rem;
+  box-shadow: $high-blur-shadow;
+  border-radius: 5px;
+  background: $solid-white;
+}
+
+.center-text{
+  text-align: center;
+}

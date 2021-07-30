@@ -1,0 +1,24 @@
+.main-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  background: $solid-white;
+  box-shadow: $low-blur-shadow;
+  z-index: 5;
+  height: 3rem;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  & span, svg {
+    color: $third-color;
+  }
+  & a {
+    color: $solid-black;
+
+    &:hover {
+      color: $third-color
+    }
+  }
+}

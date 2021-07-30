@@ -1,0 +1,23 @@
+.events-searchbar {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin-top: 2rem;
+  box-shadow: $high-blur-shadow;
+  border-radius: 5px;
+  background: $solid-white;
+}
+
+.browse-events-search {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.separation-line {
+  height: 2px;
+  width: 66%;
+  margin-inline: auto;
+  margin-top: 2rem;
+  background: #eee;
+}

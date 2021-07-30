@@ -1,0 +1,98 @@
+.user-area-events {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  width: 100%;
+
+  & h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    border-bottom: 2px solid $third-color;
+  }
+  & ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $solid-white;
+    min-width: fit-content;
+    max-width: 700px;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+
+    & li {
+      padding-block: 0.5em;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      gap: 2%;
+
+      & a {
+        color: $solid-black;
+
+        &:hover {
+          color: $third-color;
+        }
+      }
+      
+      & .user-events-spans {
+        display: block;
+        white-space: nowrap;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        cursor: pointer;
+        flex-basis: 0;
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+        
+        &:hover {
+          color: $third-color;
+        }
+
+        &.venue, &.city {
+          display: none;
+
+          @include breakpoint-xs {
+            display: block;
+          }
+        }
+      }
+
+      &:not(:first-child) {
+        border-top: 1px solid #ddd;
+      }
+    }
+  }
+}
+
+.confirm-delete {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  width: 100%;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  & span, svg {
+    text-align: center;
+    flex: 1 auto;
+    transition: transform 0.2s ease;
+    
+  }
+  & svg:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+  } 
+}

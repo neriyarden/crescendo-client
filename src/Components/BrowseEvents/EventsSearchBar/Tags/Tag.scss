@@ -1,0 +1,39 @@
+.category-tag {
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px) scale(1.1);
+  }
+
+  & span {
+    padding: 0.2em 1em;
+    color: $third-color;
+    background: $solid-white;
+    box-shadow: 0 2px 4px $shadow-black;
+    border: 2px solid $third-color;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+
+  & input {
+    appearance: none;
+  }
+
+  & input:checked ~ span {
+    color: $solid-white;
+    background: $third-color;
+    box-shadow: 0 3px 7px $shadow-black;
+    transition: all 0.2s ease;
+  }
+
+  & input:focus ~ span {
+    color: $solid-white;
+    background: $third-color;
+    box-shadow: 0 1px 3px $shadow-black;
+  }
+}
+
