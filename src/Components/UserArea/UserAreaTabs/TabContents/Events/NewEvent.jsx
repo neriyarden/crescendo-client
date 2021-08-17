@@ -7,6 +7,7 @@ import TextBtn from '../../../../InputComponents/TextBtn/TextBtn'
 import API from '../../../../../DAL/api';
 import AuthApi from '../../../../../Contexts/AuthApi';
 import Cookies from 'js-cookie'
+import utils from '../../../../../utils'
 
 
 function NewEvent({ reloadEvents, setShowForm, fromRequestValues }) {
@@ -15,8 +16,7 @@ function NewEvent({ reloadEvents, setShowForm, fromRequestValues }) {
     const [categories, setCategories] = useState([])
 
     const getTagsObj = async () => {
-        let categoriesData = JSON.parse(sessionStorage.getItem('tags'))
-        if (!categoriesData) categoriesData = await API.getTags()
+        let categoriesData = await utils.getTags()
         if (categoriesData.error) setErrMsg(categoriesData.error)
         setCategories(categoriesData)
     }

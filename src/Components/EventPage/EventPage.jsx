@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import API from '../../DAL/api'
+import { currentServer } from '../../DAL/axios'
 import ArtistAvatarImg from '../ArtistPage/ArtistHero/ArtistAvatarImg'
 
 
@@ -22,7 +23,7 @@ function EventPage() {
         <section className='event-page'>
             <div
                 className="event-page-bg"
-                style={{ backgroundImage: `url(${eventData.img_url})` }}
+                style={{ backgroundImage: `url(${currentServer + eventData.img_url})` }}
             ></div>
 
             <div className="event-content">

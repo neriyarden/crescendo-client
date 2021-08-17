@@ -1,4 +1,4 @@
-const httpRequest = require('./axios')
+import { httpRequest } from './axios'
 
 // TODO documentation
 
@@ -9,7 +9,7 @@ const signIn = async (data) => {
 }
 
 const registerNewUser = async (data) => {
-    const results = await httpRequest(`/Users`, 'POST', data)
+    const results = await httpRequest(`/users`, 'POST', data)
     return results
 }
 
@@ -67,7 +67,7 @@ const getUpcomingEventsData = async () => {
 }
 
 const getTags = async () => {
-    const results =  await httpRequest('/tags', 'GET')
+    const results = await httpRequest('/tags', 'GET')
     return results
 }
 const getTagsIDs = async () => {
@@ -89,7 +89,7 @@ const getArtistRequests = async (artistId) => {
 }
 
 const getUserVotes = async (userId) => {
-    const results =  httpRequest(`/users/${userId}/votes`, 'GET')
+    const results = await httpRequest(`/users/${userId}/votes`, 'GET')
     return results
 }
 
@@ -124,13 +124,17 @@ const deleteEvent = async (eventId) => {
 }
 
 const castVote = async (requestId, userId) => {
-    const results = await httpRequest(`/requests/${requestId}/vote/${userId}`, 'POST')
+    const results = await httpRequest(
+        `/requests/${requestId}/vote/${userId}`,
+        'POST'
+    )
     return results
 }
 
 const removeVote = async (requestId, userId) => {
-    const results = await httpRequest(`/requests/${requestId}/vote/${userId}`,
-    'DELETE'
+    const results = await httpRequest(
+        `/requests/${requestId}/vote/${userId}`,
+        'DELETE'
     )
     return results
 }

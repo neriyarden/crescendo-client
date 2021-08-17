@@ -11,16 +11,16 @@ function EventDetails({ thumbData }) {
         <h4 className='upcoming-event-artist-name'>{thumbData.artist}</h4>
         <div className="upcoming-event-details-sub">
             <span className='upcoming-event-location'>
-            <FontAwesomeIcon icon={faMapMarkerAlt}/>
                 {thumbData.city}
+            <FontAwesomeIcon icon={faMapMarkerAlt}/>
                 </span>
             <span className='upcoming-event-time'>
-            <FontAwesomeIcon icon={faCalendarDay}/>
                 {thumbData.time.slice(0, 5)}
+            <FontAwesomeIcon icon={faCalendarDay}/>
             </span>
             <span className='upcoming-event-date'>
-            <FontAwesomeIcon icon={faClock}/>
                 {thumbData.date}
+            <FontAwesomeIcon icon={faClock}/>
             </span>
         </div>
     </div>

@@ -3,6 +3,8 @@ import RequestDetails from './RequestDetails'
 import AuthApi from '../../../../Contexts/AuthApi'
 import API from '../../../../DAL/api'
 import ReloadAPI from '../../../../Contexts/Reload'
+import { currentServer } from '../../../../DAL/axios'
+
 
 function RequestThumbnail({ thumbData }) {
     const Auth = useContext(AuthApi)
@@ -33,7 +35,7 @@ function RequestThumbnail({ thumbData }) {
     return (
         <li
             className='request-thumb'
-            style={{ backgroundImage: `url('${window.location.origin + (thumbData.img_url || '/img/tmplt_dark.svg')}')` }}
+            style={{ backgroundImage: `url('${currentServer + (thumbData.img_url || '/img/tmplt_dark.svg')}')` }}
         >
             <RequestDetails
                 thumbData={thumbData}

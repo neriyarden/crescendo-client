@@ -13,7 +13,6 @@ function EventLine({ event, i, reloadEvents }) {
     const [deletionMsg, setDeletionMsg] = useState('')
     const [showEditForm, setEditShowForm] = useState(false)
     const [errMsg, setErrMsg] = useState('')
-
     const onEditHandler = async (values) => {
         //  TODO generalize this
         const formData = new FormData()
@@ -35,16 +34,16 @@ function EventLine({ event, i, reloadEvents }) {
 
     const onConfirmClick = async (eventId) => {
         setDeletionMsg('Event deleted successfully.')
-        setTimeout( async () => {
-        const deletedEvent = await API.deleteEvent(eventId)
-        if (deletedEvent.error)
-            return setDeletionMsg(deletedEvent.error)
-        sessionStorage.removeItem('myEvents')
-        reloadEvents(Cookies.getJSON('session_id'))
+        setTimeout(async () => {
+            const deletedEvent = await API.deleteEvent(eventId)
+            if (deletedEvent.error)
+                return setDeletionMsg(deletedEvent.error)
+            sessionStorage.removeItem('myEvents')
+            reloadEvents(Cookies.getJSON('session_id'))
             setDeletionMsg('')
         }, 1500);
     }
-    
+
     return (
         // TODO add 'Sold Out'
         // TODO add 'tickets bought'

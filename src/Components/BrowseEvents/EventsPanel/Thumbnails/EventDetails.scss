@@ -36,19 +36,20 @@
   width: fit-content;
   margin-left: auto;
   font-family: $main-font;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 0.8rem;
   letter-spacing: 2px;
   
   & > span {
-    display: block;
-    padding-inline: 1rem;
-    text-align: start;
+    display: flex;
+    padding-inline: 0.8rem;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2px;
   }  
   
   & svg {
-    margin-right: 0.5rem;
-
+    flex-basis: 13px;
   }
   & span:hover svg {
     color: $third-color;

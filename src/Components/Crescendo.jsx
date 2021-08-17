@@ -1,5 +1,5 @@
 import '../Scss/main.scss'
-import React, { useState, useEffect, useContext } from 'react'
+import React from 'react'
 import {
     BrowserRouter as Router,
     Switch,

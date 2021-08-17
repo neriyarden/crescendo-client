@@ -15,6 +15,7 @@ function ArtistPage() {
     const getArtistDataOnLoad = async (artistId) => {
         const data = await API.getArtistData(artistId)
         if (data.error) return setArtistData(data.error)
+
         setArtistData(data)
     }
 

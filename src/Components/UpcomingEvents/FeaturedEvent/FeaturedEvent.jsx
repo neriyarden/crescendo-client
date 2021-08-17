@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { currentServer } from '../../../DAL/axios'
+
 
 function FeaturedEvent({ featuredEvent }) {
 
@@ -7,13 +9,13 @@ function FeaturedEvent({ featuredEvent }) {
         <section className="featured-events">
             <div
                 className="featured-events-bg"
-                style={{ backgroundImage: `url(${featuredEvent.img_url})` }}
+                style={{ backgroundImage: `url(${currentServer + featuredEvent.img_url})` }}
             >
             </div>
             <Link 
                 to={`/Events/${featuredEvent.id}`}
                 className="featured-event"
-                style={{ backgroundImage: `url(${featuredEvent.img_url})` }}
+                style={{ backgroundImage: `url(${currentServer + featuredEvent.img_url})` }}
             >
                 <div className='featured-event-details'>
                     <h3>{featuredEvent.tour}</h3>

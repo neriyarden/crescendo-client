@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import TextInput2 from '../../../../InputComponents/TextInput2/TextInput2'
 import UploadBtn from '../../../../InputComponents/UploadBtn/UploadBtn'
 import { Formik, Form, Field } from 'formik';
@@ -7,13 +7,19 @@ import TextBtn from '../../../../InputComponents/TextBtn/TextBtn'
 import utils from '../../../../../utils';
 
 function EditEvent({ event, onEditHandler, setEditShowForm, errMsg }) {
-    const categories = JSON.parse(sessionStorage.getItem('tags'))
-        .map(tag => ({
-            ...tag, 
-            checked: event.tags.find(eventTag => tag.id === eventTag.tag_id)
-        }))
+    const [categories, setCategories] = useState([])
+    const getCategories = async () => {
+        const tags = await utils.getTags()
+        console.log('tagssss:', tags);
+        setCategories(
+            tags.map(tag => ({
+                ...tag,
+                checked: event.tags.find(eventTag => tag.id === eventTag.tag_id)
+            }))
+        )
+    }
 
-    const categoryTags =  categories.map((tag, i) => (
+    const categoryTags = categories.map((tag, i) => (
         <label className='tag-label' key={i}>
             <Field
                 className='tag-checkbox'
@@ -25,6 +31,9 @@ function EditEvent({ event, onEditHandler, setEditShowForm, errMsg }) {
         </label>
     ))
 
+    useEffect(() => {
+        getCategories()
+    }, [])
 
 
     return (

@@ -2,6 +2,7 @@ import React from 'react'
 import { faSpotify, faFacebook, faYoutube, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import ArtistAvatarImg from './ArtistAvatarImg'
 import SocialIcons from './SocialIcons'
+import { currentServer } from '../../../DAL/axios'
 
 
 function ArtistHero({ artistData }) {
@@ -10,7 +11,7 @@ function ArtistHero({ artistData }) {
 
             <div
                 className="artist-page-hero-bg"
-                style={{ backgroundImage: `url(${artistData.img_url})` }}
+                style={{ backgroundImage: `url(${currentServer + artistData.img_url})` }}
             ></div>
 
             <div className="artist-hero-content">

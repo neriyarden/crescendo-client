@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-
+import { currentServer } from '../../../DAL/axios'
 
 function ArtistThumbnail({ thumbData }) {
     return (
@@ -7,7 +7,7 @@ function ArtistThumbnail({ thumbData }) {
             <Link to={`Artists/${thumbData.user_id}`}
                 className='artist-thumb'
             >
-                <img src={window.location.origin + (thumbData.img_url || '/img/tmplt.svg')} alt="" />
+                <img src={currentServer + (thumbData.img_url || '/img/tmplt.svg')} alt="" />
                 <div className="triangle l-triangle"></div>
                 <div className="triangle r-triangle"></div>
                 <div className="artist-details">

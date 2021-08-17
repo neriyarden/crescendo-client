@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 import API from './DAL/api'
 import AuthApi from './Contexts/AuthApi'
 import ReloadApi from './Contexts/Reload'
+import utils  from './utils'
 
 function App() {
   const [auth, setAuth] = useState(null)
@@ -23,26 +24,21 @@ function App() {
     setReloadAuth(false)
   }
 
-  const getTags = async () => {
-    if(JSON.parse(sessionStorage.getItem('tags'))) return
-    const categoriesData = await API.getTags()
-    sessionStorage.setItem('tags', JSON.stringify(categoriesData))
-  }
-
   const cacheUserVotedRequests = async (userId) => {
     const userVotedRequests = await API.getUserVotes(userId)
-    if(userVotedRequests.status === 404) {
+    if (userVotedRequests.status === 404) {
       return sessionStorage.setItem('user_voted_requests', JSON.stringify([]))
     }
     sessionStorage.setItem(
       'user_voted_requests', JSON.stringify(userVotedRequests)
-      )
+    )
   }
 
   useState(() => {
-    getTags()
+    utils.getTags()
   }, [])
 
+  // uncomment this...
   useEffect(() => {
     authenticateUser()
   }, [reloadAuth])
@@ -50,7 +46,7 @@ function App() {
   return (
     <ReloadApi.Provider value={{ reloadAuth, setReloadAuth }}>
       <AuthApi.Provider value={{ auth, setAuth }}>
-          <Crescendo />
+        <Crescendo />
       </AuthApi.Provider>
     </ReloadApi.Provider>
   );

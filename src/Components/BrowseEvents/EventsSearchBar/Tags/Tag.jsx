@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-function Tag({ data, tagOnChange }) {
+function Tag({ data, tagOnChange, tagIndex }) {
     const [checked, setChecked] = useState(data.checked)
 
-    const onChangeHandler = ({ target: { value } }) => {
+    const onChangeHandler = (tagIndex) => {
         setChecked((prev) => !prev)
-        tagOnChange(value)
+        tagOnChange(tagIndex)
     }
 
     return (
@@ -16,7 +16,7 @@ function Tag({ data, tagOnChange }) {
                     type="checkbox"
                     name='tags'
                     checked={checked}
-                    onChange={onChangeHandler}
+                    onChange={() => onChangeHandler(tagIndex)}
                 />
                 <span>{data.name}</span>
             </label>

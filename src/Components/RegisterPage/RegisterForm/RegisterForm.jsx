@@ -19,8 +19,8 @@ function RegisterForm() {
 
     const onSubmitHanlder = async (values) => {
         const response = await API.registerNewUser(values)
-        if (response.error) return setServerErrorMsg(response.error)
-        setRedirectToLogin(true)
+        if (response.data?.error) return setServerErrorMsg(response.data?.error)
+        // setRedirectToLogin(true)
     }
     if (redirectToLogin) return <Redirect to={{
         pathname: '/SignIn',

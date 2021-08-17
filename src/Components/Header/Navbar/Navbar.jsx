@@ -5,6 +5,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 import AuthApi from '../../../Contexts/AuthApi'
 import Cookies from 'js-cookie'
 import useClickOutside from '../../../CustomHooks/useClickOutside'
+import { currentServer } from '../../../DAL/axios'
 
 // TODO break into small components
 function Navbar() {
@@ -30,7 +31,7 @@ function Navbar() {
         <nav className='navbar' onClick={showToggleBtnMenu} ref={ref}>
             <NavLink to='/Upcoming'>
                 <img
-                    src={`/img/logo/logo1_b_bold.svg`}
+                    src={currentServer + `/img/logo/logo1_b_bold.svg`}
                     className="navbar-logo"
                     alt='logo'
                 />
@@ -84,7 +85,7 @@ function Navbar() {
                                 <div className='navbar-link navbar-user-img'>
                                     <NavLink to='/User/Welcome'>
                                         <img
-                                            src={Auth.auth.img_url || '/img/user.png'}
+                                            src={currentServer + (Auth.auth.img_url ?? '/img/user.png')}
                                             alt=""
                                         />
                                     </NavLink>

@@ -17,7 +17,6 @@ function LoginForm() {
     const authLogin = async (loginData) => {
         const response = await API.signIn(loginData)
         if(response.error) setServerErrorMsg(response.error)
-
         Reload.setReloadAuth(true)
     }
 
