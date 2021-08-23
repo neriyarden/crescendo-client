@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import API from '../../../../../DAL/api'
 import EventLine from './EventLine'
 import NewEvent from './NewEvent'
 import Loader from '../../../../General/Loader'
+import AuthApi from '../../../../../Contexts/AuthApi'
 
-function TabContentEvents({ userData }) {
+
+function TabContentEvents() {
+    const Auth = useContext(AuthApi)
     const [loading, setLoading] = useState(true)
     const [showForm, setShowForm] = useState(false)
     const [events, setEvents] = useState([])
     const [errorMsg, setErrorMsg] = useState('')
 
-    const getEventsOfArtist = async (artistId) => {
+    const getEventsOfArtist = async () => {
         setErrorMsg('')
         const localData = sessionStorage.getItem('myEvents')
         if (localData) return setEvents(JSON.parse(localData))
-        const results = await API.getArtistEvents(artistId)
+        const results = await API.getArtistEvents(Auth.auth.id)
         if (results.data?.error) {
             setEvents([])
             return setErrorMsg((results.data?.error))
@@ -30,9 +33,9 @@ function TabContentEvents({ userData }) {
 
     useEffect(() => {
         setTimeout(() => {
+            getEventsOfArtist()
             setLoading(false)
         }, 500)
-        getEventsOfArtist(userData.id)
     }, [])
 
     return (

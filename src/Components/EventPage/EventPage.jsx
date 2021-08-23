@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import API from '../../DAL/api'
 import { currentServer } from '../../DAL/axios'
-import ArtistAvatarImg from '../ArtistPage/ArtistHero/ArtistAvatarImg'
-
 
 
 function EventPage() {

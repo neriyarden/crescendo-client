@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import AuthApi from '../../../Contexts/AuthApi'
 
-function UserDetails({ userData }) {
+
+function UserDetails() {
+    const Auth = useContext(AuthApi)
     return (
         <div className='user-details'>
-            <h3 className='user-name'>{userData.name}</h3>
-            <p>Joined At: {userData.joined_at}</p>
-            <p className='is-artist'>{userData.is_artist ? 'Artist' : ''}</p>
+            <h3 className='user-name'>{Auth.auth.name}</h3>
+            <p>Joined At: {Auth.auth.joined_at}</p>
+            <p className='is-artist'>{Auth.auth.is_artist ? 'Artist' : ''}</p>
         </div>
     )
 }

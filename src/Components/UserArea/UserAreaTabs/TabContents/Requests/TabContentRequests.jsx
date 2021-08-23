@@ -1,22 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import API from '../../../../../DAL/api'
 import RequestLine from './RequestLine'
 import NewRequest from './NewRequest'
 import Loader from '../../../../General/Loader'
 import Cookies from 'js-cookie'
+import AuthApi from '../../../../../Contexts/AuthApi'
 
-function TabContentRequests({ userData }) {
+
+function TabContentRequests() {
+    const Auth = useContext(AuthApi)
     const [loading, setLoading] = useState(true)
     const [requests, setRequests] = useState([])
     const [errorMsg, setErrorMsg] = useState('')
 
     const getRequestsOfArtist = async () => {
-        // for arriving from the  direct url
-        const artistId = Cookies.getJSON('session_id')
+        // for arriving from the direct url
         setErrorMsg('')
         const localData = sessionStorage.getItem('myRequests')
         if (localData) return setRequests(JSON.parse(localData))
-        const results = await API.getArtistRequests(artistId)
+        const results = await API.getArtistRequests(Auth.auth.id)
         if (results.data?.error) {
             setRequests([])
             return setErrorMsg((results?.data.error))

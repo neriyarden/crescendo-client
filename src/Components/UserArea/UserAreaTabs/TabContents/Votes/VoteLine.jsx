@@ -24,7 +24,7 @@ function VoteLine({ vote, i, reloadVotes }) {
             if (removedVote.error)
                 return setUnvoteMsg(removedVote.error)
             sessionStorage.removeItem('user_voted_requests')
-            reloadVotes(Cookies.getJSON('session_id'))
+            reloadVotes(Auth.auth.id)
             setUnvoteMsg('')
         }, 1500);
     }
