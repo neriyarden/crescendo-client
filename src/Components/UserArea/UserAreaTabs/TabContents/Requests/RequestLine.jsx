@@ -23,7 +23,7 @@ function RequestLine({ request, i, reloadRequests }) {
         const editedRequestData = await API.editRequest(values)
         if (editedRequestData.error) setErrMsg(editedRequestData.error)
         sessionStorage.removeItem('myRequests')
-        reloadRequests(Cookies.getJSON('session_id'))
+        reloadRequests(Auth.auth.id)
         setCompleted(request.votes / request.cap >= 1)
         setShowEditForm(false)
     }
@@ -40,7 +40,7 @@ function RequestLine({ request, i, reloadRequests }) {
             if (deletedRequest.error)
                 return setDeletionMsg(deletedRequest.error)
             sessionStorage.removeItem('myRequests')
-            reloadRequests(Cookies.getJSON('session_id'))
+            reloadRequests(Auth.auth.id)
             setDeletionMsg('')
         }, 1500);
     }

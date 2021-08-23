@@ -24,7 +24,7 @@ function EventLine({ event, i, reloadEvents }) {
         const editedEventData = await API.editEvent(formData)
         if (editedEventData.error) setErrMsg(editedEventData.error)
         sessionStorage.removeItem('myEvents')
-        reloadEvents(Cookies.getJSON('session_id'))
+        reloadEvents(Auth.auth.id)
         setEditShowForm(false)
     }
 
@@ -39,7 +39,7 @@ function EventLine({ event, i, reloadEvents }) {
             if (deletedEvent.error)
                 return setDeletionMsg(deletedEvent.error)
             sessionStorage.removeItem('myEvents')
-            reloadEvents(Cookies.getJSON('session_id'))
+            reloadEvents(Auth.auth.id)
             setDeletionMsg('')
         }, 1500);
     }

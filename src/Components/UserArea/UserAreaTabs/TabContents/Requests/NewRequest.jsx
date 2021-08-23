@@ -20,7 +20,7 @@ function NewRequest({ reloadRequests }) {
         const newRequestData = await API.addNewRequest(values)
         if (newRequestData.error) setErrMsg(newRequestData.error)
         sessionStorage.removeItem('myRequests')
-        reloadRequests(Cookies.getJSON('session_id'))
+        reloadRequests(Auth.auth.id)
         setShowForm(false)
     }
 
