@@ -4,7 +4,7 @@ import { currentServer } from '../../../DAL/axios'
 function ArtistThumbnail({ thumbData }) {
     return (
         <li>
-            <Link to={`Artists/${thumbData.user_id}`}
+            <Link to={`Artists/${thumbData.user_id || thumbData.id}`}
                 className='artist-thumb'
             >
                 <img src={currentServer + (thumbData.img_url || '/img/tmplt.svg')} alt="" />

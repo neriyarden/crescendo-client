@@ -3,17 +3,17 @@ import ArtistAvatarImg from '../../ArtistPage/ArtistHero/ArtistAvatarImg'
 import UserDetails from './UserDetails'
 import AuthApi from '../../../Contexts/AuthApi'
 
-function UserAreaHero({ userData, artistData }) {
+function UserAreaHero() {
     const Auth = useContext(AuthApi)
     return (
         <section className="user-data-hero">
-            <ArtistAvatarImg 
-                imgPath={Auth.auth.img_url || '/img/user.png'} 
+            <ArtistAvatarImg
+                imgPath={Auth.auth.img_url || '/img/user.png'}
                 styleClass='user-avatar'
             />
-            <UserDetails userData={userData}/>
+            <UserDetails />
 
-    </section>
+        </section>
     )
 }
 

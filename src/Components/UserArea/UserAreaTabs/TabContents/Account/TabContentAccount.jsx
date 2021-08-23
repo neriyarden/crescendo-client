@@ -16,7 +16,7 @@ function TabContentAccount() {
 
     const onSubmitHandler = async (values) => {
         //  TODO generalize this
-        values.id = Auth.auth.id // ?
+        values.id = Auth.auth.id
         await API.editUserData(values)
         Reload.setReloadAuth(true)
         setShowSubmittedMsg(true)
@@ -77,11 +77,9 @@ function TabContentAccount() {
                             )}
                         </Formik>
                 )
-
             }
         </>
     );
-
 }
 
 

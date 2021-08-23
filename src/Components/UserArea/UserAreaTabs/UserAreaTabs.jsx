@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {
     Switch,
     Route,
@@ -12,8 +12,10 @@ import TabContentWelcome from './TabContents/TabContentWelcome'
 import TabContentEvents from './TabContents/Events/TabContentEvents';
 import TabContentRequests from './TabContents/Requests/TabContentRequests';
 import TabContentVotes from './TabContents/Votes/TabContentVotes';
+import AuthApi from '../../../Contexts/AuthApi'
 
-function UserAreaTabs({ userData, artistData }) {
+function UserAreaTabs() {
+    const Auth = useContext(AuthApi)
     const { path, url } = useRouteMatch();
     const [selectedTab, setSelectedTab] = useState('Welcome')
     const onTabSelect = (tab) => {
@@ -35,7 +37,7 @@ function UserAreaTabs({ userData, artistData }) {
                     onClickHandler={onTabSelect}
                     selectedTab={selectedTab}
                 />
-                {!!userData.is_artist &&
+                {!!Auth.auth.is_artist &&
                     <>
                         <Tab
                             url={url}
@@ -64,19 +66,19 @@ function UserAreaTabs({ userData, artistData }) {
                         <TabContentWelcome />
                     </Route>
                     <Route path={`${path}/Account`}>
-                        <TabContentAccount userData={userData} />
+                        <TabContentAccount />
                     </Route>
                     <Route path={`${path}/Profile`}>
-                        <TabContentProfile artistData={artistData} />
+                        <TabContentProfile />
                     </Route>
                     <Route path={`${path}/Events`}>
-                        <TabContentEvents userData={userData} />
+                        <TabContentEvents />
                     </Route>
                     <Route path={`${path}/Votes`}>
-                        <TabContentVotes userData={userData} />
+                        <TabContentVotes />
                     </Route>
                     <Route path={`${path}/Requests`}>
-                        <TabContentRequests userData={userData} />
+                        <TabContentRequests />
                     </Route>
                 </Switch>
             </div>

@@ -4,7 +4,7 @@ import VoteLine from './VoteLine'
 import Loader from '../../../../General/Loader'
 import AuthApi from '../../../../../Contexts/AuthApi'
 
-function TabContentVotes({ userData }) {
+function TabContentVotes() {
     const Auth = useContext(AuthApi)
     const [loading, setLoading] = useState(true)
     const [votes, setVotes] = useState([])
@@ -13,8 +13,7 @@ function TabContentVotes({ userData }) {
     const getVotesOfUser = async () => {
         const localData = JSON.parse(sessionStorage.getItem('user_voted_requests'))
         if (localData?.length) return setVotes(localData)
-        const userId = Auth.auth.id
-        const results = await API.getUserVotes(userId)
+        const results = await API.getUserVotes(Auth.auth.id)
         if (results.data?.error) {
             setVotes([])
             return setErrorMsg((results?.data.error))
