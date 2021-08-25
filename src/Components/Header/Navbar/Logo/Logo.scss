@@ -1,0 +1,17 @@
+.navbar-logo {
+  height: 60px;
+  padding-block: 3px;
+  transition: all .2s;
+  visibility: hidden;
+
+  @include breakpoint-xs {
+    visibility: visible;
+  }
+  
+  &:hover,
+  &:focus {
+    filter: drop-shadow(2px -2px 1px $third-color) 
+    drop-shadow(0px -0px 1px $fourth-color);
+    transform: skewX(-10deg);
+  }
+}

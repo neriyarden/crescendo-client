@@ -1,0 +1,35 @@
+.navbar-toggle-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 36px;
+  right: 1.2rem;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+
+  &::after {
+    width: 0;
+    height: 0;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    height: 25px;
+    transition: 0.2s all;
+  }
+
+  @include breakpoint-md {
+    & {
+      display: none;
+    }
+  }
+}
+
+.navbar-toggle-button-bar {
+  height: 3px;
+  width: 100%;
+  background: $secondary-color;
+  border-radius: 50px;
+}

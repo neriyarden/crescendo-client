@@ -20,7 +20,9 @@ function Navbar() {
             <NavLink to='/Upcoming'>
                 <Logo />
             </NavLink>
+
             <MenuToggleBtn showToggleBtnMenu={showToggleBtnMenu}/>
+            
             <div className={`navbar-links ${displayToggleBtnMenu}`}>
                 <NavbarLinks />
             </div>
