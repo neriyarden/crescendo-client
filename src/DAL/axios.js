@@ -18,9 +18,10 @@ export const httpRequest = async (path, method = 'GET', data = null) => {
     try {
         const response = await axios({
             method,
-            url: path,
+            url: '/api' + path,
             data
         })
+        console.log('response:', response);
         console.log('response.data:', await response.data);
         return await response.data
     }
