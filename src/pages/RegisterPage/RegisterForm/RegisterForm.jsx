@@ -78,8 +78,8 @@ const RegisterForm = () => {
                 </Form>
             </Formik>
             <FormFooterText
-                text='Already signed up?'
-                linkText='Login Here'
+                text='Already A Member?'
+                linkText='Sign In'
                 linkHref={{
                     pathname: '/SignIn',
                     state: { referrer: '/User/Welcome' }

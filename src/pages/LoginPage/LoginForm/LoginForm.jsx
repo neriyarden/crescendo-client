@@ -59,8 +59,8 @@ const LoginForm = () => {
                     </Form>
             </Formik>
         <FormFooterText
-            text='Not registered yet?'
-            linkText='Register Here'
+            text='Not A Member Yet?'
+            linkText='Join Us!'
             linkHref='/SignUp'
         />
     </div>

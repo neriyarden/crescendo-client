@@ -14,7 +14,16 @@
   box-shadow: $low-blur-shadow; 
   padding: 3rem;
   z-index: 1;
-  
+  animation: fadeIn 2s forward;
+  margin: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
 }
 
 .form {
