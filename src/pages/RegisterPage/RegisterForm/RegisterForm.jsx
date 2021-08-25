@@ -27,7 +27,7 @@ const RegisterForm = () => {
         state: { referrer: '/User/Welcome' }
     }} />
     return (
-        <div className='signup-form-container'>
+        <div className='form-container'>
             <FormHeading title='Sign Up' />
             <Formik
                 initialValues={{
@@ -45,7 +45,7 @@ const RegisterForm = () => {
                     setSubmitting(false);
                 }}
             >
-                <Form className='signup-form'>
+                <Form className='form'>
                     <TextInputPink
                         name='name'
                         label='display name'

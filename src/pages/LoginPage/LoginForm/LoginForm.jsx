@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react'
-import FormHeading from '../../components/General/Headings/FormHeading/FormHeading'
-import TextInputPink from '../../components/General/Inputs/TextInputPink/TextInputPink'
-import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
-import FormCheckbox from '../../components/General/Inputs/FormCheckbox/FormCheckbox'
-import FormFooterText from '../../components/General/Inputs/FormFooterText/FormFooterText'
+import FormHeading from '../../../components/General/Headings/FormHeading/FormHeading'
+import TextInputPink from '../../../components/General/Inputs/TextInputPink/TextInputPink'
+import TextBtn from '../../../components/General/Inputs/TextBtn/TextBtn'
+import FormCheckbox from '../../../components/General/Inputs/FormCheckbox/FormCheckbox'
+import FormFooterText from '../../../components/General/Inputs/FormFooterText/FormFooterText'
 import { Formik, Form } from 'formik';
-import validations from '../../validations'
-import API from '../../DAL/api'
-import ReloadApi from '../../services/contexts/Reload'
+import validations from '../../../validations'
+import API from '../../../DAL/api'
+import ReloadApi from '../../../services/contexts/Reload'
 
 
 const LoginForm = () => {
@@ -21,7 +21,7 @@ const LoginForm = () => {
     }
 
     return (
-        <div className="login-form-container">
+        <div className="form-container">
             <FormHeading title='Sign In' />
             <Formik
                 initialValues={{
@@ -37,7 +37,7 @@ const LoginForm = () => {
                         setSubmitting(false);
                 }}
             >
-                    <Form className="login-form">
+                    <Form className="form">
                         <TextInputPink
                             label='email address'
                             name='email'
