@@ -52,8 +52,8 @@
    }
    
     & .artist-name {
-      transform: translateX(0%);
-      letter-spacing: 4px;
+      // transform: translateX(0%);
+      letter-spacing: 3px;
       color: #fff;
     }
 
@@ -99,7 +99,7 @@
   padding-block: .2rem;
   font-size: 1.6rem;
   font-weight: 300;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-align: center;
-  transform: translateX(-8%);
+  // transform: translateX(-8%);
 }
