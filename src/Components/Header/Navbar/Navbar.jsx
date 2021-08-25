@@ -1,9 +1,8 @@
 import React, { useState, useContext, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
-
 import useClickOutside from '../../../hooks/useClickOutside'
-import { currentServer } from '../../../DAL/axios'
-import NavbarLinks from './NavbarLinks'
+import NavbarLinks from './NavbarLinks/NavbarLinks'
+import Logo from './Logo/Logo'
 
 function Navbar() {
     const ref = useRef()
@@ -18,12 +17,9 @@ function Navbar() {
     return (
         <nav className='navbar' onClick={showToggleBtnMenu} ref={ref}>
             <NavLink to='/Upcoming'>
-                <img
-                    src={currentServer + `/img/logo/logo1_b_bold.svg`}
-                    className="navbar-logo"
-                    alt='logo'
-                />
+                <Logo />
             </NavLink>
+
             <div href="" className='navbar-toggle-button' onClick={showToggleBtnMenu}>
                 <span className="navbar-toggle-button-bar"></span>
                 <span className="navbar-toggle-button-bar"></span>
