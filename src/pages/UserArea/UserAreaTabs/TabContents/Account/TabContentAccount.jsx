@@ -6,7 +6,7 @@ import TextBtn from '../../../../../components/General/Inputs/TextBtn/TextBtn'
 import Loader from '../../../../../components/General/Loader'
 import API from '../../../../../DAL/api';
 import AuthApi from '../../../../../services/contexts/AuthApi';
-import ReloadApi from '../../../../../services/contexts/Reload';
+import ReloadApi from '../../../../../services/contexts/ReloadApi';
 
 const TabContentAccount = () => {
     const [loading, setLoading] = useState(true)

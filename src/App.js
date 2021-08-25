@@ -3,7 +3,7 @@ import Crescendo from './pages/Crescendo'
 import Cookies from 'js-cookie'
 import API from './DAL/api'
 import AuthApi from './services/contexts/AuthApi'
-import ReloadApi from './services/contexts/Reload'
+import ReloadApi from './services/contexts/ReloadApi'
 import utils  from './utils'
 
 const App = () => {

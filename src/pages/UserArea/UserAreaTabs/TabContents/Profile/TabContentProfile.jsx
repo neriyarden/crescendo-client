@@ -6,7 +6,7 @@ import validations from '../../../../../services/validations/validations'
 import TextBtn from '../../../../../components/General/Inputs/TextBtn/TextBtn'
 import API from '../../../../../DAL/api';
 import AuthApi from '../../../../../services/contexts/AuthApi'
-import ReloadApi from '../../../../../services/contexts/Reload'
+import ReloadApi from '../../../../../services/contexts/ReloadApi'
 import Loader from '../../../../../components/General/Loader'
 
 const TabContentProfile = () => {

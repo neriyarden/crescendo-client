@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import RequestDetails from './RequestDetails'
 import AuthApi from '../../../../services/contexts/AuthApi'
 import API from '../../../../DAL/api'
-import ReloadAPI from '../../../../services/contexts/Reload'
+import ReloadAPI from '../../../../services/contexts/ReloadApi'
 import { currentServer } from '../../../../DAL/axios'
 
 

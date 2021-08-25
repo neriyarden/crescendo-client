@@ -7,7 +7,7 @@ import FormFooterText from '../../../components/General/Inputs/FormFooterText/Fo
 import { Formik, Form } from 'formik';
 import validations from '../../../services/validations/validations'
 import API from '../../../DAL/api'
-import ReloadApi from '../../../services/contexts/Reload'
+import ReloadApi from '../../../services/contexts/ReloadApi'
 
 
 const LoginForm = () => {
