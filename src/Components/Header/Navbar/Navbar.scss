@@ -91,60 +91,6 @@ header {
     }
   }
 }
- 
-
-.navbar-link {
-  display: flex;
-  align-items: center;
-  position: relative;
-  height: 41px;
-  padding-inline: 0.4vw;
-
-  @include breakpoint-md {
-    & {
-      text-align: center;
-    }
-  }
-  
-  & a {
-    display: block;
-    color: $secondary-color;
-    // font-weight: 500;
-    text-decoration: none;
-    white-space: nowrap;
-    // text-shadow: $text-shadow-light;
-
-    &:hover {
-      color: $third-color;
-    }
-
-      @include breakpoint-md {
-        & {
-          font-weight: 500;
-        }
-        &:hover::after {
-          width: 85%;
-          background: $third-color;
-          transition: width 0.3s;
-        }
-      }
-      
-        
-      &::after {
-        @include horizontal-center;
-        content: '';
-        bottom: 5%;
-        height: 3px;
-        width: 0;
-        border-radius: 50px;
-        background: $secondary-color;
-      }
-
-      &.active-link {
-        color: $third-color;
-      }
-    }
-}
 
 .display-menu li:nth-child(2) {animation-delay: 0.1s;}
 .display-menu li:nth-child(3) {animation-delay: 0.2s;}
@@ -193,53 +139,5 @@ header {
     opacity: 0;
   } to {
     opacity: 1;
-  }
-}
-
-
-.navbar-user-img {
-  position: absolute;
-  right: 70px;
-  top: 25px;
-
-  @include breakpoint-md {
-    position: static;
-  }
-
-  & a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  & img {
-    @include size(30px);
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
-    margin-right: 1rem;
-
-    @include breakpoint-md {
-    margin-right: 0.1rem;
-
-    }
-  }
-  
-  @include breakpoint-md {
-    & a:hover::after {
-      width: 0;
-      height: 0;
-    }
-  }
-}
-
-.sign-out-link {
-  transition: all 0.5s ease;
-  overflow: hidden;
-  font-size: 0.9rem;
-  white-space: normal;
-  
-  @include breakpoint-md {
-    opacity: 0;
-    width: 0;
   }
 }

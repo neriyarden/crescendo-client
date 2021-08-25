@@ -26,7 +26,7 @@ function ArtistRequests({ artistId }) {
             {
                 isLoggedIn ?
                     <>{
-                        requests.length ?
+                        requests.length > 0 ?
                             <RequestsPanel
                                 requestsData={requests}
                                 loading={loading}
