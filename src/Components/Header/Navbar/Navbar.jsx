@@ -1,8 +1,9 @@
-import React, { useState, useContext, useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import useClickOutside from '../../../hooks/useClickOutside'
 import NavbarLinks from './NavbarLinks/NavbarLinks'
 import Logo from './Logo/Logo'
+import MenuToggleBtn from './MenuToggleBtn/MenuToggleBtn'
 
 function Navbar() {
     const ref = useRef()
@@ -19,12 +20,7 @@ function Navbar() {
             <NavLink to='/Upcoming'>
                 <Logo />
             </NavLink>
-
-            <div href="" className='navbar-toggle-button' onClick={showToggleBtnMenu}>
-                <span className="navbar-toggle-button-bar"></span>
-                <span className="navbar-toggle-button-bar"></span>
-                <span className="navbar-toggle-button-bar"></span>
-            </div>
+            <MenuToggleBtn showToggleBtnMenu={showToggleBtnMenu}/>
             <div className={`navbar-links ${displayToggleBtnMenu}`}>
                 <NavbarLinks />
             </div>
