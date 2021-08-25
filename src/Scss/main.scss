@@ -13,20 +13,20 @@
 
 @import 'components/scrollbar';
 
-@import '../Components/ArtistPage/index';
-@import '../Components/BrowseArtists/index';
-@import '../Components/BrowseEvents/index';
-@import '../Components/EventPage/index';
-@import '../Components/Header/index';
-@import '../Components/Headings/index';
-@import '../Components/InputComponents/index';
-@import '../Components/LoginPage/index';
-@import '../Components/RegisterPage/index';
-@import '../Components/UpcomingEvents/';
-@import '../Components/UserArea/index';
-@import '../Components/Footer/index';
-@import '../Components/General/index';
-@import '../Components/RequestsPage/index'
+@import '../pages/ArtistPage/index';
+@import '../pages/BrowseArtists/index';
+@import '../pages/BrowseEvents/index';
+@import '../pages/EventPage/index';
+@import '../components/Header/index';
+@import '../components/General/Headings/index';
+@import '../components/General/Inputs/index';
+@import '../pages/LoginPage/index';
+@import '../pages/RegisterPage/index';
+@import '../pages/UpcomingEvents/';
+@import '../pages/UserArea/index';
+@import '../components/Footer/index';
+@import '../components/General/index';
+@import '../pages/BrowseRequests/index'
 
 
 

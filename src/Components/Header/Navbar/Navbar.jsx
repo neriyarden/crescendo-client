@@ -2,9 +2,9 @@ import React, { useState, useContext, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import AuthApi from '../../../Contexts/AuthApi'
+import AuthApi from '../../../services/contexts/AuthApi'
 import Cookies from 'js-cookie'
-import useClickOutside from '../../../CustomHooks/useClickOutside'
+import useClickOutside from '../../../hooks/useClickOutside'
 import { currentServer } from '../../../DAL/axios'
 
 // TODO break into small components

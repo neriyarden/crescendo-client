@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from 'react'
-import Crescendo from './Components/Crescendo'
+import Crescendo from './pages/Crescendo'
 import Cookies from 'js-cookie'
 import API from './DAL/api'
-import AuthApi from './Contexts/AuthApi'
-import ReloadApi from './Contexts/Reload'
+import AuthApi from './services/contexts/AuthApi'
+import ReloadApi from './services/contexts/Reload'
 import utils  from './utils'
 
 function App() {
   const [auth, setAuth] = useState(null)
   const [reloadAuth, setReloadAuth] = useState(false)
+  
+  const cacheUserVotedRequests = async (userId) => {
+    const userVotedRequests = await API.getUserVotes(userId)
+    if (userVotedRequests.status === 404) {
+      return sessionStorage.setItem('user_voted_requests', JSON.stringify([]))
+    }
+    sessionStorage.setItem(
+      'user_voted_requests', JSON.stringify(userVotedRequests)
+    )
+  }
 
   const authenticateUser = async () => {
     const userId = Cookies.getJSON('session_id')
@@ -22,16 +32,6 @@ function App() {
       cacheUserVotedRequests(userId)
     }
     setReloadAuth(false)
-  }
-
-  const cacheUserVotedRequests = async (userId) => {
-    const userVotedRequests = await API.getUserVotes(userId)
-    if (userVotedRequests.status === 404) {
-      return sessionStorage.setItem('user_voted_requests', JSON.stringify([]))
-    }
-    sessionStorage.setItem(
-      'user_voted_requests', JSON.stringify(userVotedRequests)
-    )
   }
 
   useState(() => {
