@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
 import { useField } from 'formik'
 
-const TextInput2 = (props) => {
+const TextInputGray = (props) => {
     const [field, meta] = useField(props)
 
     return (
@@ -26,4 +26,4 @@ const TextInput2 = (props) => {
     )
 }
 
-export default TextInput2
+export default TextInputGray

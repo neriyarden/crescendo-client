@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import FormHeading from '../../components/General/Headings/FormHeading/FormHeading'
-import TextInput from '../../components/General/Inputs/TextInput/TextInput'
+import TextInputPink from '../../components/General/Inputs/TextInputPink/TextInputPink'
 import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
 import FormCheckbox from '../../components/General/Inputs/FormCheckbox/FormCheckbox'
 import FormFooterText from '../../components/General/Inputs/FormFooterText/FormFooterText'
@@ -38,11 +38,11 @@ const LoginForm = () => {
                 }}
             >
                     <Form className="login-form">
-                        <TextInput
+                        <TextInputPink
                             label='email address'
                             name='email'
                         />
-                        <TextInput
+                        <TextInputPink
                             name='password'
                             label='password'
                             type='password'

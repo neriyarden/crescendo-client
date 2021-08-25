@@ -3,7 +3,6 @@ import API from '../../../../../DAL/api'
 import RequestLine from './RequestLine'
 import NewRequest from './NewRequest'
 import Loader from '../../../../../components/General/Loader'
-import Cookies from 'js-cookie'
 import AuthApi from '../../../../../services/contexts/AuthApi'
 
 

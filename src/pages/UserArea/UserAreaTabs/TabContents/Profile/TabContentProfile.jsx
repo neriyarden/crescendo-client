@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import TextInput2 from '../../../../../components/General/Inputs/TextInput2/TextInput2'
+import TextInputGray from '../../../../../components/General/Inputs/TextInputGray/TextInputGray'
 import UploadBtn from '../../../../../components/General/Inputs/UploadBtn/UploadBtn'
 import { Formik, Form } from 'formik';
 import validations from '../../../../../validations'
@@ -66,23 +66,23 @@ const TabContentProfile = () => {
                                         name='newImg'
                                         setFieldValue={setFieldValue}
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='Bio'
                                         name='bio'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='spotify Url'
                                         name='link_to_spotify'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='instagram Url'
                                         name='link_to_instagram'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='facebook Url'
                                         name='link_to_facebook'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='youtube Url'
                                         name='link_to_youtube'
                                     />

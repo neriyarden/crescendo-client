@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import FormHeading from '../../../components/General/Headings/FormHeading/FormHeading'
-import TextInput from '../../../components/General/Inputs/TextInput/TextInput'
+import TextInputPink from '../../../components/General/Inputs/TextInputPink/TextInputPink'
 import TextBtn from '../../../components/General/Inputs/TextBtn/TextBtn'
 import FormFooterText from '../../../components/General/Inputs/FormFooterText/FormFooterText'
 import { Formik, Form } from 'formik';
@@ -46,21 +46,21 @@ const RegisterForm = () => {
                 }}
             >
                 <Form className='signup-form'>
-                    <TextInput
+                    <TextInputPink
                         name='name'
                         label='display name'
                         subtexts={displayNameSubtexts}
                     />
-                    <TextInput
+                    <TextInputPink
                         name='email'
                         label='email address'
                     />
-                    <TextInput
+                    <TextInputPink
                         name='password'
                         label='password'
                         type='password'
                     />
-                    <TextInput
+                    <TextInputPink
                         name='repeat_password'
                         label='confirm password'
                         placeholder='Re-enter your password'

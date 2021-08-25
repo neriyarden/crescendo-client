@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import TextInput2 from '../../../../../components/General/Inputs/TextInput2/TextInput2'
+import TextInputGray from '../../../../../components/General/Inputs/TextInputGray/TextInputGray'
 import UploadBtn from '../../../../../components/General/Inputs/UploadBtn/UploadBtn'
 import { Formik, Form, Field } from 'formik';
 import validations from '../../../../../validations'
@@ -10,7 +10,6 @@ const EditEvent = ({ event, onEditHandler, setEditShowForm, errMsg }) => {
     const [categories, setCategories] = useState([])
     const getCategories = async () => {
         const tags = await utils.getTags()
-        console.log('tagssss:', tags);
         setCategories(
             tags.map(tag => ({
                 ...tag,
@@ -62,39 +61,39 @@ const EditEvent = ({ event, onEditHandler, setEditShowForm, errMsg }) => {
                 >
                     {({ isSubmitting, dirty, setFieldValue }) => (
                         <Form className="tab-content account">
-                            <TextInput2
+                            <TextInputGray
                                 label='Tour Name'
                                 name='tour'
                             />
-                            <TextInput2
+                            <TextInputGray
                                 label='Date'
                                 name='date'
                                 type='date'
                             />
-                            <TextInput2
+                            <TextInputGray
                                 label='time'
                                 name='time'
                                 type='time'
                             />
-                            <TextInput2
+                            <TextInputGray
                                 label='duration (min)'
                                 name='duration'
                                 type='number'
                             />
-                            <TextInput2
+                            <TextInputGray
                                 label='Venue'
                                 name='venueName'
                             />
-                            <TextInput2
+                            <TextInputGray
                                 label='City'
                                 name='cityName'
                             />
-                            <TextInput2
+                            <TextInputGray
                                 label='Description'
                                 name='description'
                                 type='textarea'
                             />
-                            <TextInput2
+                            <TextInputGray
                                 label='Ticket Seller URL'
                                 name='ticketseller_url'
                             />

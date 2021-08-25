@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import TextInput2 from '../../../../../components/General/Inputs/TextInput2/TextInput2'
+import TextInputGray from '../../../../../components/General/Inputs/TextInputGray/TextInputGray'
 import UploadBtn from '../../../../../components/General/Inputs/UploadBtn/UploadBtn'
 import { Formik, Form } from 'formik';
 import validations from '../../../../../validations'
@@ -53,15 +53,15 @@ const NewRequest = ({ reloadRequests }) => {
                         >
                             {({ isSubmitting, dirty, setFieldValue }) => (
                                 <Form className="tab-content account">
-                                    <TextInput2
+                                    <TextInputGray
                                         label='Tour Name'
                                         name='tour'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='City'
                                         name='city'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='Cap'
                                         name='cap'
                                         type='number'

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import TextInput2 from '../../../../../components/General/Inputs/TextInput2/TextInput2'
+import TextInputGray from '../../../../../components/General/Inputs/TextInputGray/TextInputGray'
 import { Formik, Form } from 'formik';
 import validations from '../../../../../validations'
 import TextBtn from '../../../../../components/General/Inputs/TextBtn/TextBtn'
@@ -54,16 +54,16 @@ const TabContentAccount = () => {
                         >
                             {({ isSubmitting, dirty }) => (
                                 <Form className="tab-content account">
-                                    <TextInput2
+                                    <TextInputGray
                                         label='display name'
                                         name='name'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='Password'
                                         name='password'
                                         type='password'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='Re-Enter Password'
                                         name='repeat_password'
                                         type='password'

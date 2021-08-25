@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import TextInput2 from '../../../../../components/General/Inputs/TextInput2/TextInput2'
+import TextInputGray from '../../../../../components/General/Inputs/TextInputGray/TextInputGray'
 import UploadBtn from '../../../../../components/General/Inputs/UploadBtn/UploadBtn'
 import { Formik, Form, Field } from 'formik';
 import validations from '../../../../../validations'
@@ -76,39 +76,39 @@ const NewEvent = ({ reloadEvents, setShowForm, fromRequestValues }) => {
                         >
                             {({ isSubmitting, dirty, setFieldValue }) => (
                                 <Form className="tab-content account">
-                                    <TextInput2
+                                    <TextInputGray
                                         label='Tour Name'
                                         name='tour'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='Date'
                                         name='date'
                                         type='date'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='time'
                                         name='time'
                                         type='time'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='duration (min)'
                                         name='duration'
                                         type='number'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='Venue'
                                         name='venueName'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='City'
                                         name='cityName'
                                         disabled={!!fromRequestValues?.city}
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='Description'
                                         name='description'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='Ticket Seller URL'
                                         name='ticketseller_url'
                                     />
