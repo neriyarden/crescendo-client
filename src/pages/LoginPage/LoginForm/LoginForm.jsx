@@ -7,17 +7,18 @@ import FormFooterText from '../../../components/General/Inputs/FormFooterText/Fo
 import { Formik, Form } from 'formik';
 import validations from '../../../services/validations/validations'
 import API from '../../../DAL/api'
-import ReloadApi from '../../../services/contexts/ReloadApi'
+import AuthApi from '../../../services/contexts/AuthApi'
+
 
 
 const LoginForm = () => {
-    const Reload = useContext(ReloadApi)
+    const Auth = useContext(AuthApi)
     const [serverErrorMsg, setServerErrorMsg] = useState('')
     
     const authLogin = async (loginData) => {
         const response = await API.signIn(loginData)
         if(response.error) setServerErrorMsg(response.error)
-        Reload.setReloadAuth(true)
+        Auth.reloadAuth()
     }
 
     return (

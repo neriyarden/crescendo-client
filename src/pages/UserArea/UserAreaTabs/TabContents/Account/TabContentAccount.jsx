@@ -6,19 +6,17 @@ import TextBtn from '../../../../../components/General/Inputs/TextBtn/TextBtn'
 import Loader from '../../../../../components/General/Loader'
 import API from '../../../../../DAL/api';
 import AuthApi from '../../../../../services/contexts/AuthApi';
-import ReloadApi from '../../../../../services/contexts/ReloadApi';
 
 const TabContentAccount = () => {
+    const Auth = useContext(AuthApi)
     const [loading, setLoading] = useState(true)
     const [showSubmittedMsg, setShowSubmittedMsg] = useState(false)
-    const Auth = useContext(AuthApi)
-    const Reload = useContext(ReloadApi)
 
     const onSubmitHandler = async (values) => {
         //  TODO generalize this
         values.id = Auth.auth.id
         await API.editUserData(values)
-        Reload.setReloadAuth(true)
+        Auth.reloadAuth()
         setShowSubmittedMsg(true)
         setTimeout(() => {
             setShowSubmittedMsg(false)

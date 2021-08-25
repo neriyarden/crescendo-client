@@ -6,14 +6,13 @@ import validations from '../../../../../services/validations/validations'
 import TextBtn from '../../../../../components/General/Inputs/TextBtn/TextBtn'
 import API from '../../../../../DAL/api';
 import AuthApi from '../../../../../services/contexts/AuthApi'
-import ReloadApi from '../../../../../services/contexts/ReloadApi'
+
 import Loader from '../../../../../components/General/Loader'
 
 const TabContentProfile = () => {
+    const Auth = useContext(AuthApi)
     const [loading, setLoading] = useState(true)
     const [showSubmittedMsg, setShowSubmittedMsg] = useState(false)
-    const Auth = useContext(AuthApi)
-    const Reload = useContext(ReloadApi)
 
     const onSubmitHandler = async (values) => {
         //  TODO generalize this
@@ -22,7 +21,7 @@ const TabContentProfile = () => {
             formData.set(key, values[key])
         })
         await API.editArtistDetails(formData)
-        Reload.setReloadAuth(true)
+        Auth.reloadAuth()
         setShowSubmittedMsg(true)
         setTimeout(() => {
             setShowSubmittedMsg(false)
