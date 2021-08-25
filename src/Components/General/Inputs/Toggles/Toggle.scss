@@ -1,0 +1,9 @@
+.toggle-btn {
+  & span:hover,
+  & input:checked ~ span {
+    background: $third-color;
+    color: $solid-white;
+    border-radius: 5px;
+    }
+  border-radius: 0;
+}

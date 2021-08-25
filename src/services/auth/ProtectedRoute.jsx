@@ -14,7 +14,7 @@ const ProtectedRoute = ({ component: Component, ...params }) => {
             ) : (
                 <Redirect to={{
                     pathname: '/signIn',
-                    state: { referrer: pathname}
+                    state: { referrer: pathname, redirected: true }
                 }} 
                     />
             )}

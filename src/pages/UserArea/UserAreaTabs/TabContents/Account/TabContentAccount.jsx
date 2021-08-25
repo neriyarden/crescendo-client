@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import TextInputGray from '../../../../../components/General/Inputs/TextInputGray/TextInputGray'
 import { Formik, Form } from 'formik';
-import validations from '../../../../../validations'
+import validations from '../../../../../services/validations/validations'
 import TextBtn from '../../../../../components/General/Inputs/TextBtn/TextBtn'
 import Loader from '../../../../../components/General/Loader'
 import API from '../../../../../DAL/api';

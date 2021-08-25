@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons'
 import API from '../../../../../DAL/api';
 import AuthApi from '../../../../../services/contexts/AuthApi';
-import Cookies from 'js-cookie'
 import EditRequest from './EditRequest';
 import NewEvent from '../Events/NewEvent';
 

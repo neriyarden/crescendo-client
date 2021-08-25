@@ -2,12 +2,10 @@ import React, { useState, useContext } from 'react'
 import TextInputGray from '../../../../../components/General/Inputs/TextInputGray/TextInputGray'
 import UploadBtn from '../../../../../components/General/Inputs/UploadBtn/UploadBtn'
 import { Formik, Form } from 'formik';
-import validations from '../../../../../validations'
+import validations from '../../../../../services/validations/validations'
 import TextBtn from '../../../../../components/General/Inputs/TextBtn/TextBtn'
 import API from '../../../../../DAL/api';
 import AuthApi from '../../../../../services/contexts/AuthApi';
-import Cookies from 'js-cookie'
-
 
 const NewRequest = ({ reloadRequests }) => {
     const Auth = useContext(AuthApi)

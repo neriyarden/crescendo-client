@@ -4,7 +4,7 @@ import TextInputPink from '../../../components/General/Inputs/TextInputPink/Text
 import TextBtn from '../../../components/General/Inputs/TextBtn/TextBtn'
 import FormFooterText from '../../../components/General/Inputs/FormFooterText/FormFooterText'
 import { Formik, Form } from 'formik';
-import validations from '../../../validations'
+import validations from '../../../services/validations/validations'
 import API from '../../../DAL/api'
 import { Redirect } from 'react-router-dom'
 import Toggles from '../../../components/General/Inputs/Toggles/Toggles'

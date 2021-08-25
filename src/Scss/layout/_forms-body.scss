@@ -1,8 +1,10 @@
 .form-body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-block: 2rem;
+  position: relative;
 }
 
 .form-container {
@@ -11,6 +13,7 @@
   border-radius: 20px;
   box-shadow: $low-blur-shadow; 
   padding: 3rem;
+  z-index: 1;
   
 }
 
