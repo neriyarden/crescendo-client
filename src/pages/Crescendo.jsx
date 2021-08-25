@@ -21,7 +21,7 @@ import UserArea from './UserArea/UserArea'
 import ProtectedRoute from '../services/auth/ProtectedRoute'
 import LoggedInRoute from '../services/auth/LoggedInRoute'
 
-function Crescendo() {
+const Crescendo = () => {
     return (
 
         <Router>

@@ -5,7 +5,7 @@ import API from '../../../DAL/api'
 import AuthApi from '../../../services/contexts/AuthApi'
 import { Link } from 'react-router-dom'
 
-function ArtistRequests({ artistId }) {
+const ArtistRequests = ({ artistId }) => {
     const isLoggedIn = useContext(AuthApi).auth
     const [loading, setLoading] = useState(true)
     const [requests, setRequests] = useState([])

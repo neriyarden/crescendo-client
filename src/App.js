@@ -6,7 +6,7 @@ import AuthApi from './services/contexts/AuthApi'
 import ReloadApi from './services/contexts/Reload'
 import utils  from './utils'
 
-function App() {
+const App = () => {
   const [auth, setAuth] = useState(null)
   const [reloadAuth, setReloadAuth] = useState(false)
   

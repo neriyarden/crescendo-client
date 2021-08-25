@@ -9,7 +9,7 @@ import RequestsPanel from './RequestsPanel/RequestsPanel'
 
 const searchDelay = 300
 
-function RequestsPage() {
+const RequestsPage = () => {
     const [loading, setLoading] = useState(true)
     const [requestsData, setRequestsData] = useState([])
     const [resultsMsg, setResultsMsg] = useState('')

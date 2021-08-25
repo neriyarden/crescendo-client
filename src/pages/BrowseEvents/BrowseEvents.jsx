@@ -9,7 +9,7 @@ import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
 
 const searchDelay = 300
 
-function BrowseEvents() {
+const BrowseEvents = () => {
     const [loading, setLoading] = useState(true)
     const [futureEventsData, setFutureEventsData] = useState([])
     const [resultsMsg, setResultsMsg] = useState('')

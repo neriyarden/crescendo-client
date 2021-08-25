@@ -2,7 +2,7 @@ import React from 'react'
 import { currentServer } from '../../../../DAL/axios'
 
 
-function Logo() {
+const Logo = () => {
     return (
         <img
             src={currentServer + `/img/logo/logo1_b_bold.svg`}

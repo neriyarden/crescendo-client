@@ -8,7 +8,7 @@ import Cookies from 'js-cookie'
 import EditEvent from './EditEvent';
 
 
-function EventLine({ event, i, reloadEvents }) {
+const EventLine = ({ event, i, reloadEvents }) => {
     const Auth = useContext(AuthApi)
     const [deletionMsg, setDeletionMsg] = useState('')
     const [showEditForm, setEditShowForm] = useState(false)

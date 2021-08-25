@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ArtistThumbnail from '../ArtistThumbnail/ArtistThumbnail'
 import Loader from '../../../components/General/Loader'
 
-function ArtistsPanel({ artistsData, loading, setLoading }) {
+const ArtistsPanel = ({ artistsData, loading, setLoading }) => {
     const [artistsThumbnails, setArtistsThumbnails] = useState([])
 
     const renderThumbnails = () => {

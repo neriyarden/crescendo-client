@@ -1,7 +1,7 @@
 import React from 'react'
 import SectionHeading from '../../../components/General/Headings/SectionHeading/SectionHeading'
 
-function ArtistBio({ artistData }) {
+const ArtistBio = ({ artistData }) => {
     return (
         <section className='artist-page-section section'>
         <div className='artist-page-bio-header'>

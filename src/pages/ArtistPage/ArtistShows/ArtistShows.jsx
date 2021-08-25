@@ -3,7 +3,7 @@ import EventsPanel from '../../../pages/BrowseEvents/EventsPanel/EventsPanel'
 import SectionHeading from '../../../components/General/Headings/SectionHeading/SectionHeading'
 import API from '../../../DAL/api'
 
-function ArtistShows({ artistId }) {
+const ArtistShows = ({ artistId }) => {
     const [loading, setLoading] = useState(true)
     const [events, setEvents] = useState([])
 

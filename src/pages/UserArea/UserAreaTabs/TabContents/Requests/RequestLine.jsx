@@ -8,7 +8,7 @@ import EditRequest from './EditRequest';
 import NewEvent from '../Events/NewEvent';
 
 
-function RequestLine({ request, i, reloadRequests }) {
+const RequestLine = ({ request, i, reloadRequests }) =>{
     const Auth = useContext(AuthApi)
     const [deletionMsg, setDeletionMsg] = useState('')
     const [completed, setCompleted] = useState(request.votes / request.cap >= 1)

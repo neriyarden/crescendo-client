@@ -1,7 +1,7 @@
 import React from 'react'
 import RegisterForm from './RegisterForm/RegisterForm'
 
-function RegisterPage() {
+const RegisterPage = () => {
     return (
         <section className='form-body'>
             <RegisterForm/>

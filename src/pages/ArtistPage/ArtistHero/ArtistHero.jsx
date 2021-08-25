@@ -5,7 +5,7 @@ import SocialIcons from './SocialIcons'
 import { currentServer } from '../../../DAL/axios'
 
 
-function ArtistHero({ artistData }) {
+const ArtistHero = ({ artistData }) => {
     return (
         <section className='artist-page-hero'>
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useField } from 'formik'
 
-function FormCheckbox(props) {
+const FormCheckbox = (props) => {
     const [field] = useField({ ...props, type: 'checkbox' });
 
     return (

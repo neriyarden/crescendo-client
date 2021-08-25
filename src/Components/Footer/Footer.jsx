@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReact, faNodeJs, faSass, faGit } from '@fortawesome/free-brands-svg-icons'
-function Footer() {
+const Footer = () => {
     return (
         <div className='main-footer' >
             Made with 

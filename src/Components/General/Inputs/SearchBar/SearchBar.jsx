@@ -2,7 +2,7 @@ import React, { useState,  } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-function SearchBar({ collapsable, labelValue, searchOnChange }) {
+const SearchBar = ({ collapsable, labelValue, searchOnChange }) => {
     const [activeSearch, setActiveSearch] = useState(collapsable ? '' : 'active-search')
     const [searchTerm, setSearchTerm] = useState('')
 

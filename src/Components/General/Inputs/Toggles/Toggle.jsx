@@ -2,7 +2,7 @@ import React from 'react'
 import { useField } from 'formik'
 
 
-function Toggle(props) {
+const Toggle = (props) => {
     const [field, meta] = useField({ ...props, type: 'radio' });
 
     return (

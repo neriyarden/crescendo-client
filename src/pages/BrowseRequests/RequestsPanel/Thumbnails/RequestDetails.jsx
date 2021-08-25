@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import TextBtn from '../../../../components/General/Inputs/TextBtn/TextBtn'
 
-function RequestDetails({ thumbData, voteBtnHandler, votesCount, voted, capReached }) {
+const RequestDetails = ({ thumbData, voteBtnHandler, votesCount, voted, capReached }) => {
 
     return (
         <div className={`request-top-layer ${capReached || 'clickable'}`}>

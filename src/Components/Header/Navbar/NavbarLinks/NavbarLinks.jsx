@@ -7,7 +7,7 @@ import AuthApi from '../../../../services/contexts/AuthApi'
 import { currentServer } from '../../../../DAL/axios'
 
 
-function NavbarLinks() {
+const NavbarLinks = () => {
     const Auth = useContext(AuthApi)
     
     const signOut = () => {

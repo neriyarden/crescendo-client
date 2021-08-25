@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAt, faKey, faFont } from '@fortawesome/free-solid-svg-icons'
 import { useField } from 'formik'
 
-function TextInput(props) {
+const TextInput = (props) => {
     const [field, meta] = useField(props)
     const icons = {
         text: faFont,

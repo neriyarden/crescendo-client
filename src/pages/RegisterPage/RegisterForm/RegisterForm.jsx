@@ -9,7 +9,7 @@ import API from '../../../DAL/api'
 import { Redirect } from 'react-router-dom'
 import Toggles from '../../../components/General/Inputs/Toggles/Toggles'
 
-function RegisterForm() {
+const RegisterForm = () => {
     const [serverErrorMsg, setServerErrorMsg] = useState('')
     const [redirectToLogin, setRedirectToLogin] = useState(false)
 

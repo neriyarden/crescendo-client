@@ -9,7 +9,7 @@ import AuthApi from '../../../../../services/contexts/AuthApi';
 import Cookies from 'js-cookie'
 
 
-function NewRequest({ reloadRequests }) {
+const NewRequest = ({ reloadRequests }) => {
     const Auth = useContext(AuthApi)
     const [showForm, setShowForm] = useState(false)
     const [errMsg, setErrMsg] = useState('')

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import AuthApi from '../../../services/contexts/AuthApi'
 
 
-function UserDetails() {
+const UserDetails = () => {
     const Auth = useContext(AuthApi)
     return (
         <div className='user-details'>

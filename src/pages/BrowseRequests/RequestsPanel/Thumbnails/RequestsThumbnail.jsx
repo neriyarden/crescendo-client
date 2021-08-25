@@ -6,7 +6,7 @@ import ReloadAPI from '../../../../services/contexts/Reload'
 import { currentServer } from '../../../../DAL/axios'
 
 
-function RequestThumbnail({ thumbData }) {
+const RequestThumbnail = ({ thumbData }) => {
     const Auth = useContext(AuthApi)
     const Reload = useContext(ReloadAPI)
     const [errMsg, setErrMsg] = useState('')

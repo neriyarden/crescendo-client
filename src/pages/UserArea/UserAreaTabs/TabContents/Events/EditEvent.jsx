@@ -6,7 +6,7 @@ import validations from '../../../../../validations'
 import TextBtn from '../../../../../components/General/Inputs/TextBtn/TextBtn'
 import utils from '../../../../../utils';
 
-function EditEvent({ event, onEditHandler, setEditShowForm, errMsg }) {
+const EditEvent = ({ event, onEditHandler, setEditShowForm, errMsg }) => {
     const [categories, setCategories] = useState([])
     const getCategories = async () => {
         const tags = await utils.getTags()

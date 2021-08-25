@@ -7,7 +7,7 @@ import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom'
 
 
-function VoteLine({ vote, i, reloadVotes }) {
+const VoteLine = ({ vote, i, reloadVotes }) => {
     const Auth = useContext(AuthApi)
     const [unvoteMsg, setUnvoteMsg] = useState('')
     const onUnVoteClick = () => {

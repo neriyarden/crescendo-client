@@ -10,7 +10,7 @@ import API from '../../DAL/api'
 import ReloadApi from '../../services/contexts/Reload'
 
 
-function LoginForm() {
+const LoginForm = () => {
     const Reload = useContext(ReloadApi)
     const [serverErrorMsg, setServerErrorMsg] = useState('')
     

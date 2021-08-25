@@ -6,7 +6,7 @@ import Loader from '../../../../../components/General/Loader'
 import AuthApi from '../../../../../services/contexts/AuthApi'
 
 
-function TabContentEvents() {
+const TabContentEvents = () => {
     const Auth = useContext(AuthApi)
     const [loading, setLoading] = useState(true)
     const [showForm, setShowForm] = useState(false)

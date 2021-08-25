@@ -1,7 +1,7 @@
 import React from 'react'
 import LoginForm from './LoginForm'
 
-function LoginPage() {
+const LoginPage = () => {
     return (
         <section className='form-body'>
             <LoginForm />

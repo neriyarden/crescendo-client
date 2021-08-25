@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from './Navbar/Navbar'
 
 
-function Header() {
+const Header = () => {
     return (
         <header>
             <Navbar/>

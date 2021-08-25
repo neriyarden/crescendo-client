@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import RequestThumbnail from './Thumbnails/RequestsThumbnail'
 import Loader from '../../../components/General/Loader'
 
-function RequestsPanel({ requestsData, loading, setLoading }) {
+const RequestsPanel = ({ requestsData, loading, setLoading }) =>{
     const [requestsThumbnails, setRequestsThumbnails] = useState([])
 
     const renderThumbnails = () => {

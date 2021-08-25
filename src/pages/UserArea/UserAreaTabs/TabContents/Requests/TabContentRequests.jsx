@@ -7,7 +7,7 @@ import Cookies from 'js-cookie'
 import AuthApi from '../../../../../services/contexts/AuthApi'
 
 
-function TabContentRequests() {
+const TabContentRequests = () => {
     const Auth = useContext(AuthApi)
     const [loading, setLoading] = useState(true)
     const [requests, setRequests] = useState([])

@@ -10,7 +10,7 @@ import Cookies from 'js-cookie'
 import utils from '../../../../../utils'
 
 
-function NewEvent({ reloadEvents, setShowForm, fromRequestValues }) {
+const NewEvent = ({ reloadEvents, setShowForm, fromRequestValues }) => {
     const Auth = useContext(AuthApi)
     const [errMsg, setErrMsg] = useState('')
     const [categories, setCategories] = useState([])

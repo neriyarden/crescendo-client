@@ -1,7 +1,7 @@
 import React from 'react'
 import SearchBar from '../../../components/General/Inputs/SearchBar/SearchBar'
 
-function RequestsSearchBar({ searchFilters, setSearchFilters }) {
+const RequestsSearchBar = ({ searchFilters, setSearchFilters }) => {
 
     
     const artistOnChange = (value) => {

@@ -8,7 +8,7 @@ import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
 
 const searchDelay = 300
 
-function BrowseArtists() {
+const BrowseArtists = () => {
     const [loading, setLoading] = useState(true)
     const [artistsData, setArtistsData] = useState([])
     const [resultsMsg, setResultsMsg] = useState('')

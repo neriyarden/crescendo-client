@@ -9,7 +9,7 @@ import AuthApi from '../../../../../services/contexts/AuthApi'
 import ReloadApi from '../../../../../services/contexts/Reload'
 import Loader from '../../../../../components/General/Loader'
 
-function TabContentProfile() {
+const TabContentProfile = () => {
     const [loading, setLoading] = useState(true)
     const [showSubmittedMsg, setShowSubmittedMsg] = useState(false)
     const Auth = useContext(AuthApi)

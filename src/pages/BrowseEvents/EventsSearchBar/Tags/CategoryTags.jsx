@@ -4,7 +4,7 @@ import API from '../../../../DAL/api'
 import utils from '../../../../utils'
 
 
-function CategoryTags({ tagsOnChange }) {
+const CategoryTags = ({ tagsOnChange }) => {
     const [tagsData, setTagsData] = useState([])
 
     const onChangeHandler = (tagIndex) => {

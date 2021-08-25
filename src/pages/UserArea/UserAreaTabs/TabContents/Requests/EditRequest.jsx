@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import validations from '../../../../../validations'
 import TextBtn from '../../../../../components/General/Inputs/TextBtn/TextBtn'
 
-function EditRequest({ request, onEditHandler, setShowEditForm, errMsg }) {
+const EditRequest = ({ request, onEditHandler, setShowEditForm, errMsg }) => {
     return (
         <div className='new-request'>
             <div className="new-request-form">

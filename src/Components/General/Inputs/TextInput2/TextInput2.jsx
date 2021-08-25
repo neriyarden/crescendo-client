@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
 import { useField } from 'formik'
 
-function TextInput2(props) {
+const TextInput2 = (props) => {
     const [field, meta] = useField(props)
 
     return (

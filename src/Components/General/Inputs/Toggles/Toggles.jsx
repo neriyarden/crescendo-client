@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Toggle from './Toggle'
 
 // TODO generalize this component
-function Toggles({ name, labels }) {
+const Toggles = ({ name, labels }) => {
     const toggles = labels.map((label, i) => (
         <Toggle key={i} name={name} value={''+ i} label={label}/>
     ))

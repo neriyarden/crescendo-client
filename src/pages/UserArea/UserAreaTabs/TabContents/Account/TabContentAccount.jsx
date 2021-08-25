@@ -8,7 +8,7 @@ import API from '../../../../../DAL/api';
 import AuthApi from '../../../../../services/contexts/AuthApi';
 import ReloadApi from '../../../../../services/contexts/Reload';
 
-function TabContentAccount() {
+const TabContentAccount = () => {
     const [loading, setLoading] = useState(true)
     const [showSubmittedMsg, setShowSubmittedMsg] = useState(false)
     const Auth = useContext(AuthApi)
