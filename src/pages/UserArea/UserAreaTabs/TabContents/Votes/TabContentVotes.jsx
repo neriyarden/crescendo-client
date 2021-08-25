@@ -12,7 +12,7 @@ function TabContentVotes() {
 
     const getVotesOfUser = async () => {
         const localData = JSON.parse(sessionStorage.getItem('user_voted_requests'))
-        if (localData?.length) return setVotes(localData)
+        if (localData?.length > 0) return setVotes(localData)
         const results = await API.getUserVotes(Auth.auth.id)
         if (results.data?.error) {
             setVotes([])

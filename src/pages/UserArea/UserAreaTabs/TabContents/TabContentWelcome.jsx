@@ -5,7 +5,7 @@ function TabContentGrid() {
     const Auth = useContext(AuthApi)
     return (
         <div className="tab-content welcome">
-        <h2>Welcome, {Auth.auth.name}!</h2>
+        <h2>Welcome {Auth.auth.name}!</h2>
     </div>
     )
 }

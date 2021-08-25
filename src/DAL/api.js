@@ -39,7 +39,7 @@ const getFutureEventsData = async (filters) => {
         + `${filters.artist ? `&artist=${filters.artist}` : ''}`
         + `${filters.city ? `&city=${filters.city}` : ''}`
         + `${filters.when ? `&when=${filters.when}` : ''}`
-        + `${filters.tags.length ? `&tags=${filters.tags.join('&tags=')}` : ''}`
+        + `${filters.tags.length > 0 ? `&tags=${filters.tags.join('&tags=')}` : ''}`
         , 'GET'
     )
     return results
