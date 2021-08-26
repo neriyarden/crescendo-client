@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import AuthApi from '../../../../services/contexts/AuthApi'
+import { AuthApi } from '../../../../services/contexts/AuthApi'
 
 const TabContentGrid = () => {
     const Auth = useContext(AuthApi)

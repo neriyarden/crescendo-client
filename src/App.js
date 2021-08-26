@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Crescendo from './pages/Crescendo'
 import Cookies from 'js-cookie'
 import API from './DAL/api'
-import AuthApi from './services/contexts/AuthApi'
+import { AuthApi } from './services/contexts/AuthApi'
 import utils  from './utils'
 
 const App = () => {

@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-import AuthApi from '../../../../services/contexts/AuthApi'
+import { AuthApi } from '../../../../services/contexts/AuthApi'
 import { currentServer } from '../../../../DAL/axios'
 
 

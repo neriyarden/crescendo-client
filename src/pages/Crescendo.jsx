@@ -53,6 +53,7 @@ const Crescendo = () => {
                                 <EventPage />
                             </Route>
                             <ProtectedRoute path='/User' component={UserArea} />
+                            <Redirect to='/' />
                         </Switch>
                     <Footer />
                 </div>

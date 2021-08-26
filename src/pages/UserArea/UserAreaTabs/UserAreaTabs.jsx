@@ -12,7 +12,7 @@ import TabContentWelcome from './TabContents/TabContentWelcome'
 import TabContentEvents from './TabContents/Events/TabContentEvents';
 import TabContentRequests from './TabContents/Requests/TabContentRequests';
 import TabContentVotes from './TabContents/Votes/TabContentVotes';
-import AuthApi from '../../../services/contexts/AuthApi'
+import { AuthApi } from '../../../services/contexts/AuthApi'
 
 const UserAreaTabs = () => {
     const Auth = useContext(AuthApi)

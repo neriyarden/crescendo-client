@@ -7,7 +7,7 @@ import FormFooterText from '../../../components/General/Inputs/FormFooterText/Fo
 import { Formik, Form } from 'formik';
 import validations from '../../../services/validations/validations'
 import API from '../../../DAL/api'
-import AuthApi from '../../../services/contexts/AuthApi'
+import { AuthApi } from '../../../services/contexts/AuthApi'
 
 
 

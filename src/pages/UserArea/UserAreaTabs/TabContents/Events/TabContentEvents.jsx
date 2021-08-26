@@ -3,7 +3,7 @@ import API from '../../../../../DAL/api'
 import EventLine from './EventLine'
 import NewEvent from './NewEvent'
 import Loader from '../../../../../components/General/Loader'
-import AuthApi from '../../../../../services/contexts/AuthApi'
+import { AuthApi } from '../../../../../services/contexts/AuthApi'
 
 
 const TabContentEvents = () => {

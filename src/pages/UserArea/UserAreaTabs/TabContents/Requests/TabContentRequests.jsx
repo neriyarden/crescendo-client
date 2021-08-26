@@ -3,7 +3,7 @@ import API from '../../../../../DAL/api'
 import RequestLine from './RequestLine'
 import NewRequest from './NewRequest'
 import Loader from '../../../../../components/General/Loader'
-import AuthApi from '../../../../../services/contexts/AuthApi'
+import { AuthApi } from '../../../../../services/contexts/AuthApi'
 
 
 const TabContentRequests = () => {

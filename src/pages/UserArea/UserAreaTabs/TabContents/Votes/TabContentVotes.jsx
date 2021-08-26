@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import API from '../../../../../DAL/api'
 import VoteLine from './VoteLine'
 import Loader from '../../../../../components/General/Loader'
-import AuthApi from '../../../../../services/contexts/AuthApi'
+import { AuthApi } from '../../../../../services/contexts/AuthApi'
 
 const  TabContentVotes = () => {
     const Auth = useContext(AuthApi)

@@ -5,7 +5,7 @@ import { Formik, Form } from 'formik';
 import validations from '../../../../../services/validations/validations'
 import TextBtn from '../../../../../components/General/Inputs/TextBtn/TextBtn'
 import API from '../../../../../DAL/api';
-import AuthApi from '../../../../../services/contexts/AuthApi'
+import { AuthApi } from '../../../../../services/contexts/AuthApi'
 
 import Loader from '../../../../../components/General/Loader'
 
