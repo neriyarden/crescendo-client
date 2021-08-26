@@ -1,8 +1,7 @@
 import React from 'react'
 import Char from './Char'
 
-function CharsSearchBar({ onCharSelect }) {
-
+const CharsSearchBar = ({ onCharSelect }) => {
 
     const onCharChange = ({ target: { value } }) => {
         if(value === '𝅘𝅥𝅮') value = ''

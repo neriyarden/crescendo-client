@@ -9,7 +9,7 @@ import RequestsPanel from './RequestsPanel/RequestsPanel'
 
 const searchDelay = 300
 
-function RequestsPage() {
+const BrowseRequests = () => {
     const [loading, setLoading] = useState(true)
     const [requestsData, setRequestsData] = useState([])
     const [resultsMsg, setResultsMsg] = useState('')
@@ -98,4 +98,4 @@ function RequestsPage() {
     )
 }
 
-export default RequestsPage
+export default BrowseRequests

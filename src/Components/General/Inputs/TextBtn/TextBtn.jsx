@@ -1,6 +1,6 @@
 import React from 'react'
 
-function TextBtn({ text, type, clickHandler, disabled, style }) {
+const TextBtn = ({ text, type, clickHandler, disabled, style }) => {
     const onBtnClick = ({ target: { value }}) => {
         clickHandler(value)
     }

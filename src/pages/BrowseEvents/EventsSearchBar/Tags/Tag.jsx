@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Tag({ data, tagOnChange, tagIndex }) {
+const Tag = ({ data, tagOnChange, tagIndex }) => {
     const [checked, setChecked] = useState(data.checked)
 
     const onChangeHandler = (tagIndex) => {

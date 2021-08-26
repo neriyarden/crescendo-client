@@ -1,9 +1,9 @@
-import TextInput2 from '../../../../../components/General/Inputs/TextInput2/TextInput2'
+import TextInputGray from '../../../../../components/General/Inputs/TextInputGray/TextInputGray'
 import { Formik, Form } from 'formik';
-import validations from '../../../../../validations'
+import validations from '../../../../../services/validations/validations'
 import TextBtn from '../../../../../components/General/Inputs/TextBtn/TextBtn'
 
-function EditRequest({ request, onEditHandler, setShowEditForm, errMsg }) {
+const EditRequest = ({ request, onEditHandler, setShowEditForm, errMsg }) => {
     return (
         <div className='new-request'>
             <div className="new-request-form">
@@ -23,15 +23,15 @@ function EditRequest({ request, onEditHandler, setShowEditForm, errMsg }) {
                 >
                     {({ isSubmitting, dirty }) => (
                         <Form className="tab-content account">
-                            <TextInput2
+                            <TextInputGray
                                 label='Tour Name'
                                 name='tour'
                             />
-                            <TextInput2
+                            <TextInputGray
                                 label='City'
                                 name='city'
                             />
-                            <TextInput2
+                            <TextInputGray
                                 label='Cap'
                                 name='cap'
                                 type='number'

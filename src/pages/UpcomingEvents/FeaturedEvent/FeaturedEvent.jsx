@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { currentServer } from '../../../DAL/axios'
 
 
-function FeaturedEvent({ featuredEvent }) {
+const FeaturedEvent = ({ featuredEvent }) => {
 
     return (
         <section className="featured-events">

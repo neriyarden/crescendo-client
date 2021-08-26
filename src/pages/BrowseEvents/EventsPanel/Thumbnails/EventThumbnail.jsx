@@ -3,7 +3,7 @@ import EventDetails from './EventDetails'
 import { Link } from 'react-router-dom'
 import { currentServer } from '../../../../DAL/axios'
 
-function EventThumbnail({ thumbData }) {
+const EventThumbnail = ({ thumbData }) => {
     return (
         <Link to={`../Events/${thumbData.id}`}>
             <li

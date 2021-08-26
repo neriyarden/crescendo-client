@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import ArtistAvatarImg from '../../ArtistPage/ArtistHero/ArtistAvatarImg'
 import UserDetails from './UserDetails'
-import AuthApi from '../../../services/contexts/AuthApi'
+import { AuthApi } from '../../../services/contexts/AuthApi'
 
-function UserAreaHero() {
+const UserAreaHero = () => {
     const Auth = useContext(AuthApi)
     return (
         <section className="user-data-hero">

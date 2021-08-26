@@ -1,27 +1,28 @@
 import React, { useContext, useState } from 'react'
-import FormHeading from '../../components/General/Headings/FormHeading/FormHeading'
-import TextInput from '../../components/General/Inputs/TextInput/TextInput'
-import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
-import FormCheckbox from '../../components/General/Inputs/FormCheckbox/FormCheckbox'
-import FormFooterText from '../../components/General/Inputs/FormFooterText/FormFooterText'
+import FormHeading from '../../../components/General/Headings/FormHeading/FormHeading'
+import TextInputPink from '../../../components/General/Inputs/TextInputPink/TextInputPink'
+import TextBtn from '../../../components/General/Inputs/TextBtn/TextBtn'
+import FormCheckbox from '../../../components/General/Inputs/FormCheckbox/FormCheckbox'
+import FormFooterText from '../../../components/General/Inputs/FormFooterText/FormFooterText'
 import { Formik, Form } from 'formik';
-import validations from '../../validations'
-import API from '../../DAL/api'
-import ReloadApi from '../../services/contexts/Reload'
+import validations from '../../../services/validations/validations'
+import API from '../../../DAL/api'
+import { AuthApi } from '../../../services/contexts/AuthApi'
 
 
-function LoginForm() {
-    const Reload = useContext(ReloadApi)
+
+const LoginForm = () => {
+    const Auth = useContext(AuthApi)
     const [serverErrorMsg, setServerErrorMsg] = useState('')
     
     const authLogin = async (loginData) => {
         const response = await API.signIn(loginData)
         if(response.error) setServerErrorMsg(response.error)
-        Reload.setReloadAuth(true)
+        Auth.reloadAuth()
     }
 
     return (
-        <div className="login-form-container">
+        <div className="form-container">
             <FormHeading title='Sign In' />
             <Formik
                 initialValues={{
@@ -37,12 +38,12 @@ function LoginForm() {
                         setSubmitting(false);
                 }}
             >
-                    <Form className="login-form">
-                        <TextInput
+                    <Form className="form">
+                        <TextInputPink
                             label='email address'
                             name='email'
                         />
-                        <TextInput
+                        <TextInputPink
                             name='password'
                             label='password'
                             type='password'
@@ -59,8 +60,8 @@ function LoginForm() {
                     </Form>
             </Formik>
         <FormFooterText
-            text='Not registered yet?'
-            linkText='Register Here'
+            text='Not A Member Yet?'
+            linkText='Join Us!'
             linkHref='/SignUp'
         />
     </div>

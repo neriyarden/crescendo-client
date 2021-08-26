@@ -2,12 +2,11 @@ import React, { useState, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons'
 import API from '../../../../../DAL/api';
-import AuthApi from '../../../../../services/contexts/AuthApi';
-import Cookies from 'js-cookie'
+import { AuthApi } from '../../../../../services/contexts/AuthApi';
 import { Link } from 'react-router-dom'
 
 
-function VoteLine({ vote, i, reloadVotes }) {
+const VoteLine = ({ vote, i, reloadVotes }) => {
     const Auth = useContext(AuthApi)
     const [unvoteMsg, setUnvoteMsg] = useState('')
     const onUnVoteClick = () => {

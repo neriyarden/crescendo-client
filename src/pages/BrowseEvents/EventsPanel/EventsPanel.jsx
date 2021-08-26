@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import EventThumbnail from './Thumbnails/EventThumbnail'
 import Loader from '../../../components/General/Loader'
 
-function EventsPanel({ eventsData, loading, setLoading }) {
+const EventsPanel = ({ eventsData, loading, setLoading }) => {
     const [eventsThumbnails, setEventsThumbnails] = useState([])
 
     const renderThumbnails = () => {

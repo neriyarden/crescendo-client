@@ -4,7 +4,7 @@ import SearchBar from '../../../components/General/Inputs/SearchBar/SearchBar'
 import CategoryTags from './Tags/CategoryTags'
 
 
-function EventsSearchBar({ searchFilters, setSearchFilters }) {
+const EventsSearchBar = ({ searchFilters, setSearchFilters }) => {
 
     
     const artistOnChange = (value) => {

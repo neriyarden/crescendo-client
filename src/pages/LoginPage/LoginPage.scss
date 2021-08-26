@@ -1,0 +1,21 @@
+.sign-in-req {
+  top: 80px;
+  color:#333;
+  animation: dissapear 5s forwards;
+}
+
+@keyframes dissapear {
+  0% {
+    height: 1.5rem;
+    opacity: 1;
+  } 80% {
+    height: 1.5rem;
+    opacity: 1;
+  } 90% {
+    height: 0.75rem;
+    opacity: 0;
+  } 100% {
+    height: 0;
+    opacity: 0;
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-function Tab({ url, label, selectedTab, onClickHandler }) {
+const Tab = ({ url, label, selectedTab, onClickHandler }) => {
     return (
         <Link to={`${url}/${label}`}>
             <div

@@ -3,12 +3,11 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons'
 import API from '../../../../../DAL/api';
-import AuthApi from '../../../../../services/contexts/AuthApi';
-import Cookies from 'js-cookie'
+import { AuthApi } from '../../../../../services/contexts/AuthApi';
 import EditEvent from './EditEvent';
 
 
-function EventLine({ event, i, reloadEvents }) {
+const EventLine = ({ event, i, reloadEvents }) => {
     const Auth = useContext(AuthApi)
     const [deletionMsg, setDeletionMsg] = useState('')
     const [showEditForm, setEditShowForm] = useState(false)

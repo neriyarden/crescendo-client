@@ -5,7 +5,7 @@ import NavbarLinks from './NavbarLinks/NavbarLinks'
 import Logo from './Logo/Logo'
 import MenuToggleBtn from './MenuToggleBtn/MenuToggleBtn'
 
-function Navbar() {
+const Navbar = () => {
     const ref = useRef()
     useClickOutside(ref, () => setDisplayToggleBtnMenu(''))
     const [displayToggleBtnMenu, setDisplayToggleBtnMenu] = useState('')

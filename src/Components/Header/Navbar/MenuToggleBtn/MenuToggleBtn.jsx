@@ -1,6 +1,6 @@
 import React from 'react'
 
-function MenuToggleBtn({ showToggleBtnMenu }) {
+const MenuToggleBtn = ({ showToggleBtnMenu }) => {
 
     return (
         <div href="" className='navbar-toggle-button' onClick={showToggleBtnMenu}>

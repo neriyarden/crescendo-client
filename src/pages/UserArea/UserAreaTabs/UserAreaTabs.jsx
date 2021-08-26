@@ -12,9 +12,9 @@ import TabContentWelcome from './TabContents/TabContentWelcome'
 import TabContentEvents from './TabContents/Events/TabContentEvents';
 import TabContentRequests from './TabContents/Requests/TabContentRequests';
 import TabContentVotes from './TabContents/Votes/TabContentVotes';
-import AuthApi from '../../../services/contexts/AuthApi'
+import { AuthApi } from '../../../services/contexts/AuthApi'
 
-function UserAreaTabs() {
+const UserAreaTabs = () => {
     const Auth = useContext(AuthApi)
     const { path, url } = useRouteMatch();
     const [selectedTab, setSelectedTab] = useState('Welcome')

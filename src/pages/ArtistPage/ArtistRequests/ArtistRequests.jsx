@@ -2,10 +2,10 @@ import React, { useEffect, useContext, useState } from 'react'
 import RequestsPanel from '../../../pages/BrowseRequests/RequestsPanel/RequestsPanel'
 import SectionHeading from '../../../components/General/Headings/SectionHeading/SectionHeading'
 import API from '../../../DAL/api'
-import AuthApi from '../../../services/contexts/AuthApi'
+import { AuthApi } from '../../../services/contexts/AuthApi'
 import { Link } from 'react-router-dom'
 
-function ArtistRequests({ artistId }) {
+const ArtistRequests = ({ artistId }) => {
     const isLoggedIn = useContext(AuthApi).auth
     const [loading, setLoading] = useState(true)
     const [requests, setRequests] = useState([])

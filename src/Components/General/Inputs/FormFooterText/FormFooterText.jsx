@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function FormFooterText({ text, linkText, linkHref }) {
+const FormFooterText = ({ text, linkText, linkHref }) => {
     return (
         <p 
             className='form-end-text'

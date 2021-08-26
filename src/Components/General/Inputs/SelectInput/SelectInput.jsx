@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SelectInput({ defaultOption, optionsData, searchOnChange }) {
+const SelectInput = ({ defaultOption, optionsData, searchOnChange }) => {
     const options = optionsData.map(optionData => {
         return<option key={optionData.value} value={optionData.value}>{optionData.label}</option>
     })

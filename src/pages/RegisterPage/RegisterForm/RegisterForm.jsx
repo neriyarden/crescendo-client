@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import FormHeading from '../../../components/General/Headings/FormHeading/FormHeading'
-import TextInput from '../../../components/General/Inputs/TextInput/TextInput'
+import TextInputPink from '../../../components/General/Inputs/TextInputPink/TextInputPink'
 import TextBtn from '../../../components/General/Inputs/TextBtn/TextBtn'
 import FormFooterText from '../../../components/General/Inputs/FormFooterText/FormFooterText'
 import { Formik, Form } from 'formik';
-import validations from '../../../validations'
+import validations from '../../../services/validations/validations'
 import API from '../../../DAL/api'
 import { Redirect } from 'react-router-dom'
 import Toggles from '../../../components/General/Inputs/Toggles/Toggles'
 
-function RegisterForm() {
+const RegisterForm = () => {
     const [serverErrorMsg, setServerErrorMsg] = useState('')
     const [redirectToLogin, setRedirectToLogin] = useState(false)
 
@@ -27,7 +27,7 @@ function RegisterForm() {
         state: { referrer: '/User/Welcome' }
     }} />
     return (
-        <div className='signup-form-container'>
+        <div className='form-container'>
             <FormHeading title='Sign Up' />
             <Formik
                 initialValues={{
@@ -45,22 +45,22 @@ function RegisterForm() {
                     setSubmitting(false);
                 }}
             >
-                <Form className='signup-form'>
-                    <TextInput
+                <Form className='form'>
+                    <TextInputPink
                         name='name'
                         label='display name'
                         subtexts={displayNameSubtexts}
                     />
-                    <TextInput
+                    <TextInputPink
                         name='email'
                         label='email address'
                     />
-                    <TextInput
+                    <TextInputPink
                         name='password'
                         label='password'
                         type='password'
                     />
-                    <TextInput
+                    <TextInputPink
                         name='repeat_password'
                         label='confirm password'
                         placeholder='Re-enter your password'
@@ -78,8 +78,8 @@ function RegisterForm() {
                 </Form>
             </Formik>
             <FormFooterText
-                text='Already signed up?'
-                linkText='Login Here'
+                text='Already A Member?'
+                linkText='Sign In'
                 linkHref={{
                     pathname: '/SignIn',
                     state: { referrer: '/User/Welcome' }

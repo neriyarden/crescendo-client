@@ -3,10 +3,10 @@ import API from '../../../../../DAL/api'
 import EventLine from './EventLine'
 import NewEvent from './NewEvent'
 import Loader from '../../../../../components/General/Loader'
-import AuthApi from '../../../../../services/contexts/AuthApi'
+import { AuthApi } from '../../../../../services/contexts/AuthApi'
 
 
-function TabContentEvents() {
+const TabContentEvents = () => {
     const Auth = useContext(AuthApi)
     const [loading, setLoading] = useState(true)
     const [showForm, setShowForm] = useState(false)

@@ -3,7 +3,7 @@ import SearchBar from '../../../components/General/Inputs/SearchBar/SearchBar'
 import CharsSearchBar from '../../../components/General/Inputs/CharsSearchBar/CharsSearchBar'
 
 
-function ArtistSearchBar({ searchFilters, setSearchFilters }) {
+const ArtistSearchBar = ({ searchFilters, setSearchFilters }) => {
 
     const searchOnChange = (value) => {
         setSearchFilters({...searchFilters, searchTerm: value})

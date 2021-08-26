@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { currentServer } from '../../../DAL/axios'
 
-function ArtistThumbnail({ thumbData }) {
+const ArtistThumbnail = ({ thumbData }) => {
     return (
         <li>
             <Link to={`Artists/${thumbData.user_id || thumbData.id}`}

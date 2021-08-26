@@ -1,19 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
-import TextInput2 from '../../../../../components/General/Inputs/TextInput2/TextInput2'
+import TextInputGray from '../../../../../components/General/Inputs/TextInputGray/TextInputGray'
 import UploadBtn from '../../../../../components/General/Inputs/UploadBtn/UploadBtn'
 import { Formik, Form } from 'formik';
-import validations from '../../../../../validations'
+import validations from '../../../../../services/validations/validations'
 import TextBtn from '../../../../../components/General/Inputs/TextBtn/TextBtn'
 import API from '../../../../../DAL/api';
-import AuthApi from '../../../../../services/contexts/AuthApi'
-import ReloadApi from '../../../../../services/contexts/Reload'
+import { AuthApi } from '../../../../../services/contexts/AuthApi'
+
 import Loader from '../../../../../components/General/Loader'
 
-function TabContentProfile() {
+const TabContentProfile = () => {
+    const Auth = useContext(AuthApi)
     const [loading, setLoading] = useState(true)
     const [showSubmittedMsg, setShowSubmittedMsg] = useState(false)
-    const Auth = useContext(AuthApi)
-    const Reload = useContext(ReloadApi)
 
     const onSubmitHandler = async (values) => {
         //  TODO generalize this
@@ -22,7 +21,7 @@ function TabContentProfile() {
             formData.set(key, values[key])
         })
         await API.editArtistDetails(formData)
-        Reload.setReloadAuth(true)
+        Auth.reloadAuth()
         setShowSubmittedMsg(true)
         setTimeout(() => {
             setShowSubmittedMsg(false)
@@ -66,23 +65,23 @@ function TabContentProfile() {
                                         name='newImg'
                                         setFieldValue={setFieldValue}
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='Bio'
                                         name='bio'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='spotify Url'
                                         name='link_to_spotify'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='instagram Url'
                                         name='link_to_instagram'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='facebook Url'
                                         name='link_to_facebook'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='youtube Url'
                                         name='link_to_youtube'
                                     />

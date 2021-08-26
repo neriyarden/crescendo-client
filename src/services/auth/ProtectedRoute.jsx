@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Route, Redirect } from 'react-router'
-import AuthApi from '../contexts/AuthApi'
+import { AuthApi } from '../contexts/AuthApi'
 import { useLocation } from 'react-router'
 
 const ProtectedRoute = ({ component: Component, ...params }) => {
@@ -14,7 +14,7 @@ const ProtectedRoute = ({ component: Component, ...params }) => {
             ) : (
                 <Redirect to={{
                     pathname: '/signIn',
-                    state: { referrer: pathname}
+                    state: { referrer: pathname, redirected: true }
                 }} 
                     />
             )}

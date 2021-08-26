@@ -1,18 +1,17 @@
 import React, { useContext, useState } from 'react'
 import RequestDetails from './RequestDetails'
-import AuthApi from '../../../../services/contexts/AuthApi'
+import { AuthApi } from '../../../../services/contexts/AuthApi'
 import API from '../../../../DAL/api'
-import ReloadAPI from '../../../../services/contexts/Reload'
 import { currentServer } from '../../../../DAL/axios'
 
 
-function RequestThumbnail({ thumbData }) {
+const RequestThumbnail = ({ thumbData }) => {
     const Auth = useContext(AuthApi)
-    const Reload = useContext(ReloadAPI)
     const [errMsg, setErrMsg] = useState('')
     const [votesCount, setVotesCount] = useState(parseInt(thumbData.votes) || 0)
     const [voted, setVoted] = useState(thumbData.userVote)
     const [capReached, setCapReached] = useState(thumbData.votes / thumbData.cap >= 1)
+    
     const voteBtnHandler = (isVoted) => {
         const newVotesCount = votesCount + 1
         const user_id = Auth.auth.id
@@ -28,7 +27,7 @@ function RequestThumbnail({ thumbData }) {
             if (response.error) return setErrMsg(response.error)
             setVotesCount((prev => prev - 1))
         }
-        Reload.setReloadAuth(true)
+        Auth.reloadAuth()
         setVoted((prev => !prev))
     }
 

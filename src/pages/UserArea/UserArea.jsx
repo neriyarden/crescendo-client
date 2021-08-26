@@ -2,7 +2,7 @@ import React from 'react'
 import UserAreaHero from './UserAreaHero/UserAreaHero'
 import UserAreaTabs from './UserAreaTabs/UserAreaTabs'
 
-function UserArea() {
+const UserArea = () => {
 
     return (
         <section className="user-area" >

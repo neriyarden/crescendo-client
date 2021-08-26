@@ -7,7 +7,7 @@ import ArtistShows from './ArtistShows/ArtistShows'
 import ArtistRequests from './ArtistRequests/ArtistRequests'
 
 
-function ArtistPage() {
+const ArtistPage = () => {
     const { id } = useParams()
     const [artistData, setArtistData] = useState({})
 

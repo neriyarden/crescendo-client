@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt, faCalendarDay, faClock } from '@fortawesome/free-solid-svg-icons'
 
 
-function EventDetails({ thumbData }) {
+const EventDetails = ({ thumbData }) => {
     return (
         <>
         <h4 className='upcoming-event-artist-tour'>{thumbData.tour}</h4>

@@ -4,7 +4,7 @@ import API from '../../DAL/api'
 import { currentServer } from '../../DAL/axios'
 
 
-function EventPage() {
+const EventPage = () => {
     const { id } = useParams()
     const [eventData, setEventData] = useState({})
 

@@ -1,24 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react'
-import TextInput2 from '../../../../../components/General/Inputs/TextInput2/TextInput2'
+import TextInputGray from '../../../../../components/General/Inputs/TextInputGray/TextInputGray'
 import { Formik, Form } from 'formik';
-import validations from '../../../../../validations'
+import validations from '../../../../../services/validations/validations'
 import TextBtn from '../../../../../components/General/Inputs/TextBtn/TextBtn'
 import Loader from '../../../../../components/General/Loader'
 import API from '../../../../../DAL/api';
-import AuthApi from '../../../../../services/contexts/AuthApi';
-import ReloadApi from '../../../../../services/contexts/Reload';
+import { AuthApi } from '../../../../../services/contexts/AuthApi';
 
-function TabContentAccount() {
+const TabContentAccount = () => {
+    const Auth = useContext(AuthApi)
     const [loading, setLoading] = useState(true)
     const [showSubmittedMsg, setShowSubmittedMsg] = useState(false)
-    const Auth = useContext(AuthApi)
-    const Reload = useContext(ReloadApi)
 
     const onSubmitHandler = async (values) => {
         //  TODO generalize this
         values.id = Auth.auth.id
         await API.editUserData(values)
-        Reload.setReloadAuth(true)
+        Auth.reloadAuth()
         setShowSubmittedMsg(true)
         setTimeout(() => {
             setShowSubmittedMsg(false)
@@ -54,16 +52,16 @@ function TabContentAccount() {
                         >
                             {({ isSubmitting, dirty }) => (
                                 <Form className="tab-content account">
-                                    <TextInput2
+                                    <TextInputGray
                                         label='display name'
                                         name='name'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='Password'
                                         name='password'
                                         type='password'
                                     />
-                                    <TextInput2
+                                    <TextInputGray
                                         label='Re-Enter Password'
                                         name='repeat_password'
                                         type='password'

@@ -21,7 +21,7 @@ import UserArea from './UserArea/UserArea'
 import ProtectedRoute from '../services/auth/ProtectedRoute'
 import LoggedInRoute from '../services/auth/LoggedInRoute'
 
-function Crescendo() {
+const Crescendo = () => {
     return (
 
         <Router>
@@ -53,6 +53,7 @@ function Crescendo() {
                                 <EventPage />
                             </Route>
                             <ProtectedRoute path='/User' component={UserArea} />
+                            <Redirect to='/' />
                         </Switch>
                     <Footer />
                 </div>

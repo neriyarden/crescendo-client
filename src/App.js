@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Crescendo from './pages/Crescendo'
 import Cookies from 'js-cookie'
 import API from './DAL/api'
-import AuthApi from './services/contexts/AuthApi'
-import ReloadApi from './services/contexts/Reload'
+import { AuthApi } from './services/contexts/AuthApi'
 import utils  from './utils'
 
-function App() {
+const App = () => {
   const [auth, setAuth] = useState(null)
-  const [reloadAuth, setReloadAuth] = useState(false)
   
   const cacheUserVotedRequests = async (userId) => {
     const userVotedRequests = await API.getUserVotes(userId)
@@ -31,24 +29,20 @@ function App() {
       setAuth(userData)
       cacheUserVotedRequests(userId)
     }
-    setReloadAuth(false)
   }
 
   useState(() => {
     utils.getTags()
   }, [])
 
-  // uncomment this...
   useEffect(() => {
     authenticateUser()
-  }, [reloadAuth])
+  }, [])
 
   return (
-    <ReloadApi.Provider value={{ reloadAuth, setReloadAuth }}>
-      <AuthApi.Provider value={{ auth, setAuth }}>
+      <AuthApi.Provider value={{ auth, setAuth, reloadAuth: authenticateUser }}>
         <Crescendo />
       </AuthApi.Provider>
-    </ReloadApi.Provider>
   );
 }
 

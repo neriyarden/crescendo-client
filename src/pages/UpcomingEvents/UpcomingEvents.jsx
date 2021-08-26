@@ -4,7 +4,7 @@ import FeaturedEvent from './FeaturedEvent/FeaturedEvent'
 import EventsPanel from '../BrowseEvents/EventsPanel/EventsPanel'
 import API from '../../DAL/api'
 
-function UpcomingEvent() {
+const UpcomingEvent = () => {
     const [loading, setLoading] = useState(true)
     const [upcomingEventsData, setUpcomingEventsData] = useState([])
     const [featuredEventData, setfeaturedEventData] = useState([])

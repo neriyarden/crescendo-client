@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SectionHeading({ title }) {
+const SectionHeading = ({ title }) => {
     return (
         <div className="section-header">
             <h2 className='section-heading'>{title}</h2>
