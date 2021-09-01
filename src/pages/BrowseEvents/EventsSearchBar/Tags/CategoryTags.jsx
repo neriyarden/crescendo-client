@@ -15,7 +15,6 @@ const CategoryTags = ({ tagsOnChange }) => {
 
     const setTags = async () => {
         let tagsData = await utils.getTags()
-        console.log('tagsData:', typeof tagsData, tagsData);
         tagsData.forEach(tag => tag.checked = false)
         setTagsData(tagsData)
     }

@@ -56,7 +56,7 @@ const getRequestsData = async (filters) => {
 
 }
 
-const getPastEventsData = async (pageNum = 1, size = 25) => {
+const getPastEventsData = async () => {
     const results = await httpRequest(`/events?when=past`, 'GET')
     return results
 }
@@ -114,7 +114,7 @@ const editEvent = async (eventData) => {
 }
 
 const markEventAsSoldOut = async (eventId) => {
-    // ?
+    // later feature
 
 }
 
@@ -153,7 +153,6 @@ const deleteRequest = async (requestId) => {
     const results = await httpRequest(`/requests/${requestId}`, 'DELETE')
     return results
 }
-
 
 
 export default {
