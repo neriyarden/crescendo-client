@@ -18,7 +18,7 @@ const App = () => {
     )
   }
 
-  const authenticateUser = async () => {
+  const authenticateUser = useCallback(async () => {
     const userId = Cookies.getJSON('session_id')
     if (userId) {
       let userData = await API.getUserData(userId)
@@ -29,7 +29,7 @@ const App = () => {
       setAuth(userData)
       cacheUserVotedRequests(userId)
     }
-  }
+  }, [])
 
   useState(() => {
     utils.getTags()
@@ -37,7 +37,7 @@ const App = () => {
 
   useEffect(() => {
     authenticateUser()
-  }, [])
+  }, [authenticateUser])
 
   return (
       <AuthApi.Provider value={{ auth, setAuth, reloadAuth: authenticateUser }}>
