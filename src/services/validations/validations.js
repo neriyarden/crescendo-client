@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 const PASSWORD_MSG = 'Password must contain a number, a special character, and a letter, and 8-20 characters'
-const NAME_MSG = 'Must contain Letters, Numbers & Special charachters'
+const NAME_MSG = 'Name may contain Letters, Numbers & Special charachters'
 
 // Schemas configurations
 const id = Yup.object().shape({

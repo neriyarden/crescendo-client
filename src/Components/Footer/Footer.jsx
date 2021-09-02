@@ -4,14 +4,20 @@ import { faReact, faNodeJs, faSass, faGit } from '@fortawesome/free-brands-svg-i
 const Footer = () => {
     return (
         <div className='main-footer' >
-            Made with 
-            <FontAwesomeIcon icon={faNodeJs}/>
-            <FontAwesomeIcon icon={faReact}/> 
-            <FontAwesomeIcon icon={faSass}/>
-            <FontAwesomeIcon icon={faGit}/>
+            Made with
+            <FontAwesomeIcon icon={faNodeJs} />
+            <FontAwesomeIcon icon={faReact} />
+            <FontAwesomeIcon icon={faSass} />
+            <FontAwesomeIcon icon={faGit} />
             {/* & some <span>❤</span>  */}
-            by 
-            <a href="https://github.com/neriyarden/crescendo" target='_blank'>Neri Yarden</a> 
+            by
+            <a
+                href="https://github.com/neriyarden"
+                target='_blank'
+                rel='noreferrer'
+            >
+                Neri Yarden
+            </a>
         </div>
     )
 }

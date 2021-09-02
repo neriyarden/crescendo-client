@@ -29,7 +29,7 @@ const EditEvent = ({ event, onEditHandler, setEditShowForm, errMsg }) => {
             {tag.name}
         </label>
     ))
-
+console.log(categories);
     useEffect(() => {
         getCategories()
     }, [])

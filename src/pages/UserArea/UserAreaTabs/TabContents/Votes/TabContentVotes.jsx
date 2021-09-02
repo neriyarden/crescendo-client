@@ -12,11 +12,12 @@ const  TabContentVotes = () => {
 
     const getVotesOfUser = async () => {
         const localData = JSON.parse(sessionStorage.getItem('user_voted_requests'))
+        if (localData?.error) sessionStorage.removeItem('myRequests')
         if (localData?.length > 0) return setVotes(localData)
         const results = await API.getUserVotes(Auth.auth.id)
-        if (results.data?.error) {
+        if (results?.error) {
             setVotes([])
-            return setErrorMsg((results?.data.error))
+            return setErrorMsg((results?.error))
         }
         sessionStorage.setItem('user_voted_requests', JSON.stringify(results))
         setVotes(results)

@@ -5,16 +5,14 @@ import EventsPanel from './EventsPanel/EventsPanel'
 import API from '../../DAL/api'
 import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
 import Loader from '../../components/General/Loader'
+import { useHttp } from '.././../hooks/useHttp'
 
-
-const searchDelay = 300
+const searchDelay = 500
 
 const BrowseEvents = () => {
-    const [loading, setLoading] = useState(true)
     const [eventsData, setEventsData] = useState([])
-    const [errorMsg, setErrorMsg] = useState('')
     const [pageNum, setPageNum] = useState(1)
-    const [setTimeoutId, setSetTimeoutId] = useState(-1)
+    const { isLoading, error, sendRequest, clearError } = useHttp()
     const [searchFilters, setSearchFilters] = useState({
         artist: '',
         city: '',
@@ -26,43 +24,36 @@ const BrowseEvents = () => {
 
     const cleanUpResults = () => {
         setEventsData([])
-        setErrorMsg('')
+        clearError()
         setPageNum(1)
     }
 
-    const getFutureEvents = useCallback(async () => {
-        const results = await API.getFutureEventsData(searchFilters)
-        if (results?.error) return setErrorMsg(results.error)
-        setEventsData(results.events)
-    }, [searchFilters])
-
-    const getMoreEvents = async (pageNum) => {
-        const moreResults = await API.getFutureEventsData(
-            { ...searchFilters, pageNum }
+    const getMoreEvents = async () => {
+        const moreResults = await sendRequest(
+            API.getFutureEventsData,
+            { ...searchFilters, pageNum: pageNum + 1 }
         )
-        if (moreResults?.error) return setErrorMsg(moreResults.error)
+        if (moreResults.error) return
         setEventsData([...eventsData, ...moreResults.events])
-    }
-
-    const moreResultsClickHandler = () => {
-        setLoading(true)
-        getMoreEvents(pageNum + 1)
         setPageNum((prev) => prev + 1)
-        setLoading(false)
-
     }
+
 
     useEffect(() => {
-        const sTId = setTimeout(() => {
+        const getEvents = async () => {
+            const results = await sendRequest(API.getFutureEventsData, searchFilters)
+            if (results.error) return
+            setEventsData(results.events)
+        }
+
+        const setTid = setTimeout(() => {
             cleanUpResults()
-            getFutureEvents()
-            setLoading(false)
+            getEvents()
         }, searchDelay)
 
-        setSetTimeoutId(sTId)
-        return () => clearTimeout(setTimeoutId)
+        return () => clearTimeout(setTid)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [getFutureEvents])
+    }, [searchFilters])
 
     return (
         <>
@@ -73,21 +64,21 @@ const BrowseEvents = () => {
                     setSearchFilters={setSearchFilters}
                 />
                 {
-                    loading ? <Loader />
-                    :
+                    isLoading ? <Loader />
+                        :
                         eventsData.length > 0 ?
                             <EventsPanel eventsData={eventsData} />
                             :
                             <></>
                 }
                 {
-                    errorMsg ?
-                        <p className='results-msg'>{errorMsg}</p>
+                    error ?
+                        <p className='results-msg'>{error}</p>
                         :
                         <div className='load-more-results'>
                             <TextBtn
                                 text='More Results'
-                                clickHandler={moreResultsClickHandler}
+                                clickHandler={getMoreEvents}
                             />
                         </div>
                 }

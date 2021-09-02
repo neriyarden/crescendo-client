@@ -14,7 +14,6 @@ const BrowseRequests = () => {
     const [requestsData, setRequestsData] = useState([])
     const [resultsMsg, setResultsMsg] = useState('')
     const [pageNum, setPageNum] = useState(1)
-    const [setTimeoutId, setSetTimeoutId] = useState(-1)
     const [searchFilters, setSearchFilters] = useState({
         artist: '',
         city: '',
@@ -63,13 +62,12 @@ const BrowseRequests = () => {
     }
 
     useEffect(() => {
-        const sTId = setTimeout(() => {
+        const setTid = setTimeout(() => {
             cleanUpResults()
             getRequests(searchFilters)
         }, searchDelay)
 
-        setSetTimeoutId(sTId)
-        return () => clearTimeout(setTimeoutId)
+        return () => clearTimeout(setTid)
     }, [searchFilters])
 
 

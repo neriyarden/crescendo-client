@@ -15,12 +15,13 @@ const TabContentEvents = () => {
 
     const getEventsOfArtist = async () => {
         setErrorMsg('')
-        const localData = sessionStorage.getItem('myEvents')
-        if (localData) return setEvents(JSON.parse(localData))
+        const localData = JSON.parse(sessionStorage.getItem('myEvents'))
+        if (localData?.error) sessionStorage.removeItem('myEvents')
+        if (localData) return setEvents(localData)
         const results = await API.getArtistEvents(Auth.auth.id)
-        if (results.data?.error) {
+        if (results.error) {
             setEvents([])
-            return setErrorMsg((results.data?.error))
+            return setErrorMsg((results.error))
         }
         sessionStorage.setItem('myEvents', JSON.stringify(results))
         setEvents(results)
