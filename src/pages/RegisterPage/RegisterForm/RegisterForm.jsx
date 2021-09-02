@@ -13,14 +13,14 @@ const RegisterForm = () => {
     const [serverErrorMsg, setServerErrorMsg] = useState('')
     const [redirectToLogin, setRedirectToLogin] = useState(false)
 
+
     const displayNameSubtexts = [
         'You can change this later in your personal settings'
     ]
-
     const onSubmitHanlder = async (values) => {
         const response = await API.registerNewUser(values)
         if (response.data?.error) return setServerErrorMsg(response.data?.error)
-        // setRedirectToLogin(true)
+        setRedirectToLogin(true)
     }
     if (redirectToLogin) return <Redirect to={{
         pathname: '/SignIn',
@@ -45,37 +45,41 @@ const RegisterForm = () => {
                     setSubmitting(false);
                 }}
             >
-                <Form className='form'>
-                    <TextInputPink
-                        name='name'
-                        label='display name'
-                        subtexts={displayNameSubtexts}
-                    />
-                    <TextInputPink
-                        name='email'
-                        label='email address'
-                    />
-                    <TextInputPink
-                        name='password'
-                        label='password'
-                        type='password'
-                    />
-                    <TextInputPink
-                        name='repeat_password'
-                        label='confirm password'
-                        placeholder='Re-enter your password'
-                        type='password'
-                    />
-                    <Toggles
-                        name='is_artist'
-                        labels={['fan', 'artist']}
-                    />
-                    <span className='server-error-msg'>{serverErrorMsg}</span>
-                    <TextBtn
-                        text='sign up'
-                        type='submit'
-                    />
-                </Form>
+                {({ errors, dirty }) => (
+
+                    <Form className='form'>
+                        <TextInputPink
+                            name='name'
+                            label='display name'
+                            subtexts={displayNameSubtexts}
+                        />
+                        <TextInputPink
+                            name='email'
+                            label='email address'
+                        />
+                        <TextInputPink
+                            name='password'
+                            label='password'
+                            type='password'
+                        />
+                        <TextInputPink
+                            name='repeat_password'
+                            label='confirm password'
+                            placeholder='Re-enter your password'
+                            type='password'
+                        />
+                        <Toggles
+                            name='is_artist'
+                            labels={['fan', 'artist']}
+                        />
+                        <span className='server-error-msg'>{serverErrorMsg}</span>
+                        <TextBtn
+                            text='sign up'
+                            type='submit'
+                            disabled={Object.keys(errors).length !== 0 || !dirty}
+                        />
+                    </Form>
+                )}
             </Formik>
             <FormFooterText
                 text='Already A Member?'

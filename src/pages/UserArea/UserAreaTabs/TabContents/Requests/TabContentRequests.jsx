@@ -15,12 +15,13 @@ const TabContentRequests = () => {
     const getRequestsOfArtist = async () => {
         // for arriving from the direct url
         setErrorMsg('')
-        const localData = sessionStorage.getItem('myRequests')
-        if (localData) return setRequests(JSON.parse(localData))
+        const localData = JSON.parse(sessionStorage.getItem('myRequests'))
+        if (localData?.error) sessionStorage.removeItem('myRequests')
+        if (localData) return setRequests(localData)
         const results = await API.getArtistRequests(Auth.auth.id)
-        if (results.data?.error) {
+        if (results?.error) {
             setRequests([])
-            return setErrorMsg((results?.data.error))
+            return setErrorMsg((results?.error))
         }
         sessionStorage.setItem('myRequests', JSON.stringify(results))
         setRequests(results)

@@ -5,7 +5,7 @@ const servers = {
 
 export const currentServer = servers.NODE_SERVER
 
-const axiosRequest = require('axios').create({
+export const axios = require('axios').create({
     baseURL: currentServer,
     headers: {
         "Content-type": "application/json",
@@ -16,16 +16,16 @@ const axiosRequest = require('axios').create({
 
 export const httpRequest = async (path, method = 'GET', data = null) => {
         try {
-            const response = await axiosRequest({
+            const response = await axios({
                 method,
             url: '/api' + path,
             data
         })
-        console.log('response:', await response);
-        return await response.data
+        console.log('Http Response:', await response);
+        return response.data
     }
     catch (err) {
-        console.log('response.error:', err.response?.data?.error); // ?
-        return err.response
+        console.log('Http Error:', err.response?.data?.error); // ?
+        return err.response.data
     }
 }

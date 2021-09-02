@@ -4,10 +4,9 @@ const TextBtn = ({ text, type, clickHandler, disabled, style }) => {
     const onBtnClick = ({ target: { value }}) => {
         clickHandler(value)
     }
-    
     return (
         <button
-            className='form-button'
+            className={disabled ? 'form-button disabled-btn' : 'form-button'}
             type={type}
             onClick={clickHandler && onBtnClick}
             disabled={disabled}

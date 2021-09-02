@@ -56,8 +56,8 @@ const NewEvent = ({ reloadEvents, setShowForm, fromRequestValues }) => {
                         <Formik
                             initialValues={{
                                 tour: '',
-                                date: null,
-                                time: null,
+                                date: '',
+                                time: '',
                                 duration: 60,
                                 venueName: '',
                                 cityName: fromRequestValues?.city || '',

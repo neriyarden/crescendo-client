@@ -6,14 +6,13 @@ import API from '../../DAL/api'
 import msg from '../../constants/messages'
 import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
 
-const searchDelay = 300
+const searchDelay = 500
 
 const BrowseArtists = () => {
     const [loading, setLoading] = useState(true)
     const [artistsData, setArtistsData] = useState([])
     const [resultsMsg, setResultsMsg] = useState('')
     const [pageNum, setPageNum] = useState(1)
-    const [setTimeoutId, setSetTimeoutId] = useState(-1)
     const [searchFilters, setSearchFilters] = useState({
         startsWith: '',
         searchTerm: '',
@@ -51,13 +50,12 @@ const BrowseArtists = () => {
     }
 
     useEffect(() => {
-        const sTId = setTimeout(() => {
+        const setTid = setTimeout(() => {
             cleanUpResults()
             getArtists(searchFilters)
         }, searchDelay)
 
-        setSetTimeoutId(sTId)
-        return () => clearTimeout(setTimeoutId)
+        return () => clearTimeout(setTid)
     }, [searchFilters])
 
     return (

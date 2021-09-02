@@ -10,7 +10,7 @@ const App = () => {
   
   const cacheUserVotedRequests = async (userId) => {
     const userVotedRequests = await API.getUserVotes(userId)
-    if (userVotedRequests.status === 404) {
+    if (userVotedRequests?.error) {
       return sessionStorage.setItem('user_voted_requests', JSON.stringify([]))
     }
     sessionStorage.setItem(
