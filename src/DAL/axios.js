@@ -1,10 +1,7 @@
-const servers = {
-    NODE_SERVER: "http://localhost:3100/",
-    FLASK_SERVER: "http://localhost:5000/"
-}
 
-export const currentServer = servers.NODE_SERVER
 
+export const currentServer = process.env.REACT_APP_NODE_SERVER
+console.log('currentServer', currentServer);
 export const axios = require('axios').create({
     baseURL: currentServer,
     headers: {
