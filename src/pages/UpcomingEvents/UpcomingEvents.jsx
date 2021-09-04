@@ -3,6 +3,7 @@ import SectionHeading from '../../components/General/Headings/SectionHeading/Sec
 import FeaturedEvent from './components/FeaturedEvent/FeaturedEvent'
 import EventsPanel from '../BrowseEvents/components/EventsPanel/EventsPanel'
 import API from '../../DAL/api'
+import Loader from '../../components/General/Loader'
 
 const UpcomingEvent = () => {
     const [loading, setLoading] = useState(true)
@@ -24,28 +25,34 @@ const UpcomingEvent = () => {
     useEffect(() => {
         getUpcomingEventsData()
         getPastEvents()
+        setLoading(false)
     }, [])
 
     return (
         <>
+        {
+            loading ? <Loader/> :
+            <>
             <FeaturedEvent featuredEvent={featuredEventData} />
             <section className='section'>
-                <SectionHeading title='Upcoming Events' />
-                <EventsPanel
+            <SectionHeading title='Upcoming Events' />
+            <EventsPanel
                     eventsData={upcomingEventsData}
                     setLoading={setLoading}
                     loading={loading}
-                />
+                    />
             </section>
             <section className='section'>
                 <SectionHeading title='Past Events' />
                 <EventsPanel
-                    eventsData={pastEventsData}
+                eventsData={pastEventsData}
                     setLoading={setLoading}
                     loading={loading}
-                />
+                    />
             </section>
-        </>
+            </>
+        }
+            </>
     )
 }
 

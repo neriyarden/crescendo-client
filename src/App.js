@@ -3,11 +3,11 @@ import Crescendo from './pages/Crescendo'
 import Cookies from 'js-cookie'
 import API from './DAL/api'
 import { AuthApi } from './services/contexts/AuthApi'
-import utils  from './utils'
+import utils from './utils'
 
 const App = () => {
   const [auth, setAuth] = useState(null)
-  
+
   const cacheUserVotedRequests = async (userId) => {
     const userVotedRequests = await API.getUserVotes(userId)
     if (userVotedRequests?.error) {
@@ -31,6 +31,14 @@ const App = () => {
     }
   }, [])
 
+  const signOut = () => {
+    Cookies.remove('session_id')
+    sessionStorage.removeItem('user_voted_requests')
+    sessionStorage.removeItem('myEvents')
+    sessionStorage.removeItem('myRequests')
+    setAuth(null)
+  }
+
   useState(() => {
     utils.getTags()
   }, [])
@@ -40,9 +48,14 @@ const App = () => {
   }, [authenticateUser])
 
   return (
-      <AuthApi.Provider value={{ auth, setAuth, reloadAuth: authenticateUser }}>
-        <Crescendo />
-      </AuthApi.Provider>
+    <AuthApi.Provider value={{
+      auth,
+      setAuth,
+      signOut,
+      reloadAuth: authenticateUser,
+    }}>
+      <Crescendo />
+    </AuthApi.Provider>
   );
 }
 

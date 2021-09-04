@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import Cookies from 'js-cookie'
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
@@ -9,14 +8,6 @@ import { currentServer } from '../../../../DAL/axios'
 
 const NavbarLinks = () => {
     const Auth = useContext(AuthApi)
-    
-    const signOut = () => {
-        Cookies.remove('session_id')
-        sessionStorage.removeItem('user_voted_requests')
-        sessionStorage.removeItem('myEvents')
-        sessionStorage.removeItem('myRequests')
-        Auth.setAuth(null)
-    }
 
     return (
         <ul>
@@ -52,7 +43,7 @@ const NavbarLinks = () => {
                     <NavLink to='/' >
                         <span
                             className='navbar-link sign-out-link'
-                            onClick={signOut}
+                            onClick={Auth.signOut}
                         >
                             Sign Out
                         </span>
