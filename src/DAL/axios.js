@@ -6,15 +6,16 @@ export const axios = require('axios').create({
     baseURL: currentServer,
     headers: {
         "Content-type": "application/json",
-        "Access-Control-Allow-Origin": currentServer
+        "Access-Control-Allow-Origin": currentServer,
+        'access-control-expose-headers': 'Set-Cookie'
     },
     withCredentials: true,
 })
 
 export const httpRequest = async (path, method = 'GET', data = null) => {
-        try {
-            const response = await axios({
-                method,
+    try {
+        const response = await axios({
+            method,
             url: '/api' + path,
             data
         })
