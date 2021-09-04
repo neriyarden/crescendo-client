@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 import SectionHeading from '../../components/General/Headings/SectionHeading/SectionHeading'
 import EventsSearchBar from './components/EventsSearchBar/EventsSearchBar'
 import EventsPanel from './components/EventsPanel/EventsPanel'

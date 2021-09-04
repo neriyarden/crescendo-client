@@ -1,24 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const Tag = ({ data, tagOnChange, tagIndex }) => {
-    const [checked, setChecked] = useState(data.checked)
-
-    const onChangeHandler = (tagIndex) => {
-        setChecked((prev) => !prev)
-        tagOnChange(tagIndex)
-    }
+const Tag = ({ tagData, tagOnChange, tagIndex }) => {
 
     return (
         <div className="category-tag">
             <label>
                 <input
-                    value={data.id}
+                    value={tagData.id}
                     type="checkbox"
                     name='tags'
-                    checked={checked}
-                    onChange={() => onChangeHandler(tagIndex)}
+                    checked={tagData.checked}
+                    onChange={() => tagOnChange(tagIndex)}
                 />
-                <span>{data.name}</span>
+                <span>{tagData.name}</span>
             </label>
         </div>
     )

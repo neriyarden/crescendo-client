@@ -18,15 +18,16 @@ const CategoryTags = ({ tagsOnChange }) => {
         setTagsData(tagsData)
     }
 
+    const tags = tagsData.map((tagData, i) =>
+        <Tag
+            key={tagData.id} tagData={tagData} tagIndex={i} tagOnChange={onChangeHandler}
+        />
+    )
+
     useEffect(() => {
         setTags()
     }, [])
 
-    const tags = tagsData.map((tagData, i) =>
-        <Tag 
-            key={tagData.id} data={tagData} tagIndex={i} tagOnChange={onChangeHandler}
-        />
-    )
     return (
         <div className='category-tags'>
             <div className="tags-container">

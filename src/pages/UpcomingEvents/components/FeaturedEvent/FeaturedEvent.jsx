@@ -4,12 +4,19 @@ import { currentServer } from '../../../../DAL/axios'
 
 
 const FeaturedEvent = ({ featuredEvent }) => {
+    const [bgImage, setBgImage] = useState({})
+
+    useEffect(() => {
+        // this is so the image fetch from the server wont be invoked 
+        // when no img_url on initial render
+        setBgImage({ backgroundImage: `url(${currentServer + featuredEvent.img_url})` })
+    }, [featuredEvent.img_url])
 
     return (
         <section className="featured-events">
             <div
                 className="featured-events-bg"
-                style={{ backgroundImage: `url(${currentServer + featuredEvent.img_url})` }}
+                style={bgImage}
             >
             </div>
             <Link 
