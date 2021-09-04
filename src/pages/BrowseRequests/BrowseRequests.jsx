@@ -3,8 +3,8 @@ import SectionHeading from '../../components/General/Headings/SectionHeading/Sec
 import API from '../../DAL/api'
 import msg from '../../constants/messages'
 import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
-import RequestsSearchBar from './RequestsSearchBar/RequestsSearchBar'
-import RequestsPanel from './RequestsPanel/RequestsPanel'
+import RequestsSearchBar from './components/RequestsSearchBar/RequestsSearchBar'
+import RequestsPanel from './components/RequestsPanel/RequestsPanel'
 
 
 const searchDelay = 300

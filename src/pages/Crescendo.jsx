@@ -20,8 +20,8 @@ const RegisterPage = React.lazy(() => import('./RegisterPage/RegisterPage'))
 const ArtistPage = React.lazy(() => import('./ArtistPage/ArtistPage'))
 const EventPage = React.lazy(() => import('./EventPage/EventPage'))
 const UserArea = React.lazy(() => import('./UserArea/UserArea'))
-const ProtectedRoute = React.lazy(() => import('../services/auth/ProtectedRoute'))
-const LoggedInRoute = React.lazy(() => import('../services/auth/LoggedInRoute'))
+const ProtectedRoute = React.lazy(() => import('../services/authRoutes/ProtectedRoute'))
+const LoggedInRoute = React.lazy(() => import('../services/authRoutes/LoggedInRoute'))
 
 
 

@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import API from '../../DAL/api'
-import ArtistHero from './ArtistHero/ArtistHero'
-import ArtistBio from './ArtistBio/ArtistBio'
-import ArtistShows from './ArtistShows/ArtistShows'
-import ArtistRequests from './ArtistRequests/ArtistRequests'
+import ArtistHero from './components/ArtistHero/ArtistHero'
+import ArtistBio from './components/ArtistBio/ArtistBio'
+import ArtistShows from './components/ArtistShows/ArtistShows'
+import ArtistRequests from './components/ArtistRequests/ArtistRequests'
 
 
 const ArtistPage = () => {

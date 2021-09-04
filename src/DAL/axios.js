@@ -1,6 +1,6 @@
 
 
-export const currentServer = process.env.REACT_APP_NODE_SERVER
+export const currentServer = process.env.REACT_APP_DEV_SERVER
 console.log('currentServer', currentServer);
 export const axios = require('axios').create({
     baseURL: currentServer,
@@ -8,7 +8,7 @@ export const axios = require('axios').create({
         "Content-type": "application/json",
         "Access-Control-Allow-Origin": currentServer
     },
-    withCredentials: true
+    withCredentials: true,
 })
 
 export const httpRequest = async (path, method = 'GET', data = null) => {

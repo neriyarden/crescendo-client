@@ -24,7 +24,7 @@
   transform: translateX(-50%);
 }
 
-/// @author - ME
+
 @mixin user-select($value) {
   -webkit-user-select: $value;
   -moz-user-select: $value;

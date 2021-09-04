@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SectionHeading from '../../components/General/Headings/SectionHeading/SectionHeading'
-import FeaturedEvent from './FeaturedEvent/FeaturedEvent'
-import EventsPanel from '../BrowseEvents/EventsPanel/EventsPanel'
+import FeaturedEvent from './components/FeaturedEvent/FeaturedEvent'
+import EventsPanel from '../BrowseEvents/components/EventsPanel/EventsPanel'
 import API from '../../DAL/api'
 
 const UpcomingEvent = () => {

@@ -1,7 +1,7 @@
 @import './BrowseEvents.scss';
-@import './EventsPanel/EventsPanel.scss';
-@import './EventsSearchBar/EventsSearchBar.scss';
-@import './EventsSearchBar/Tags/CategoryTags.scss';
-@import './EventsSearchBar/Tags/Tag.scss';
-@import './EventsPanel/Thumbnails/EventThumbnail.scss';
-@import './EventsPanel/Thumbnails/EventDetails.scss';
+@import './components/EventsPanel/EventsPanel.scss';
+@import './components/EventsSearchBar/EventsSearchBar.scss';
+@import './components/EventsSearchBar/Tags/CategoryTags.scss';
+@import './components/EventsSearchBar/Tags/Tag.scss';
+@import './components/EventsPanel/Thumbnails/EventThumbnail.scss';
+@import './components/EventsPanel/Thumbnails/EventDetails.scss';

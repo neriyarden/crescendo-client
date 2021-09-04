@@ -1,6 +1,6 @@
 import React from 'react'
-import UserAreaHero from './UserAreaHero/UserAreaHero'
-import UserAreaTabs from './UserAreaTabs/UserAreaTabs'
+import UserAreaHero from './components/UserAreaHero/UserAreaHero'
+import UserAreaTabs from './components/UserAreaTabs/UserAreaTabs'
 
 const UserArea = () => {
 
