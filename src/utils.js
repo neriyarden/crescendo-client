@@ -20,7 +20,7 @@ const formatDDMMYYYToYYYYMMDD = (date) => {
     return date.split('/').map(xx => xx.padStart(2, '0')).reverse().join('-')
 }
 
-export default {
+export {
     getTags,
     formatDateToDDMMYYYY,
     formatDDMMYYYToYYYYMMDD,

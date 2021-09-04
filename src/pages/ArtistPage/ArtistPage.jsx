@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import API from '../../DAL/api'
 import ArtistHero from './components/ArtistHero/ArtistHero'
@@ -12,16 +12,17 @@ const ArtistPage = () => {
     const [artistData, setArtistData] = useState({})
 
 
-    const getArtistDataOnLoad = async (artistId) => {
-        const data = await API.getArtistData(artistId)
-        if (data.error) return setArtistData(data.error)
-
-        setArtistData(data)
-    }
-
+    
     useEffect(() => {
-        getArtistDataOnLoad(id)
-    }, [])
+        const getArtistDataOnLoad = async () => {
+            const data = await API.getArtistData(id)
+            if (data.error) return setArtistData(data.error)
+    
+            setArtistData(data)
+        }
+
+        getArtistDataOnLoad()
+    }, [id])
 
     return (
         <section className='artist-page'>

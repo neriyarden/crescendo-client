@@ -3,7 +3,6 @@ import {
     Switch,
     Route,
     useRouteMatch,
-    Redirect
 } from "react-router-dom";
 import Tab from './Tab';
 import TabContentProfile from './TabContents/Profile/TabContentProfile'

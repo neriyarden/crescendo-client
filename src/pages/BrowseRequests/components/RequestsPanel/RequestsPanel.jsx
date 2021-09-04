@@ -5,19 +5,20 @@ import Loader from '../../../../components/General/Loader'
 const RequestsPanel = ({ requestsData, loading, setLoading }) =>{
     const [requestsThumbnails, setRequestsThumbnails] = useState([])
 
-    const renderThumbnails = () => {
-        const thumbnails = requestsData.map((data, i) => {
-            return <RequestThumbnail key={i} thumbData={data} />
-        })
-        setRequestsThumbnails(thumbnails)
-    }
     
     useEffect(() => {
+        const renderThumbnails = () => {
+            const thumbnails = requestsData.map((data, i) => {
+                return <RequestThumbnail key={i} thumbData={data} />
+            })
+            setRequestsThumbnails(thumbnails)
+        }
+
         setTimeout(() => {
             renderThumbnails()
             setLoading(false)
         }, 700)
-    }, [requestsData])
+    }, [requestsData, setLoading])
 
     return (
         <div className='grid-panel requests-panel'>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Tag from './Tag'
-import utils from '../../../../../utils'
+import { getTags } from '../../../../../utils'
 
 
 const CategoryTags = ({ tagsOnChange }) => {
@@ -13,7 +13,7 @@ const CategoryTags = ({ tagsOnChange }) => {
     }
 
     const setTags = async () => {
-        let tagsData = await utils.getTags()
+        let tagsData = await getTags()
         tagsData.forEach(tag => tag.checked = false)
         setTagsData(tagsData)
     }

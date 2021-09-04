@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useCallback } from 'react'
 import API from '../../../../../../DAL/api'
 import VoteLine from './VoteLine'
 import Loader from '../../../../../../components/General/Loader'
@@ -10,7 +10,7 @@ const  TabContentVotes = () => {
     const [votes, setVotes] = useState([])
     const [errorMsg, setErrorMsg] = useState('')
 
-    const getVotesOfUser = async () => {
+    const getVotesOfUser = useCallback(async () => {
         const localData = JSON.parse(sessionStorage.getItem('user_voted_requests'))
         if (localData?.error) sessionStorage.removeItem('myRequests')
         if (localData?.length > 0) return setVotes(localData)
@@ -21,7 +21,7 @@ const  TabContentVotes = () => {
         }
         sessionStorage.setItem('user_voted_requests', JSON.stringify(results))
         setVotes(results)
-    }
+    }, [Auth])
 
     const votesItems = votes.map((vote, i) => (
         <VoteLine key={i} vote={vote} i={i} reloadVotes={getVotesOfUser} />
@@ -32,7 +32,7 @@ const  TabContentVotes = () => {
             getVotesOfUser()
             setLoading(false)
         }, 500)
-    }, [])
+    }, [getVotesOfUser])
 
     return (
         <div className='user-area-votes'>

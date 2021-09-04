@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SectionHeading from '../../components/General/Headings/SectionHeading/SectionHeading'
 import API from '../../DAL/api'
-import msg from '../../constants/messages'
+import { msg } from '../../constants/messages'
 import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
 import RequestsSearchBar from './components/RequestsSearchBar/RequestsSearchBar'
 import RequestsPanel from './components/RequestsPanel/RequestsPanel'
@@ -26,27 +26,7 @@ const BrowseRequests = () => {
         setRequestsData([])
     }
 
-    const getRequests = async () => {
-        const requests = await API.getRequestsData(searchFilters)
-        if (requests.length === 0) setResultsMsg(msg.NO_RESULTS_MSG)
-        const userVotedRequests = JSON.parse(
-            sessionStorage.getItem('user_voted_requests')
-        )
-
-        const userVotedRequestsIds = userVotedRequests ?
-            userVotedRequests.map(request => (
-                request.request_id
-            ))
-            : []
-        const requestsWithUserVotes = requests.map(request => (
-                {
-                    ...request, userVote: userVotedRequestsIds.includes(request.id)
-                        ? true : false
-                }
-            ))
-        setRequestsData(requestsWithUserVotes)
-    }
-
+    
     const getMoreRequests = async (pageNum) => {
         const moreResults = await API.getRequestsData(
             { ...searchFilters, pageNum: pageNum }
@@ -54,14 +34,35 @@ const BrowseRequests = () => {
         if (moreResults.length === 0) setResultsMsg(msg.END_OF_RESULTS_MSG)
         setRequestsData([...requestsData, ...moreResults])
     }
-
+    
     const loadMoreResults = () => {
         setLoading(true)
         getMoreRequests(pageNum + 1)
         setPageNum((prev) => prev + 1)
     }
-
+    
     useEffect(() => {
+        const getRequests = async () => {
+            const requests = await API.getRequestsData(searchFilters)
+            if (requests.length === 0) setResultsMsg(msg.NO_RESULTS_MSG)
+            const userVotedRequests = JSON.parse(
+                sessionStorage.getItem('user_voted_requests')
+            )
+    
+            const userVotedRequestsIds = userVotedRequests ?
+                userVotedRequests.map(request => (
+                    request.request_id
+                ))
+                : []
+            const requestsWithUserVotes = requests.map(request => (
+                    {
+                        ...request, userVote: userVotedRequestsIds.includes(request.id)
+                            ? true : false
+                    }
+                ))
+            setRequestsData(requestsWithUserVotes)
+        }
+        
         const setTid = setTimeout(() => {
             cleanUpResults()
             getRequests(searchFilters)

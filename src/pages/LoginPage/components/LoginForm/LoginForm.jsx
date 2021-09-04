@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import FormHeading from '../../../../components/General/Headings/FormHeading/FormHeading'
 import TextInputPink from '../../../../components/General/Inputs/TextInputPink/TextInputPink'
 import TextBtn from '../../../../components/General/Inputs/TextBtn/TextBtn'
-import FormCheckbox from '../../../../components/General/Inputs/FormCheckbox/FormCheckbox'
+// import FormCheckbox from '../../../../components/General/Inputs/FormCheckbox/FormCheckbox'
 import FormFooterText from '../../../../components/General/Inputs/FormFooterText/FormFooterText'
 import { Formik, Form } from 'formik';
 import validations from '../../../../services/validations/validations'

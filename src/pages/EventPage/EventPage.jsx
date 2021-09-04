@@ -8,14 +8,13 @@ const EventPage = () => {
     const { id } = useParams()
     const [eventData, setEventData] = useState({})
 
-    const getEventDataOnLoad = async (id) => {
+    useEffect(() => {
+    const getEventDataOnLoad = async () => {
         const data = await API.getEventData(id)
         setEventData(data)
     }
-
-    useEffect(() => {
-        getEventDataOnLoad(id)
-    }, [])
+        getEventDataOnLoad()
+    }, [id])
 
     return (
         <section className='event-page'>
@@ -39,6 +38,7 @@ const EventPage = () => {
                         href={eventData.ticketseller_url || 'https://www.eventim.co.il/'}
                         className="link-to-buy-tickets"
                         target='_blank'
+                        rel='noreferrer'
                     >
                         Get Tickets
                     </a>

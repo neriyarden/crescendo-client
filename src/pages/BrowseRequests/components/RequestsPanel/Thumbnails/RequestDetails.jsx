@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import TextBtn from '../../../../../components/General/Inputs/TextBtn/TextBtn'
 
 const RequestDetails = ({ thumbData, voteBtnHandler, votesCount, voted, capReached }) => {

@@ -10,15 +10,16 @@ const ArtistRequests = ({ artistId }) => {
     const [loading, setLoading] = useState(true)
     const [requests, setRequests] = useState([])
 
-    const getRequestsOfArtist = async (artistId) => {
-        const results = await API.getArtistRequests(artistId)
-        setRequests(results)
-    }
-
+    
     useEffect(() => {
+        const getRequestsOfArtist = async () => {
+            const results = await API.getArtistRequests(artistId)
+            setRequests(results)
+        }
+
         setLoading(true)
-        getRequestsOfArtist(artistId)
-    }, [])
+        getRequestsOfArtist()
+    }, [artistId])
 
     return (
         <section className='artist-page-section section'>

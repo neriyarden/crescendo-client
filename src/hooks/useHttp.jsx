@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 
 export const useHttp = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -7,15 +7,15 @@ export const useHttp = () => {
     // const activeHttpRequests = useRef([])
 
     const sendRequest = useCallback(async (apiFunc, ...args) => {
-        // setIsLoading(true)
+        setIsLoading(true)
         // const httpAbortCtrl = new AbortController()
         // activeHttpRequests.current.push(httpAbortCtrl)
         const results = await apiFunc(...args)
         if (results.error) {
             setError(results.error)
         }
+        setIsLoading(false)
         return results
-        // setIsLoading(false)
     }, [])
 
     const clearError = () => setError(null)

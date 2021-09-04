@@ -7,16 +7,18 @@ const ArtistShows = ({ artistId }) => {
     const [loading, setLoading] = useState(true)
     const [events, setEvents] = useState([])
 
-    const getEventsOfArtist = async (artistId) => {
-        const results = await API.getArtistEvents(artistId)
-        if(results.error) return
-        setEvents(results)
-    }
-
+    
     useEffect(() => {
+        const getEventsOfArtist = async () => {
+            const results = await API.getArtistEvents(artistId)
+            if(results.error) return
+            setEvents(results)
+        }
+
         setLoading(true)
-        getEventsOfArtist(artistId)
-    }, [])
+        getEventsOfArtist()
+    }, [artistId])
+
     return (
         <section className='artist-page-section section'>
             <SectionHeading title='Upcoming Shows'/>

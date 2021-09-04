@@ -6,7 +6,7 @@ import validations from '../../../../../../services/validations/validations'
 import TextBtn from '../../../../../../components/General/Inputs/TextBtn/TextBtn'
 import API from '../../../../../../DAL/api';
 import { AuthApi } from '../../../../../../services/contexts/AuthApi';
-import utils from '../../../../../../utils'
+import { getTags } from '../../../../../../utils'
 
 
 const NewEvent = ({ reloadEvents, setShowForm, fromRequestValues }) => {
@@ -15,7 +15,7 @@ const NewEvent = ({ reloadEvents, setShowForm, fromRequestValues }) => {
     const [categories, setCategories] = useState([])
 
     const getTagsObj = async () => {
-        let categoriesData = await utils.getTags()
+        let categoriesData = await getTags()
         if (categoriesData.error) setErrMsg(categoriesData.error)
         setCategories(categoriesData)
     }

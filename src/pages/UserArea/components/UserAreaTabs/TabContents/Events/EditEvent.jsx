@@ -4,19 +4,10 @@ import UploadBtn from '../../../../../../components/General/Inputs/UploadBtn/Upl
 import { Formik, Form, Field } from 'formik';
 import validations from '../../../../../../services/validations/validations'
 import TextBtn from '../../../../../../components/General/Inputs/TextBtn/TextBtn'
-import utils from '../../../../../../utils';
+import { getTags, formatDDMMYYYToYYYYMMDD } from '../../../../../../utils';
 
 const EditEvent = ({ event, onEditHandler, setEditShowForm, errMsg }) => {
     const [categories, setCategories] = useState([])
-    const getCategories = async () => {
-        const tags = await utils.getTags()
-        setCategories(
-            tags.map(tag => ({
-                ...tag,
-                checked: event.tags.find(eventTag => tag.id === eventTag.tag_id)
-            }))
-        )
-    }
 
     const categoryTags = categories.map((tag, i) => (
         <label className='tag-label' key={i}>
@@ -29,10 +20,19 @@ const EditEvent = ({ event, onEditHandler, setEditShowForm, errMsg }) => {
             {tag.name}
         </label>
     ))
-console.log(categories);
+
     useEffect(() => {
+        const getCategories = async () => {
+            const tags = await getTags()
+            setCategories(
+                tags.map(tag => ({
+                    ...tag,
+                    checked: event.tags.find(eventTag => tag.id === eventTag.tag_id)
+                }))
+            )
+        }
         getCategories()
-    }, [])
+    }, [event])
 
 
     return (
@@ -41,7 +41,7 @@ console.log(categories);
                 <Formik
                     initialValues={{
                         tour: event.tour,
-                        date: utils.formatDDMMYYYToYYYYMMDD(event.date),
+                        date: formatDDMMYYYToYYYYMMDD(event.date),
                         time: event.time,
                         duration: event.duration,
                         venueName: event.venue,

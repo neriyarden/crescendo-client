@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useCallback } from 'react'
 import API from '../../../../../../DAL/api'
 import RequestLine from './RequestLine'
 import NewRequest from './NewRequest'
@@ -12,7 +12,7 @@ const TabContentRequests = () => {
     const [requests, setRequests] = useState([])
     const [errorMsg, setErrorMsg] = useState('')
 
-    const getRequestsOfArtist = async () => {
+    const getRequestsOfArtist = useCallback(async () => {
         // for arriving from the direct url
         setErrorMsg('')
         const localData = JSON.parse(sessionStorage.getItem('myRequests'))
@@ -25,7 +25,7 @@ const TabContentRequests = () => {
         }
         sessionStorage.setItem('myRequests', JSON.stringify(results))
         setRequests(results)
-    }
+    }, [Auth])
 
 
     const requestsItems = requests.map((request, i) => (
@@ -37,7 +37,7 @@ const TabContentRequests = () => {
         setTimeout(() => {
             setLoading(false)
         }, 500)
-    }, [])
+    }, [getRequestsOfArtist])
 
     return (
         <div className='user-area-requests'>

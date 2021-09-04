@@ -3,7 +3,7 @@ import SectionHeading from '../../components/General/Headings/SectionHeading/Sec
 import ArtistSearchBar from './components/ArtistsSearchBar/ArtistsSearchBar'
 import ArtistsPanel from './components/ArtistsPanel/ArtistsPanel'
 import API from '../../DAL/api'
-import msg from '../../constants/messages'
+import { msg } from '../../constants/messages'
 import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
 
 const searchDelay = 500

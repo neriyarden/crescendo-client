@@ -3,7 +3,7 @@ import Crescendo from './pages/Crescendo'
 import Cookies from 'js-cookie'
 import API from './DAL/api'
 import { AuthApi } from './services/contexts/AuthApi'
-import utils from './utils'
+import { getTags } from './utils'
 
 const App = () => {
   const [auth, setAuth] = useState(null)
@@ -40,7 +40,7 @@ const App = () => {
   }
 
   useState(() => {
-    utils.getTags()
+    getTags()
   }, [])
 
   useEffect(() => {

@@ -1,6 +1,5 @@
 import { httpRequest } from './axios'
 
-// TODO documentation
 
 const signIn = async (data) => {
     const creds = { email: data.email, password: data.password }
@@ -154,8 +153,7 @@ const deleteRequest = async (requestId) => {
     return results
 }
 
-
-export default {
+const api = {
     addNewEvent,
     addNewRequest,
     deleteEvent,
@@ -183,4 +181,4 @@ export default {
     castVote,
     signIn
 }
-
+export default api

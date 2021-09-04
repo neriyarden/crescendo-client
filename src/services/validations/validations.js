@@ -70,7 +70,7 @@ const request = Yup.object({
 })
 
 
-export default {
+const validations =  {
     id,
     profile,
     signIn,
@@ -79,3 +79,4 @@ export default {
     event,
     request
 }
+export default validations

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useCallback } from 'react'
 import API from '../../../../../../DAL/api'
 import EventLine from './EventLine'
 import NewEvent from './NewEvent'
@@ -13,7 +13,7 @@ const TabContentEvents = () => {
     const [events, setEvents] = useState([])
     const [errorMsg, setErrorMsg] = useState('')
 
-    const getEventsOfArtist = async () => {
+    const getEventsOfArtist = useCallback(async () => {
         setErrorMsg('')
         const localData = JSON.parse(sessionStorage.getItem('myEvents'))
         if (localData?.error) sessionStorage.removeItem('myEvents')
@@ -25,7 +25,7 @@ const TabContentEvents = () => {
         }
         sessionStorage.setItem('myEvents', JSON.stringify(results))
         setEvents(results)
-    }
+    }, [Auth])
 
 
     const eventsItems = events.map((event, i) => (
@@ -37,7 +37,7 @@ const TabContentEvents = () => {
             getEventsOfArtist()
             setLoading(false)
         }, 500)
-    }, [])
+    }, [getEventsOfArtist])
 
     return (
         <div className='user-area-events'>
