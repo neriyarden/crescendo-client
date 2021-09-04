@@ -6,20 +6,10 @@ import {
     Route,
     Redirect
 } from 'react-router-dom'
-import Header from '../components/Header/Header'
 // import HomePage from './HomePage/HomePage'
+import Header from '../components/Header/Header'
 import UpcomingEvents from './UpcomingEvents/UpcomingEvents'
-// import BrowseEvents from './BrowseEvents/BrowseEvents'
-// import BrowseArtists from './BrowseArtists/BrowseArtists'
-// import BrowseRequests from './BrowseRequests/BrowseRequests'
-// import LoginPage from './LoginPage/LoginPage'
-// import RegisterPage from './RegisterPage/RegisterPage'
 import Footer from '../components/Footer/Footer'
-// import ArtistPage from './ArtistPage/ArtistPage'
-// import EventPage from './EventPage/EventPage'
-// import UserArea from './UserArea/UserArea'
-// import ProtectedRoute from '../services/auth/ProtectedRoute'
-// import LoggedInRoute from '../services/auth/LoggedInRoute'
 import Loader from '../components/General/Loader'
 
 const BrowseEvents = React.lazy(() => import('./BrowseEvents/BrowseEvents'))
