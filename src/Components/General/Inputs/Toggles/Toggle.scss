@@ -1,6 +1,6 @@
 .toggle-btn {
   & span{
-    box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .1);
     border-radius: 5px;
   }
 
@@ -8,7 +8,7 @@
   & input:checked ~ span {
     background: $third-color;
     color: $solid-white;
-    box-shadow: 0 3px 9px rgba(0, 0, 0, .3);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .2);
   }
     
   border-radius: 0;

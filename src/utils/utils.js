@@ -1,4 +1,4 @@
-import API from "./DAL/api"
+import API from "../DAL/api"
 
 const getTags = async () => {
     try {

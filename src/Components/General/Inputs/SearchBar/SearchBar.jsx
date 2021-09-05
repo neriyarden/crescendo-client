@@ -2,12 +2,12 @@ import React, { useState,  } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-const SearchBar = ({ collapsable, labelValue, searchOnChange }) => {
-    const [activeSearch, setActiveSearch] = useState(collapsable ? '' : 'active-search')
+const SearchBar = ({ isCollapsable, labelValue, searchOnChange }) => {
+    const [activeSearch, setActiveSearch] = useState(isCollapsable ? '' : 'active-search')
     const [searchTerm, setSearchTerm] = useState('')
 
     const activateSearch = () => {
-        if(!collapsable) return
+        if(!isCollapsable) return
         const activeClass = activeSearch ? '' : 'active-search'
         setActiveSearch(activeClass)
     }
@@ -27,7 +27,7 @@ const SearchBar = ({ collapsable, labelValue, searchOnChange }) => {
                 </label>
                 <div className={`search-bar ${activeSearch}`}>
                     <div className='search-icon' onClick={activateSearch}>
-                        <FontAwesomeIcon icon={faSearch}/>
+                        <FontAwesomeIcon icon={faSearch}/>  
                     </div>
                     <div className="search-input">
                         <input 
@@ -39,7 +39,7 @@ const SearchBar = ({ collapsable, labelValue, searchOnChange }) => {
                             onChange={onValueChange}
                             />
                     </div>
-                        <FontAwesomeIcon 
+                        <FontAwesomeIcon
                             icon={faTimes}
                             size='xs'
                             className='clear-search'

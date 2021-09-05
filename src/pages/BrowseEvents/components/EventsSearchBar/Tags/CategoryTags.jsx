@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Tag from './Tag'
-import { getTags } from '../../../../../utils'
+import { getTags } from '../../../../../utils/utils'
 
 
 const CategoryTags = ({ tagsOnChange }) => {

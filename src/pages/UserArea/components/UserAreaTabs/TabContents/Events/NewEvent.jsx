@@ -6,7 +6,7 @@ import validations from '../../../../../../services/validations/validations'
 import TextBtn from '../../../../../../components/General/Inputs/TextBtn/TextBtn'
 import API from '../../../../../../DAL/api';
 import { AuthApi } from '../../../../../../services/contexts/AuthApi';
-import { getTags } from '../../../../../../utils'
+import { getTags } from '../../../../../../utils/utils'
 
 
 const NewEvent = ({ reloadEvents, setShowForm, fromRequestValues }) => {

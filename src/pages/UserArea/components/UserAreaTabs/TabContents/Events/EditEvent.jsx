@@ -4,7 +4,7 @@ import UploadBtn from '../../../../../../components/General/Inputs/UploadBtn/Upl
 import { Formik, Form, Field } from 'formik';
 import validations from '../../../../../../services/validations/validations'
 import TextBtn from '../../../../../../components/General/Inputs/TextBtn/TextBtn'
-import { getTags, formatDDMMYYYToYYYYMMDD } from '../../../../../../utils';
+import { getTags, formatDDMMYYYToYYYYMMDD } from '../../../../../../utils/utils';
 
 const EditEvent = ({ event, onEditHandler, setEditShowForm, errMsg }) => {
     const [categories, setCategories] = useState([])

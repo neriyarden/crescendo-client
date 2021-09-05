@@ -5,17 +5,18 @@ import CharsSearchBar from '../../../../components/General/Inputs/CharsSearchBar
 
 const ArtistSearchBar = ({ searchFilters, setSearchFilters }) => {
 
-    const searchOnChange = (value) => {
-        setSearchFilters({...searchFilters, searchTerm: value})
+    const onValueUpdate = (key) => (value) => {
+        setSearchFilters({ ...searchFilters, [key]: value })
     }
-    const onCharSelect = (value) => {
-        setSearchFilters({...searchFilters, startsWith: value})
-    }
-    
+
     return (
         <div className='browse-artists-search'>
-            <SearchBar collapsable={false} labelValue='Artist' searchOnChange={searchOnChange}/>
-            <CharsSearchBar onCharSelect={onCharSelect}/>
+            <SearchBar
+                isCollapsable={false}
+                labelValue='Artist'
+                searchOnChange={onValueUpdate('searchTerm')}
+            />
+            <CharsSearchBar onCharSelect={onValueUpdate('startsWith')} />
         </div>
     )
 }
