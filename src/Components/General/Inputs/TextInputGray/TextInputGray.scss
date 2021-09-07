@@ -20,23 +20,25 @@
     max-width: 400px;
     width: 100%;
     text-align: center;
-    border: 2px dashed #ddd;
+    border: 2px dashed #999;
     border-radius: 5px;
     margin-block: 0.3em;
     font-family: $main-font;
     font-size: 1rem;
     outline: none;
     background: $main-color;
-    padding-inline: 0.8rem;
+    padding: 0.1rem 0.8rem;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #999;
     
     
     &:focus ~ svg{
       display: none;
     }
-    &:hover {
-      border: 2px dashed #999;
+    &:hover, &:focus {
+      border-color: $third-color;
+      color: $solid-black;
     }
   }
 
@@ -44,12 +46,12 @@
       position: absolute;
       @include vertical-center;
       right: 5px;
-      color: #ddd;
+      color: #999;
       
     }
 
     &:hover svg {
-      color: #999;
+      color: $third-color;
     }
 }
       
