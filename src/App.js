@@ -18,21 +18,20 @@ const App = () => {
     )
   }
 
-  const authenticateUser = useCallback(async (userId, token) => {
-    // console.log('userId:', userId);
-    // console.log('token:', token);
+  const authenticateUser = useCallback(async (userId = null, token = null) => {
     if (!userId || !token) {
-      return setAuth(null)
+      let storedData = JSON.parse(localStorage.getItem('userData'))
+      if(!storedData || !storedData.token) {
+        return setAuth(null)
+      }
+      [userId, token] = [storedData.user_id, storedData.token]
     }
     let userData = jwt_decode(token)
-    // console.log('userData', userData);
     if (userData.is_artist) {
       const artistData = await API.getArtistData(userId)
-      // console.log('artistData:', artistData);
       userData = { ...userData, ...artistData }
     }
     setAuth({...userData, token})
-    // console.log('{ ...userData, token }:', { ...userData, token });
     localStorage.setItem('userData', JSON.stringify({ ...userData, token }))
     cacheUserVotedRequests(userId)
   }, [])

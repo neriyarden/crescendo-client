@@ -15,7 +15,7 @@ const TabContentAccount = () => {
     const onSubmitHandler = async (values) => {
         //  TODO generalize this
         await API.editUserData(values)
-        Auth.reloadAuth(Auth.auth.user_id, Auth.auth.token)
+        Auth.reloadAuth()
         setShowSubmittedMsg(true)
         setTimeout(() => {
             setShowSubmittedMsg(false)

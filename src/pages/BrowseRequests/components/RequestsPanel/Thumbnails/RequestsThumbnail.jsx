@@ -27,7 +27,7 @@ const RequestThumbnail = ({ thumbData }) => {
             if (response.error) return setErrMsg(response.error)
             setVotesCount((prev => prev - 1))
         }
-        Auth.reloadAuth(user_id, Auth.auth.token)
+        Auth.reloadAuth()
         setVoted((prev => !prev))
     }
 
