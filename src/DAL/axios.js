@@ -5,21 +5,20 @@ const token = storedData?.token
 
 export const axios = require('axios').create({
     baseURL: currentServer,
-    headers: {
-        "Content-type": "application/json",
-        "Access-Control-Allow-Origin": currentServer,
-        "Authorization": token ? `Bearer ${token}` : "" 
-    },
     withCredentials: true,
 })
 
 export const httpRequest = async (path, method = 'GET', data = null) => {
-    console.log('data:', data);
-
+    console.log('axios headers:', axios);
     try {
         const response = await axios({
-            method,
             url: '/api' + path,
+            method,
+            headers: {
+                "Content-type": "application/json",
+                "Access-Control-Allow-Origin": currentServer,
+                "Authorization": token ? `Bearer ${token}` : "" 
+            },
             data
         })
         console.log('Http Response:', await response);
