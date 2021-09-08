@@ -21,7 +21,9 @@ const TabContentProfile = () => {
             formData.set(key, values[key])
         })
         await API.editArtistDetails(formData)
-        Auth.reloadAuth()
+        console.log('1:', Auth.auth);
+        console.log('2:', Auth.auth.user_id, Auth.auth.token);
+        Auth.reloadAuth(Auth.auth.user_id, Auth.auth.token)
         setShowSubmittedMsg(true)
         setTimeout(() => {
             setShowSubmittedMsg(false)
@@ -43,7 +45,7 @@ const TabContentProfile = () => {
                         :
                         <Formik
                             initialValues={{
-                                user_id: Auth.auth.id,
+                                user_id: Auth.auth.user_id,
                                 bio: Auth.auth.bio || '',
                                 link_to_spotify: Auth.auth.link_to_spotify || '',
                                 link_to_instagram: Auth.auth.link_to_instagram || '',

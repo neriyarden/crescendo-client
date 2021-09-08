@@ -18,12 +18,12 @@ const VoteLine = ({ vote, i, reloadVotes }) => {
         setTimeout(async () => {
             // sessionStorage cleared so user who votes for his own req will get updated req dashboard
             sessionStorage.removeItem('myRequests')
-            const userId = Auth.auth.id
+            const userId = Auth.auth.user_id
             const removedVote = await API.removeVote(requestId, userId)
             if (removedVote.error)
                 return setUnvoteMsg(removedVote.error)
             sessionStorage.removeItem('user_voted_requests')
-            reloadVotes(Auth.auth.id)
+            reloadVotes(Auth.auth.user_id)
             setUnvoteMsg('')
         }, 1500);
     }

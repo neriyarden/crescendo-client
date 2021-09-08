@@ -44,12 +44,13 @@ const getFutureEventsData = async (filters) => {
     return results
 }
 
-const getRequestsData = async (filters) => {
+const getRequestsData = async (filters, userData) => {
     const results = await httpRequest(
         `/requests?size=${filters.size || -1}&pageNum=${filters.pageNum || 1}`
         + `${filters.artist ? `&artist=${filters.artist}` : ''}`
-        + `${filters.city ? `&city=${filters.city}` : ''}`
-        , 'GET'
+        + `${filters.city ? `&city=${filters.city}` : ''}`,
+        'GET',
+        userData
     )
     return results
 
@@ -98,6 +99,7 @@ const editUserData = async (values) => {
 }
 
 const editArtistDetails = async (formData) => {
+    console.log('formData:', formData);
     const results = await httpRequest(`/artists`, 'PATCH', formData)
     return results
 }

@@ -1,19 +1,21 @@
-
-
 export const currentServer = process.env.REACT_APP_DEV_SERVER
 console.log('currentServer', currentServer);
+const storedData = JSON.parse(localStorage.getItem('userData'))
+const token = storedData?.token
 
 export const axios = require('axios').create({
     baseURL: currentServer,
     headers: {
         "Content-type": "application/json",
         "Access-Control-Allow-Origin": currentServer,
-        'access-control-expose-headers': 'Set-Cookie'
+        "Authorization": token ? `Bearer ${token}` : "" 
     },
     withCredentials: true,
 })
 
 export const httpRequest = async (path, method = 'GET', data = null) => {
+    console.log('data:', data);
+
     try {
         const response = await axios({
             method,

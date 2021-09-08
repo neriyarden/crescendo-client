@@ -18,7 +18,7 @@ const TabContentRequests = () => {
         const localData = JSON.parse(sessionStorage.getItem('myRequests'))
         if (localData?.error) sessionStorage.removeItem('myRequests')
         if (localData) return setRequests(localData)
-        const results = await API.getArtistRequests(Auth.auth.id)
+        const results = await API.getArtistRequests(Auth.auth.user_id)
         if (results?.error) {
             setRequests([])
             return setErrorMsg((results?.error))

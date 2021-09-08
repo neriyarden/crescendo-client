@@ -14,9 +14,8 @@ const TabContentAccount = () => {
 
     const onSubmitHandler = async (values) => {
         //  TODO generalize this
-        values.id = Auth.auth.id
         await API.editUserData(values)
-        Auth.reloadAuth()
+        Auth.reloadAuth(Auth.auth.user_id, Auth.auth.token)
         setShowSubmittedMsg(true)
         setTimeout(() => {
             setShowSubmittedMsg(false)
@@ -38,6 +37,7 @@ const TabContentAccount = () => {
                         :
                         <Formik
                             initialValues={{
+                                user_id: Auth.auth.user_id,
                                 name: Auth.auth.name,
                                 password: '',
                                 repeat_password: ''

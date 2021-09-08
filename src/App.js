@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import Crescendo from './pages/Crescendo'
-import Cookies from 'js-cookie'
 import API from './DAL/api'
 import { AuthApi } from './services/contexts/AuthApi'
 import { getTags } from './utils/utils'
+import jwt_decode from 'jwt-decode'
 
 const App = () => {
   const [auth, setAuth] = useState(null)
@@ -18,21 +18,27 @@ const App = () => {
     )
   }
 
-  const authenticateUser = useCallback(async () => {
-    const userId = Cookies.getJSON('session_id')
-    if (userId) {
-      let userData = await API.getUserData(userId)
-      if (userData.is_artist) {
-        const artistData = await API.getArtistData(userId)
-        userData = { ...userData, ...artistData }
-      }
-      setAuth(userData)
-      cacheUserVotedRequests(userId)
+  const authenticateUser = useCallback(async (userId, token) => {
+    // console.log('userId:', userId);
+    // console.log('token:', token);
+    if (!userId || !token) {
+      return setAuth(null)
     }
+    let userData = jwt_decode(token)
+    // console.log('userData', userData);
+    if (userData.is_artist) {
+      const artistData = await API.getArtistData(userId)
+      // console.log('artistData:', artistData);
+      userData = { ...userData, ...artistData }
+    }
+    setAuth({...userData, token})
+    // console.log('{ ...userData, token }:', { ...userData, token });
+    localStorage.setItem('userData', JSON.stringify({ ...userData, token }))
+    cacheUserVotedRequests(userId)
   }, [])
 
   const signOut = () => {
-    Cookies.remove('session_id')
+    localStorage.removeItem('userData')
     sessionStorage.removeItem('user_voted_requests')
     sessionStorage.removeItem('myEvents')
     sessionStorage.removeItem('myRequests')
@@ -44,7 +50,10 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    authenticateUser()
+    let storedData = JSON.parse(localStorage.getItem('userData'))
+    if(storedData && storedData.token) {
+      authenticateUser(storedData.user_id, storedData.token)
+    }
   }, [authenticateUser])
 
   return (

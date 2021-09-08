@@ -17,7 +17,7 @@ const NewRequest = ({ reloadRequests }) => {
         const newRequestData = await API.addNewRequest(values)
         if (newRequestData.error) setErrMsg(newRequestData.error)
         sessionStorage.removeItem('myRequests')
-        reloadRequests(Auth.auth.id)
+        reloadRequests(Auth.auth.user_id)
         setShowForm(false)
     }
 
@@ -36,6 +36,7 @@ const NewRequest = ({ reloadRequests }) => {
                     <>
                         <Formik
                             initialValues={{
+                                user_id: Auth.auth.user_id,
                                 tour: '',
                                 city: '',
                                 cap: 10,

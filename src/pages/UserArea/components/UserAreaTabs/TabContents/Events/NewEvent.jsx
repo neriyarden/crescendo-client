@@ -41,7 +41,7 @@ const NewEvent = ({ reloadEvents, setShowForm, fromRequestValues }) => {
         const newEventData = await API.addNewEvent(formData)
         if (newEventData.error) setErrMsg(newEventData.error)
         sessionStorage.removeItem('myEvents')
-        reloadEvents(Auth.auth.id)
+        reloadEvents(Auth.auth.user_id)
         setShowForm(false)
     }
 

@@ -1,14 +1,19 @@
+import React, { useContext } from 'react'
 import TextInputGray from '../../../../../../components/General/Inputs/TextInputGray/TextInputGray'
 import { Formik, Form } from 'formik';
 import validations from '../../../../../../services/validations/validations'
 import TextBtn from '../../../../../../components/General/Inputs/TextBtn/TextBtn'
+import { AuthApi } from '../../../../../../services/contexts/AuthApi';
 
 const EditRequest = ({ request, onEditHandler, setShowEditForm, errMsg }) => {
+    const Auth = useContext(AuthApi)
+
     return (
         <div className='new-request'>
             <div className="new-request-form">
                 <Formik
                     initialValues={{
+                        user_id: Auth.auth.user_id,
                         tour: request.tour,
                         city: request.city,
                         cap: request.cap,
