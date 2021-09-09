@@ -12,6 +12,7 @@ const EventLine = ({ event, i, reloadEvents }) => {
     const [deletionMsg, setDeletionMsg] = useState('')
     const [showEditForm, setEditShowForm] = useState(false)
     const [errMsg, setErrMsg] = useState('')
+    
     const onEditHandler = async (values) => {
         //  TODO generalize this
         const formData = new FormData()
@@ -23,7 +24,7 @@ const EventLine = ({ event, i, reloadEvents }) => {
         const editedEventData = await API.editEvent(formData)
         if (editedEventData.error) setErrMsg(editedEventData.error)
         sessionStorage.removeItem('myEvents')
-        reloadEvents(Auth.auth.id)
+        reloadEvents(Auth.auth.user_id)
         setEditShowForm(false)
     }
 
@@ -38,7 +39,7 @@ const EventLine = ({ event, i, reloadEvents }) => {
             if (deletedEvent.error)
                 return setDeletionMsg(deletedEvent.error)
             sessionStorage.removeItem('myEvents')
-            reloadEvents(Auth.auth.id)
+            reloadEvents(Auth.auth.user_id)
             setDeletionMsg('')
         }, 1500);
     }

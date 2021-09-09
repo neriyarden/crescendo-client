@@ -14,7 +14,7 @@ const RequestThumbnail = ({ thumbData }) => {
     
     const voteBtnHandler = (isVoted) => {
         const newVotesCount = votesCount + 1
-        const user_id = Auth.auth.id
+        const user_id = Auth.auth.user_id
         sessionStorage.removeItem('myRequests')
         if (!isVoted) {
             const response = API.castVote(thumbData.id, user_id)

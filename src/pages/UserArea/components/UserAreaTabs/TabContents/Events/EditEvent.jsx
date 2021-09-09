@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import TextInputGray from '../../../../../../components/General/Inputs/TextInputGray/TextInputGray'
 import UploadBtn from '../../../../../../components/General/Inputs/UploadBtn/UploadBtn'
 import { Formik, Form, Field } from 'formik';
 import validations from '../../../../../../services/validations/validations'
 import TextBtn from '../../../../../../components/General/Inputs/TextBtn/TextBtn'
 import { getTags, formatDDMMYYYToYYYYMMDD } from '../../../../../../utils/utils';
+import { AuthApi } from '../../../../../../services/contexts/AuthApi';
 
 const EditEvent = ({ event, onEditHandler, setEditShowForm, errMsg }) => {
+    const Auth = useContext(AuthApi)
     const [categories, setCategories] = useState([])
 
     const categoryTags = categories.map((tag, i) => (
@@ -40,6 +42,7 @@ const EditEvent = ({ event, onEditHandler, setEditShowForm, errMsg }) => {
             <div className="new-event-form">
                 <Formik
                     initialValues={{
+                        user_id: Auth.auth.user_id,
                         tour: event.tour,
                         date: formatDDMMYYYToYYYYMMDD(event.date),
                         time: event.time,

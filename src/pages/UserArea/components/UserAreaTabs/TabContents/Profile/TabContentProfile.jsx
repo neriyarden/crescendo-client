@@ -43,7 +43,7 @@ const TabContentProfile = () => {
                         :
                         <Formik
                             initialValues={{
-                                user_id: Auth.auth.id,
+                                user_id: Auth.auth.user_id,
                                 bio: Auth.auth.bio || '',
                                 link_to_spotify: Auth.auth.link_to_spotify || '',
                                 link_to_instagram: Auth.auth.link_to_instagram || '',

@@ -13,7 +13,7 @@ const RegisterForm = () => {
     const [serverErrorMsg, setServerErrorMsg] = useState('')
     const [redirectToLogin, setRedirectToLogin] = useState(false)
 
-
+    // TODO move to msg file
     const displayNameSubtexts = [
         'You can change this later in your personal settings'
     ]
@@ -22,6 +22,7 @@ const RegisterForm = () => {
         if (response.data?.error) return setServerErrorMsg(response.data?.error)
         setRedirectToLogin(true)
     }
+    
     if (redirectToLogin) return <Redirect to={{
         pathname: '/SignIn',
         state: { referrer: '/User/Welcome' }

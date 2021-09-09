@@ -10,8 +10,6 @@ import ArtistRequests from './components/ArtistRequests/ArtistRequests'
 const ArtistPage = () => {
     const { id } = useParams()
     const [artistData, setArtistData] = useState({})
-
-
     
     useEffect(() => {
         const getArtistDataOnLoad = async () => {
