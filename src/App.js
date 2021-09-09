@@ -23,8 +23,6 @@ const App = () => {
   }
 
   const authenticateUser = useCallback(async (userId = null, token = null) => {
-    console.log('userId:', userId);
-    console.log('token:', token);
 
     let expiration = null
     if (!userId || !token) {
@@ -41,11 +39,8 @@ const App = () => {
       const artistData = await API.getArtistData(userId)
       userData = { ...userData, ...artistData }
     }
-    console.log('expiration', expiration, typeof expiration);
     const tokenExpirationDate =  expiration || new Date(new Date().getTime() + 1000 * 60 * 60)
-    console.log('tokenExpirationDate', tokenExpirationDate, typeof tokenExpirationDate);
     if (new Date(tokenExpirationDate) < new Date()) {
-      console.log('new Date(expiration), new Date()', new Date(expiration), new Date());
       setToken(null)
       return setAuth(null)
     }

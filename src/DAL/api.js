@@ -99,7 +99,6 @@ const editUserData = async (values) => {
 }
 
 const editArtistDetails = async (formData) => {
-    console.log('formData:', formData);
     const results = await httpRequest(`/artists`, 'PATCH', formData)
     return results
 }

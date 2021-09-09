@@ -9,7 +9,6 @@ export const axios = require('axios').create({
 })
 
 export const httpRequest = async (path, method = 'GET', data = null) => {
-    console.log('axios headers:', axios);
     try {
         const response = await axios({
             url: '/api' + path,
