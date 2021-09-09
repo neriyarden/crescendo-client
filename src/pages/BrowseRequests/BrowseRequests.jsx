@@ -49,11 +49,12 @@ const BrowseRequests = () => {
                 searchFilters,
                 { user_id: Auth.auth.user_id }
                 )
+                console.log('req.errer:', requests.error);
+            if (requests.error) return Auth.signOut()
             if (requests.length === 0) return setResultsMsg(msg.NO_RESULTS_MSG)
             const userVotedRequests = JSON.parse(
                 sessionStorage.getItem('user_voted_requests')
             )
-    
             const userVotedRequestsIds = userVotedRequests ?
                 userVotedRequests.map(request => (
                     request.request_id

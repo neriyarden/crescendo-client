@@ -1,7 +1,5 @@
-export const currentServer = process.env.REACT_APP_DEV_SERVER
+export const currentServer = process.env.REACT_APP_PROD_SERVER
 console.log('currentServer', currentServer);
-const storedData = JSON.parse(localStorage.getItem('userData'))
-const token = storedData?.token
 
 export const axios = require('axios').create({
     baseURL: currentServer,
@@ -9,6 +7,8 @@ export const axios = require('axios').create({
 })
 
 export const httpRequest = async (path, method = 'GET', data = null) => {
+    const storedData = JSON.parse(localStorage.getItem('userData'))
+    const token = storedData?.token
     try {
         const response = await axios({
             url: '/api' + path,
