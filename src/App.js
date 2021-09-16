@@ -6,6 +6,8 @@ import { getTags } from './utils/utils'
 import jwt_decode from 'jwt-decode'
 
 let logoutTimer;
+// const expirationTime = 1000 * 20
+const expirationTime = 1000 * 60 * 60
 
 const App = () => {
   const [auth, setAuth] = useState(null)
@@ -22,30 +24,31 @@ const App = () => {
     )
   }
 
-  const authenticateUser = useCallback(async (userId = null, token = null) => {
+
+  const authenticateUser = useCallback(async (userId, token) => {
+    setToken(token)
 
     let expiration = null
     if (!userId || !token) {
       let storedData = JSON.parse(localStorage.getItem('userData'))
-      if(!storedData || !storedData.token) {
-        setToken(null)
-        return setAuth(null)
+      if (!storedData || !storedData.token) {
+        logout()
       }
       [userId, token, expiration] = [storedData.user_id, storedData.token, storedData.expiration]
     }
-    setToken(token)
     let userData = jwt_decode(token)
     if (userData.is_artist) {
       const artistData = await API.getArtistData(userId)
       userData = { ...userData, ...artistData }
     }
-    const tokenExpirationDate =  expiration || new Date(new Date().getTime() + 1000 * 60 * 60)
+
+    const tokenExpirationDate = expiration || new Date(new Date().getTime() + expirationTime)
     if (new Date(tokenExpirationDate) < new Date()) {
       setToken(null)
       return setAuth(null)
     }
     setTokenExpirationDate(tokenExpirationDate)
-    setAuth({...userData, token})
+    setAuth({ ...userData, token })
     localStorage.setItem('userData', JSON.stringify({
       ...userData,
       token,
@@ -54,7 +57,7 @@ const App = () => {
     cacheUserVotedRequests(userId)
   }, [])
 
-  const signOut = () => {
+  const logout = () => {
     localStorage.removeItem('userData')
     sessionStorage.removeItem('user_voted_requests')
     sessionStorage.removeItem('myEvents')
@@ -63,11 +66,10 @@ const App = () => {
     setTokenExpirationDate(null)
     setAuth(null)
   }
-
   useEffect(() => {
-    if(token && tokenExpirationDate) {
-      const remainingTime = tokenExpirationDate - new Date().getTime()
-      logoutTimer = setTimeout(authenticateUser, remainingTime)
+    if (token && tokenExpirationDate) {
+      const remainingTime = tokenExpirationDate.getTime() - new Date().getTime()
+      logoutTimer = setTimeout(logout, remainingTime)
     } else {
       clearTimeout(logoutTimer)
     }
@@ -79,7 +81,7 @@ const App = () => {
 
   useEffect(() => {
     let storedData = JSON.parse(localStorage.getItem('userData'))
-    if(storedData && storedData.token) {
+    if (storedData && storedData.token) {
       authenticateUser(storedData.user_id, storedData.token)
     }
   }, [authenticateUser])
@@ -88,7 +90,7 @@ const App = () => {
     <AuthApi.Provider value={{
       auth,
       setAuth,
-      signOut,
+      logout,
       reloadAuth: authenticateUser,
     }}>
       <Crescendo />

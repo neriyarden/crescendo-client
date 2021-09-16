@@ -49,8 +49,7 @@ const BrowseRequests = () => {
                 searchFilters,
                 { user_id: Auth.auth.user_id }
                 )
-                console.log('req.errer:', requests.error);
-            if (requests.error) return Auth.signOut()
+            if (requests.error) return Auth.logout()
             if (requests.length === 0) return setResultsMsg(msg.NO_RESULTS_MSG)
             const userVotedRequests = JSON.parse(
                 sessionStorage.getItem('user_voted_requests')
@@ -75,7 +74,7 @@ const BrowseRequests = () => {
         }, searchDelay)
 
         return () => clearTimeout(setTid)
-    }, [searchFilters, Auth.auth.user_id])
+    }, [searchFilters, Auth])
 
 
     return (

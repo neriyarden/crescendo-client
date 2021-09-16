@@ -1,4 +1,4 @@
-export const currentServer = process.env.REACT_APP_PROD_SERVER
+export const currentServer = process.env.REACT_APP_DEV_SERVER
 console.log('currentServer', currentServer);
 
 export const axios = require('axios').create({
@@ -7,9 +7,10 @@ export const axios = require('axios').create({
 })
 
 export const httpRequest = async (path, method = 'GET', data = null) => {
-    const storedData = JSON.parse(localStorage.getItem('userData'))
-    const token = storedData?.token
     try {
+        const storedData = JSON.parse(localStorage.getItem('userData'))
+        const token = storedData?.token
+        console.log('Fetching:', path, method);
         const response = await axios({
             url: '/api' + path,
             method,

@@ -64,6 +64,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
   }
   & img {
     @include size(30px);
@@ -95,4 +96,19 @@
     opacity: 0;
     width: 0;
   }
+}
+
+.user-notification {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateX(-5%) translateY(5%);
+  background: $third-color;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  color: #fff;
+  font-family: $main-font;
+  font-size: 0.5rem;
+  text-align: center;
 }

@@ -16,7 +16,7 @@ const RequestLine = ({ request, i, reloadRequests }) =>{
     const [errMsg, setErrMsg] = useState('')
 
     const onEditHandler = async (values) => {
-        //  TODO generalize this
+        //  TODO generalize this - custom hook
         values.user_id = Auth.auth.user_id
         values.request_id = request.id
         const editedRequestData = await API.editRequest(values)
@@ -43,6 +43,7 @@ const RequestLine = ({ request, i, reloadRequests }) =>{
             setDeletionMsg('')
         }, 1500);
     }
+
     return (
         <li key={i} >
             {showEditForm ?

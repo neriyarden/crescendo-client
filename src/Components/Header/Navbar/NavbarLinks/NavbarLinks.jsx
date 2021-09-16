@@ -43,7 +43,7 @@ const NavbarLinks = () => {
                     <NavLink to='/' >
                         <span
                             className='navbar-link sign-out-link'
-                            onClick={Auth.signOut}
+                            onClick={Auth.logout}
                         >
                             Sign Out
                         </span>

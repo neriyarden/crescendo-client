@@ -4,7 +4,7 @@ import VoteLine from './VoteLine'
 import Loader from '../../../../../../components/General/Loader'
 import { AuthApi } from '../../../../../../services/contexts/AuthApi'
 
-const  TabContentVotes = () => {
+const TabContentVotes = () => {
     const Auth = useContext(AuthApi)
     const [loading, setLoading] = useState(true)
     const [votes, setVotes] = useState([])
@@ -28,10 +28,8 @@ const  TabContentVotes = () => {
     ))
 
     useEffect(() => {
-        setTimeout(() => {
-            getVotesOfUser()
-            setLoading(false)
-        }, 500)
+        getVotesOfUser()
+        setLoading(false)
     }, [getVotesOfUser])
 
     return (

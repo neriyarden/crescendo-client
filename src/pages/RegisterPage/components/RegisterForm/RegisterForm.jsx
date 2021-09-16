@@ -11,7 +11,7 @@ import Toggles from '../../../../components/General/Inputs/Toggles/Toggles'
 
 const RegisterForm = () => {
     const [serverErrorMsg, setServerErrorMsg] = useState('')
-    const [redirectToLogin, setRedirectToLogin] = useState(false)
+    const [registeredSuccessfully, setRegisteredSuccessfully] = useState(false)
 
     // TODO move to msg file
     const displayNameSubtexts = [
@@ -20,78 +20,84 @@ const RegisterForm = () => {
     const onSubmitHanlder = async (values) => {
         const response = await API.registerNewUser(values)
         if (response.data?.error) return setServerErrorMsg(response.data?.error)
-        setRedirectToLogin(true)
+        setRegisteredSuccessfully(true)
     }
-    
-    if (redirectToLogin) return <Redirect to={{
-        pathname: '/SignIn',
-        state: { referrer: '/User/Welcome' }
-    }} />
+
     return (
-        <div className='form-container'>
-            <FormHeading title='Sign Up' />
-            <Formik
-                initialValues={{
-                    name: '',
-                    email: '',
-                    password: '',
-                    repeat_password: '',
-                    is_artist: 0
-                }}
+        <>
+            {
+                registeredSuccessfully
+                    ?
+                    <Redirect to={{
+                        pathname: '/SignIn',
+                        state: { referrer: '/User/Welcome' }
+                    }} />
+                    :
+                    <div className='form-container'>
+                        <FormHeading title='Sign Up' />
+                        <Formik
+                            initialValues={{
+                                name: '',
+                                email: '',
+                                password: '',
+                                repeat_password: '',
+                                is_artist: 0
+                            }}
 
-                validationSchema={validations.signUp}
+                            validationSchema={validations.signUp}
 
-                onSubmit={(values, { setSubmitting }) => {
-                    onSubmitHanlder(values)
-                    setSubmitting(false);
-                }}
-            >
-                {({ errors, dirty }) => (
+                            onSubmit={(values, { setSubmitting }) => {
+                                onSubmitHanlder(values)
+                                setSubmitting(false);
+                            }}
+                        >
+                            {({ errors, dirty }) => (
 
-                    <Form className='form'>
-                        <TextInputPink
-                            name='name'
-                            label='display name'
-                            subtexts={displayNameSubtexts}
+                                <Form className='form'>
+                                    <TextInputPink
+                                        name='name'
+                                        label='display name'
+                                        subtexts={displayNameSubtexts}
+                                    />
+                                    <TextInputPink
+                                        name='email'
+                                        label='email address'
+                                    />
+                                    <TextInputPink
+                                        name='password'
+                                        label='password'
+                                        type='password'
+                                    />
+                                    <TextInputPink
+                                        name='repeat_password'
+                                        label='confirm password'
+                                        placeholder='Re-enter your password'
+                                        type='password'
+                                    />
+                                    <Toggles
+                                        name='is_artist'
+                                        labels={['fan', 'artist']}
+                                    />
+                                    <span className='server-error-msg'>{serverErrorMsg}</span>
+                                    <TextBtn
+                                        text='sign up'
+                                        type='submit'
+                                        disabled={Object.keys(errors).length !== 0 || !dirty}
+                                    />
+                                </Form>
+                            )}
+                        </Formik>
+                        <FormFooterText
+                            text='Already A Member?'
+                            linkText='Sign In'
+                            linkHref={{
+                                pathname: '/SignIn',
+                                state: { referrer: '/User/Welcome' }
+                            }}
                         />
-                        <TextInputPink
-                            name='email'
-                            label='email address'
-                        />
-                        <TextInputPink
-                            name='password'
-                            label='password'
-                            type='password'
-                        />
-                        <TextInputPink
-                            name='repeat_password'
-                            label='confirm password'
-                            placeholder='Re-enter your password'
-                            type='password'
-                        />
-                        <Toggles
-                            name='is_artist'
-                            labels={['fan', 'artist']}
-                        />
-                        <span className='server-error-msg'>{serverErrorMsg}</span>
-                        <TextBtn
-                            text='sign up'
-                            type='submit'
-                            disabled={Object.keys(errors).length !== 0 || !dirty}
-                        />
-                    </Form>
-                )}
-            </Formik>
-            <FormFooterText
-                text='Already A Member?'
-                linkText='Sign In'
-                linkHref={{
-                    pathname: '/SignIn',
-                    state: { referrer: '/User/Welcome' }
-                }}
-            />
-
-        </div>
+                    </div>
+            }
+        </>
     )
 }
 
