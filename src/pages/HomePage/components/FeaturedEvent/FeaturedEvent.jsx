@@ -19,30 +19,30 @@ const FeaturedEvent = ({ featuredEvent }) => {
                 style={bgImage}
             >
             </div>
-            <Link 
-                to={`/Events/${featuredEvent.id}`}
-                className="featured-event"
-                style={{ backgroundImage: `url(${currentServer + featuredEvent.img_url})` }}
-            >
-                <div className='featured-event-details'>
-                    <h3>{featuredEvent.tour}</h3>
-                    <div className="triangle l-triangle"></div>
-                    <div className="triangle r-triangle"></div>
-                    <div className='dets'>
-                        <h5 className='date'>{featuredEvent.date}</h5>
-                        <h4 className='venue'>{featuredEvent.venue}</h4>
-                    </div>
+            <div className='featured-event-content'>
+                <div className="featured-event-extra-details">
+                    <h6 className='featured'>FEATURED</h6>
+                    <h4 className='description'>{featuredEvent.artist}</h4>
+                    <h5 className='time'>{featuredEvent.time}</h5>
+                    <h5 className='duration'>{featuredEvent.duration}m</h5>
+                    <h5 className='city'>{featuredEvent.city}</h5>
                 </div>
-            </Link>
-            <div className="featured-event-extra-details">
-                <h6 className='featured'>FEATURED</h6>
-                <h4 className='description'>”{featuredEvent.description}„</h4>
-                <h5 className='time'>{featuredEvent.time}</h5>
-                <h5 className='duration'>{featuredEvent.duration}m</h5>
-                <h5 className='city'>{featuredEvent.city}</h5>
-
+                <Link
+                    to={`/Events/${featuredEvent.id}`}
+                    className="featured-event"
+                    style={{ backgroundImage: `url(${currentServer + featuredEvent.img_url})` }}
+                >
+                    <div className='featured-event-details'>
+                        <h3>{featuredEvent.tour}</h3>
+                        <div className="triangle l-triangle"></div>
+                        <div className="triangle r-triangle"></div>
+                        <div className='dets'>
+                            <h5 className='date'>{featuredEvent.date}</h5>
+                            <h4 className='venue'>{featuredEvent.venue}</h4>
+                        </div>
+                    </div>
+                </Link>
             </div>
-
         </section>
     )
 }

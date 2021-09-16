@@ -8,7 +8,7 @@ import Loader from '../../components/General/Loader'
 const UpcomingEvent = () => {
     const [loading, setLoading] = useState(true)
     const [upcomingEventsData, setUpcomingEventsData] = useState([])
-    const [featuredEventData, setfeaturedEventData] = useState([])
+    const [featuredEventData, setfeaturedEventData] = useState({})
     const [pastEventsData, setPastEventsData] = useState([])
 
     const getUpcomingEventsData = async () => {

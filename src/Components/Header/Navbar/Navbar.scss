@@ -18,14 +18,14 @@ header {
   align-items: flex-start;
   padding: 0.8rem 1.2rem;
   font-family: $main-font;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-style: normal;
   min-height: 90px;
   
   @include breakpoint-md {
     flex-direction: row;
     align-items: center;
-
+    
     &:hover .sign-out-link {
       width: 38px;
       opacity: 1;

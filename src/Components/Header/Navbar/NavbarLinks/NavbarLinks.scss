@@ -3,7 +3,7 @@
   align-items: center;
   position: relative;
   height: 41px;
-  margin-inline: 3vw;
+  margin-inline: 2vw;
   
   @include breakpoint-md {
     & {
@@ -14,7 +14,6 @@
   & a {
     display: block;
     color: $secondary-color;
-    text-decoration: none;
     white-space: nowrap;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -25,7 +24,7 @@
 
     @include breakpoint-md {
       & {
-        font-weight: 500;
+        font-weight: 600;
       }
       &:hover::after {
         width: 100%;
@@ -34,7 +33,6 @@
       }
     }
 
-    
     &::after {
       @include horizontal-center;
       content: '';
@@ -54,6 +52,7 @@
     @include breakpoint-md {
       margin-left: 2vw;
     }
+
     &::after {
       height: 0;
     }
@@ -81,8 +80,8 @@
     object-fit: cover;
     object-position: center;
     margin-right: 2vw;
-    border: 5px solid $main-color;
-    transition: border 0.1s ease-in;
+    border: 5px solid transparent;
+    transition: border 0.1s ease-in-out;
     
     &:hover {
       border-width: 0;
