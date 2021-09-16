@@ -1,7 +1,5 @@
 import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { AuthApi } from '../../../../services/contexts/AuthApi'
 import { currentServer } from '../../../../DAL/axios'
 
@@ -12,18 +10,13 @@ const NavbarLinks = () => {
     return (
         <ul>
         <li className='navbar-link'>
-            <NavLink activeClassName='active-link' to='/Upcoming'>
-                Upcoming Events
+            <NavLink activeClassName='active-link' to='/Artists'>
+                Artists
             </NavLink>
         </li>
         <li className='navbar-link'>
             <NavLink activeClassName='active-link' to='/Events'>
-                Browse Events
-            </NavLink>
-        </li>
-        <li className='navbar-link'>
-            <NavLink activeClassName='active-link' to='/Artists'>
-                Browse Artists
+                Events
             </NavLink>
         </li>
         <li className='navbar-link'>
@@ -55,8 +48,12 @@ const NavbarLinks = () => {
                         pathname: '/SignIn',
                         state: { referrer: '/User/Welcome' }
                     }}
+                        className='sign-in-link'
                     >
-                        <FontAwesomeIcon icon={faUser} size='lg' />
+                        <span
+                        >
+                            Sign In
+                        </span>
                     </NavLink>
                 </li>
         }

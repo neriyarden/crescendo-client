@@ -6,9 +6,8 @@ import {
     Route,
     Redirect
 } from 'react-router-dom'
-// import HomePage from './HomePage/HomePage'
 import Header from '../components/Header/Header'
-import UpcomingEvents from './UpcomingEvents/UpcomingEvents'
+import HomePage from './HomePage/HomePage'
 import Footer from '../components/Footer/Footer'
 import Loader from '../components/General/Loader'
 
@@ -34,11 +33,10 @@ const Crescendo = () => {
                 <div className='app-body'>
                     <Switch>
                         <Route exact path='/'>
-                            <Redirect to='/Upcoming' />
-                            {/* <HomePage /> */}
+                            <Redirect to='/Home' />
                         </Route>
-                        <Route path='/Upcoming'>
-                            <UpcomingEvents />
+                        <Route path='/Home'>
+                            <HomePage />
                         </Route>
                         <Route exact path='/Events'>
                             <BrowseEvents />

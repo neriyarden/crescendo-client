@@ -6,7 +6,6 @@ import { getTags } from './utils/utils'
 import jwt_decode from 'jwt-decode'
 
 let logoutTimer;
-// const expirationTime = 1000 * 20
 const expirationTime = 1000 * 60 * 60
 
 const App = () => {
@@ -23,7 +22,6 @@ const App = () => {
       'user_voted_requests', JSON.stringify(userVotedRequests)
     )
   }
-
 
   const authenticateUser = useCallback(async (userId, token) => {
     setToken(token)
