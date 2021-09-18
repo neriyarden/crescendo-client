@@ -1,4 +1,5 @@
-$bg-height: 400px;
+$featured-sm: 350px;
+$featured-xs: 450px;
 
 .featured-events {
   display: flex;
@@ -8,13 +9,13 @@ $bg-height: 400px;
   margin-left: auto;
   color: $main-color;
   background: $secondary-color;
-  width: 66%;
+  width: 100%;
   font-family: $main-font;
-  min-height: $bg-height;
+  min-height: $featured-xs;
   margin-bottom: 2rem;
   
   @include breakpoint-sm {
-    min-height: $bg-height;
+    min-height: $featured-sm;
   }
 }
 
@@ -22,23 +23,30 @@ $bg-height: 400px;
   position: absolute;
   top: 90px;
   right: 0;
-  width: 66%;
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   filter: blur(10px) brightness(0.8);
-  min-height: $bg-height;
+  min-height: $featured-xs;
+    
+  @include breakpoint-sm {
+    min-height: $featured-sm;
+  }
 }
 
 .featured-event-content {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  gap: 33%;
-
-
+  gap: 2rem;
+  
+  @include breakpoint-sm {
+    flex-direction: row;
+    gap: 15vw;
+  }
 }
 
 .featured-event {
@@ -154,7 +162,7 @@ $bg-height: 400px;
 }
 
 .featured {
-  margin-block: 2rem;
+  margin-block: 1rem;
   color: $main-color;
   letter-spacing: 5px;
   font-size: 1.3rem;

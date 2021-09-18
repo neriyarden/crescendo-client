@@ -4,6 +4,8 @@ import FeaturedEvent from './components/FeaturedEvent/FeaturedEvent'
 import EventsPanel from '../BrowseEvents/components/EventsPanel/EventsPanel'
 import API from '../../DAL/api'
 import Loader from '../../components/General/Loader'
+import Carousel from './components/Carousel/Carousel'
+import EventThumbnail from '../BrowseEvents/components/EventsPanel/Thumbnails/EventThumbnail'
 
 const UpcomingEvent = () => {
     const [loading, setLoading] = useState(true)
@@ -23,40 +25,26 @@ const UpcomingEvent = () => {
     }
 
     useEffect(() => {
-        getUpcomingEventsData()
-        getPastEvents()
-        setLoading(false)
+        (async () => {
+            await getUpcomingEventsData()
+            await getPastEvents()
+            setLoading(false)
+        })()
     }, [])
 
     return (
         <>
-            { 
+            {
                 loading ? <Loader /> :
                     <>
-                        <div className='homepage-hero'>
-                            <div className='homepage-hero-left-text'>
-                                <p>Music And <span>People</span> Together Bringing Music And</p>
-                                <p>And People Together Bringing <span>Music</span> And</p>
-                                <p>Music And People <span>Together</span> Bringing Music And</p>
-                                <p>Bringing <span>Music</span> And People Together Bringing Music</p>
-                                <p>People Together Bringing <span>Music</span> And People</p>
-                                <p><span>Together</span> Bringing Music And People <span>Together</span></p>
-                                <p>Bringing Music And <span>People</span> Together Bringing Music</p>
-                                <p>And People Together Bringing <span>Music</span> And</p>
-                                <p>Bringing <span>Music</span> And People Together Bringing Music</p>
-                                <p>Music And <span>People</span> Together Bringing Music And</p>
-                                <p>And People Together Bringing <span>Music</span> And</p>
-                                <p>Music And People <span>Together</span> Bringing Music And</p>
-                                <p>Bringing <span>Music</span> And People Together Bringing Music</p>
-                                <p>People Together Bringing <span>Music</span> And People</p>
-                                <p><span>Together</span> Bringing Music And People <span>Together</span></p>
-                                <p>Bringing Music And <span>People</span> Together Bringing Music</p>
-                                <p>And People Together Bringing <span>Music</span> And</p>
-                                <p>Bringing <span>Music</span> And People Together Bringing Music</p>
-
-                            </div>
-                            <FeaturedEvent featuredEvent={featuredEventData} />
-                        </div>
+                        <FeaturedEvent featuredEvent={featuredEventData} />
+                        <Carousel>
+                            {
+                                upcomingEventsData.map((data, i) => {
+                                    return <EventThumbnail key={i} thumbData={data} />
+                                })
+                            }
+                        </Carousel>
                         <section className='section'>
                             <SectionHeading title='Upcoming Events' />
                             <EventsPanel
@@ -80,3 +68,25 @@ const UpcomingEvent = () => {
 }
 
 export default UpcomingEvent
+
+{/* <div className='homepage-hero-left-text'>
+    <p>Music And <span>People</span> Together Bringing Music And</p>
+    <p>And People Together Bringing <span>Music</span> And</p>
+    <p>Music And People <span>Together</span> Bringing Music And</p>
+    <p>Bringing <span>Music</span> And People Together Bringing Music</p>
+    <p>People Together Bringing <span>Music</span> And People</p>
+    <p><span>Together</span> Bringing Music And People <span>Together</span></p>
+    <p>Bringing Music And <span>People</span> Together Bringing Music</p>
+    <p>And People Together Bringing <span>Music</span> And</p>
+    <p>Bringing <span>Music</span> And People Together Bringing Music</p>
+    <p>Music And <span>People</span> Together Bringing Music And</p>
+    <p>And People Together Bringing <span>Music</span> And</p>
+    <p>Music And People <span>Together</span> Bringing Music And</p>
+    <p>Bringing <span>Music</span> And People Together Bringing Music</p>
+    <p>People Together Bringing <span>Music</span> And People</p>
+    <p><span>Together</span> Bringing Music And People <span>Together</span></p>
+    <p>Bringing Music And <span>People</span> Together Bringing Music</p>
+    <p>And People Together Bringing <span>Music</span> And</p>
+    <p>Bringing <span>Music</span> And People Together Bringing Music</p>
+
+</div> */}

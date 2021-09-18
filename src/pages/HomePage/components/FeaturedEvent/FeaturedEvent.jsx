@@ -23,7 +23,7 @@ const FeaturedEvent = ({ featuredEvent }) => {
                 <div className="featured-event-extra-details">
                     <h6 className='featured'>FEATURED</h6>
                     <h4 className='description'>{featuredEvent.artist}</h4>
-                    <h5 className='time'>{featuredEvent.time}</h5>
+                    <h5 className='time'>{featuredEvent.time.slice(0, 5)}</h5>
                     <h5 className='duration'>{featuredEvent.duration}m</h5>
                     <h5 className='city'>{featuredEvent.city}</h5>
                 </div>
