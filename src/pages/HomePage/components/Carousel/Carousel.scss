@@ -1,8 +1,16 @@
-.swiper-container {
+.mySwiper-container {
+  width: calc(100% - 2rem);
+  margin-inline: auto;
+  margin-block: 2rem;
+  padding-block: 0;
+}
+
+.mySwiper {
   width: 100%;
 }
+
 .swiper-wrapper {
-  padding-block: 1rem 2rem;
+  padding-block: 2rem;
   margin-bottom: 1rem;
 }
 

@@ -13,6 +13,7 @@ $featured-xs: 450px;
   font-family: $main-font;
   min-height: $featured-xs;
   margin-bottom: 2rem;
+  position: relative;
   
   @include breakpoint-sm {
     min-height: $featured-sm;
@@ -21,7 +22,7 @@ $featured-xs: 450px;
 
 .featured-events-bg {
   position: absolute;
-  top: 90px;
+  top: 0px;
   right: 0;
   width: 100%;
   background-position: center;

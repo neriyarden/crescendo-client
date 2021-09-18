@@ -37,7 +37,6 @@ const UpcomingEvent = () => {
             {
                 loading ? <Loader /> :
                     <>
-                        <FeaturedEvent featuredEvent={featuredEventData} />
                         <Carousel>
                             {
                                 upcomingEventsData.map((data, i) => {
@@ -45,7 +44,8 @@ const UpcomingEvent = () => {
                                 })
                             }
                         </Carousel>
-                        <section className='section'>
+                        <FeaturedEvent featuredEvent={featuredEventData} />
+                        {/* <section className='section'>
                             <SectionHeading title='Upcoming Events' />
                             <EventsPanel
                                 eventsData={upcomingEventsData}
@@ -60,7 +60,7 @@ const UpcomingEvent = () => {
                                 setLoading={setLoading}
                                 loading={loading}
                             />
-                        </section>
+                        </section> */}
                     </>
             }
         </>
