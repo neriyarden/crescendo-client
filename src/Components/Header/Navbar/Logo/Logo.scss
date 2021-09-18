@@ -1,11 +1,22 @@
 .navbar-logo {
-  height: 55px;
+  height: 64px;
   transition: all .2s;
-  visibility: hidden;
+  display: none;
   // margin-bottom: 8px;
+  padding-block: 7px;
+  margin-inline: 2vw;
+
+  &.xs {
+    display: block;
+  }
 
   @include breakpoint-xs {
-    visibility: visible;
+    &.sm {
+      display: block;
+    }
+    &.xs {
+      display: none;
+    }
   }
   
   &:hover,

@@ -42,25 +42,29 @@ const NavbarLinks = () => {
                             <span
                                 className='navbar-link sign-out-link'
                                 onClick={Auth.logout}
-                            >
+                                >
                                 Sign Out
                             </span>
                         </NavLink>
                     </div>
                     :
-                    <li className='navbar-link'>
-                        <NavLink to={{
-                            pathname: '/SignIn',
-                            state: { referrer: '/User/Welcome' }
-                        }}
-                            className='sign-in-link'
-                        >
-                            <span
+                    <div className='sign-in-links'>
+                        <li>
+                            <NavLink to={{
+                                pathname: '/SignIn',
+                                state: { referrer: '/User/Welcome' }
+                            }}
                             >
-                                Sign In
-                            </span>
-                        </NavLink>
-                    </li>
+                                <span>Sign In</span>
+                            </NavLink>
+                        </li>
+                        <span>|</span>
+                        <li>
+                            <NavLink to='/SignUp'>
+                                <span>Sign Up</span>
+                            </NavLink>
+                        </li>
+                    </div>
             }
         </ul>
     )

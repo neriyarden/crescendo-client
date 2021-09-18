@@ -30,29 +30,52 @@ const UpcomingEvent = () => {
 
     return (
         <>
-        {
-            loading ? <Loader/> :
-            <>
-            <FeaturedEvent featuredEvent={featuredEventData} />
-            <section className='section'>
-            <SectionHeading title='Upcoming Events' />
-            <EventsPanel
-                    eventsData={upcomingEventsData}
-                    setLoading={setLoading}
-                    loading={loading}
-                    />
-            </section>
-            <section className='section'>
-                <SectionHeading title='Past Events' />
-                <EventsPanel
-                eventsData={pastEventsData}
-                    setLoading={setLoading}
-                    loading={loading}
-                    />
-            </section>
-            </>
-        }
-            </>
+            { 
+                loading ? <Loader /> :
+                    <>
+                        <div className='homepage-hero'>
+                            <div className='homepage-hero-left-text'>
+                                <p>Music And <span>People</span> Together Bringing Music And</p>
+                                <p>And People Together Bringing <span>Music</span> And</p>
+                                <p>Music And People <span>Together</span> Bringing Music And</p>
+                                <p>Bringing <span>Music</span> And People Together Bringing Music</p>
+                                <p>People Together Bringing <span>Music</span> And People</p>
+                                <p><span>Together</span> Bringing Music And People <span>Together</span></p>
+                                <p>Bringing Music And <span>People</span> Together Bringing Music</p>
+                                <p>And People Together Bringing <span>Music</span> And</p>
+                                <p>Bringing <span>Music</span> And People Together Bringing Music</p>
+                                <p>Music And <span>People</span> Together Bringing Music And</p>
+                                <p>And People Together Bringing <span>Music</span> And</p>
+                                <p>Music And People <span>Together</span> Bringing Music And</p>
+                                <p>Bringing <span>Music</span> And People Together Bringing Music</p>
+                                <p>People Together Bringing <span>Music</span> And People</p>
+                                <p><span>Together</span> Bringing Music And People <span>Together</span></p>
+                                <p>Bringing Music And <span>People</span> Together Bringing Music</p>
+                                <p>And People Together Bringing <span>Music</span> And</p>
+                                <p>Bringing <span>Music</span> And People Together Bringing Music</p>
+
+                            </div>
+                            <FeaturedEvent featuredEvent={featuredEventData} />
+                        </div>
+                        <section className='section'>
+                            <SectionHeading title='Upcoming Events' />
+                            <EventsPanel
+                                eventsData={upcomingEventsData}
+                                setLoading={setLoading}
+                                loading={loading}
+                            />
+                        </section>
+                        <section className='section'>
+                            <SectionHeading title='Past Events' />
+                            <EventsPanel
+                                eventsData={pastEventsData}
+                                setLoading={setLoading}
+                                loading={loading}
+                            />
+                        </section>
+                    </>
+            }
+        </>
     )
 }
 

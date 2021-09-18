@@ -16,16 +16,13 @@
     color: $secondary-color;
     white-space: nowrap;
     letter-spacing: 2px;
-    text-transform: uppercase;
+    // text-transform: uppercase;
 
     &:hover {
       color: $third-color;
     }
 
     @include breakpoint-md {
-      & {
-        font-weight: 600;
-      }
       &:hover::after {
         width: 100%;
         background: $third-color;
@@ -47,15 +44,40 @@
       color: $third-color;
     }
   }
-  & .sign-in-link {
-    color: $third-color;
-    @include breakpoint-md {
-      margin-left: 2vw;
-    }
+}
 
-    &::after {
-      height: 0;
+.sign-in-links {
+  letter-spacing: 1px;
+  font-size: 1rem;
+  // font-weight: 600;
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 41px;
+
+  & > span {
+    color: $third-color;
+  }
+  
+  & li {
+    margin-inline: 1rem;
+    
+    & a {
+      color: $secondary-color;
+
+      &:hover {
+        color: $third-color;
+      }
     }
+  }
+
+  @include breakpoint-md {
+    margin-left: 2vw;
+  }
+
+  &::after {
+    height: 0;
   }
 }
 

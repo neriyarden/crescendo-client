@@ -1,7 +1,7 @@
 header {
   position: fixed;
   width: 100%;
-  background: $main-color;
+  background: #fff;
   box-shadow: $med-blur-shadow;
   z-index: 5;
   
@@ -18,7 +18,7 @@ header {
   align-items: flex-start;
   padding: 0.8rem 1.2rem;
   font-family: $main-font;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-style: normal;
   min-height: 90px;
   

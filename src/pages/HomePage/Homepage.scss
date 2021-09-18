@@ -1,0 +1,30 @@
+.homepage-hero {
+  display: flex;
+  flex-direction: row;
+}
+
+.homepage-hero-left-text {
+  width: 34%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  filter: opacity(30%);
+
+  & p {
+    font-size: 1.3rem;
+    white-space: nowrap;
+    // text-shadow: $text-shadow-light;
+    text-align: center;
+    text-transform: uppercase;
+    word-spacing: 1rem;
+    letter-spacing: 1px;
+    // line-height: 0.7;
+    line-height: 0.9;
+  
+    & span {
+      color: $third-color;
+    }
+  }
+}

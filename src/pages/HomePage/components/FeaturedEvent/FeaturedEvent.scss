@@ -5,9 +5,10 @@ $bg-height: 400px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-left: auto;
   color: $main-color;
   background: $secondary-color;
-  width: 100%;
+  width: 66%;
   font-family: $main-font;
   min-height: $bg-height;
   margin-bottom: 2rem;
@@ -20,7 +21,8 @@ $bg-height: 400px;
 .featured-events-bg {
   position: absolute;
   top: 90px;
-  width: 100%;
+  right: 0;
+  width: 66%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -34,7 +36,8 @@ $bg-height: 400px;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  gap: 2rem;
+  gap: 33%;
+
 
 }
 
