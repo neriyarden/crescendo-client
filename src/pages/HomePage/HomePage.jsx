@@ -6,6 +6,9 @@ import API from '../../DAL/api'
 import Loader from '../../components/General/Loader'
 import Carousel from './components/Carousel/Carousel'
 import EventThumbnail from '../BrowseEvents/components/EventsPanel/Thumbnails/EventThumbnail'
+import WordsBg from './components/WordBg/WordsBg'
+import Hero from './components/Hero/Hero'
+
 
 const UpcomingEvent = () => {
     const [loading, setLoading] = useState(true)
@@ -36,7 +39,12 @@ const UpcomingEvent = () => {
         <>
             {
                 loading ? <Loader /> :
-                    <>
+                    <section
+                        style={{ backgroundImage: `url(${window.location.origin + '/img/bghome30.png'})` }}
+                        className='homepage'
+                    >
+                        <FeaturedEvent featuredEvent={featuredEventData} />
+                        <Hero />
                         <Carousel>
                             {
                                 upcomingEventsData.map((data, i) => {
@@ -44,7 +52,7 @@ const UpcomingEvent = () => {
                                 })
                             }
                         </Carousel>
-                        <FeaturedEvent featuredEvent={featuredEventData} />
+
                         {/* <section className='section'>
                             <SectionHeading title='Upcoming Events' />
                             <EventsPanel
@@ -61,32 +69,10 @@ const UpcomingEvent = () => {
                                 loading={loading}
                             />
                         </section> */}
-                    </>
+                    </section>
             }
         </>
     )
 }
 
 export default UpcomingEvent
-
-{/* <div className='homepage-hero-left-text'>
-    <p>Music And <span>People</span> Together Bringing Music And</p>
-    <p>And People Together Bringing <span>Music</span> And</p>
-    <p>Music And People <span>Together</span> Bringing Music And</p>
-    <p>Bringing <span>Music</span> And People Together Bringing Music</p>
-    <p>People Together Bringing <span>Music</span> And People</p>
-    <p><span>Together</span> Bringing Music And People <span>Together</span></p>
-    <p>Bringing Music And <span>People</span> Together Bringing Music</p>
-    <p>And People Together Bringing <span>Music</span> And</p>
-    <p>Bringing <span>Music</span> And People Together Bringing Music</p>
-    <p>Music And <span>People</span> Together Bringing Music And</p>
-    <p>And People Together Bringing <span>Music</span> And</p>
-    <p>Music And People <span>Together</span> Bringing Music And</p>
-    <p>Bringing <span>Music</span> And People Together Bringing Music</p>
-    <p>People Together Bringing <span>Music</span> And People</p>
-    <p><span>Together</span> Bringing Music And People <span>Together</span></p>
-    <p>Bringing Music And <span>People</span> Together Bringing Music</p>
-    <p>And People Together Bringing <span>Music</span> And</p>
-    <p>Bringing <span>Music</span> And People Together Bringing Music</p>
-
-</div> */}

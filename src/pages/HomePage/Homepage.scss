@@ -1,30 +1,57 @@
-.homepage-hero {
-  display: flex;
-  flex-direction: row;
+.homepage {
+  background-repeat: repeat;
 }
 
-.homepage-hero-left-text {
-  width: 34%;
-  overflow: hidden;
+.homepage-hero {
+  position: relative;
+  width: 100%;
+  height: 200px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  filter: opacity(30%);
+  // margin-block: 2rem;
+  overflow: hidden;
 
-  & p {
-    font-size: 1.3rem;
-    white-space: nowrap;
-    // text-shadow: $text-shadow-light;
-    text-align: center;
-    text-transform: uppercase;
-    word-spacing: 1rem;
-    letter-spacing: 1px;
-    // line-height: 0.7;
-    line-height: 0.9;
+}
+
+.homepage-hero-h1s {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 80%;
+}
+
+.homepage-hero-h1 {
+  background: #fff;
+  backdrop-filter: blur(1px);
+  flex-basis: 200px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .3);
+  border-radius: 100px;
+  padding-block: 0.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 1;
+  cursor: pointer;
+  transition: all 0.1s;
   
-    & span {
-      color: $third-color;
-    }
+  &:hover {
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .2);
+    transform: scale(1.1);
+  }
+
+  & svg {
+    color: $third-color;
+  }
+  
+  & h1 {
+    text-align: center;
+    font-weight: 300;
+    font-family: $main-font;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
   }
 }

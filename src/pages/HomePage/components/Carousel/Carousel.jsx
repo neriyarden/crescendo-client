@@ -13,6 +13,7 @@ function Carousel({ children }) {
             <Swiper
                 modules={[Autoplay]}
                 slidesPerView={'auto'}
+                spaceBetween={32}
                 className="mySwiper"
                 centeredSlides={true}
                 grabCursor={true}
@@ -24,23 +25,18 @@ function Carousel({ children }) {
                 breakpoints={{
                     "640": {
                         "slidesPerView": 2,
-                        "spaceBetween": 16
                     },
                     "768": {
                         "slidesPerView": 3,
-                        "spaceBetween": 48
                     },
                     "1024": {
                         "slidesPerView": 4,
-                        "spaceBetween": 48
                     },
                     "1280": {
                         "slidesPerView": 5,
-                        "spaceBetween": 48
                     },
                     "1440": {
                         "slidesPerView": 6,
-                        "spaceBetween": 48
                     }
                 }}
             >
