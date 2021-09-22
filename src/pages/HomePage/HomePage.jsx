@@ -8,6 +8,7 @@ import Carousel from './components/Carousel/Carousel'
 import EventThumbnail from '../BrowseEvents/components/EventsPanel/Thumbnails/EventThumbnail'
 import WordsBg from './components/WordBg/WordsBg'
 import Hero from './components/Hero/Hero'
+import SubHero from './components/SubHero/SubHero'
 
 
 const UpcomingEvent = () => {
@@ -52,7 +53,7 @@ const UpcomingEvent = () => {
                                 })
                             }
                         </Carousel>
-
+                        <SubHero/>
                         {/* <section className='section'>
                             <SectionHeading title='Upcoming Events' />
                             <EventsPanel
