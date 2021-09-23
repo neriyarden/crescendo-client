@@ -7,7 +7,7 @@ import SwiperCore, {
 
   SwiperCore.use([Autoplay]);
 
-function Carousel({ children }) {
+function Carousel({ children, ...props }) {
     return (
        <div className='mySwiper-container grid-panel'>
             <Swiper
@@ -39,6 +39,7 @@ function Carousel({ children }) {
                         "slidesPerView": 6,
                     }
                 }}
+                {...props}
             >
                 {
                     children.map((thumb, i) => (

@@ -1,37 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import SectionHeading from '../../components/General/Headings/SectionHeading/SectionHeading'
+import React, { useEffect, useState, useContext } from 'react'
 import FeaturedEvent from './components/FeaturedEvent/FeaturedEvent'
-import EventsPanel from '../BrowseEvents/components/EventsPanel/EventsPanel'
 import API from '../../DAL/api'
 import Loader from '../../components/General/Loader'
 import Carousel from './components/Carousel/Carousel'
 import EventThumbnail from '../BrowseEvents/components/EventsPanel/Thumbnails/EventThumbnail'
-import WordsBg from './components/WordBg/WordsBg'
 import Hero from './components/Hero/Hero'
-import SubHero from './components/SubHero/SubHero'
+import ArtistThumbnail from '../BrowseArtists/components/ArtistThumbnail/ArtistThumbnail'
+import HeroBtnMain from './components/Hero/HeroBtns/HeroBtnMain'
+import HeroBtnLink from './components/Hero/HeroBtns/HeroBtnLink'
+import { AuthApi } from '../../services/contexts/AuthApi'
+import HomepageLogo from './components/Hero/HomepageLogo'
 
-
-const UpcomingEvent = () => {
+const HomePage = () => {
+    const Auth = useContext(AuthApi)
     const [loading, setLoading] = useState(true)
     const [upcomingEventsData, setUpcomingEventsData] = useState([])
+    const [artistsData, setArtistsData] = useState([])
     const [featuredEventData, setfeaturedEventData] = useState({})
-    const [pastEventsData, setPastEventsData] = useState([])
-
+    console.log('Auth.auth:', Auth.auth);
     const getUpcomingEventsData = async () => {
-        const { featured, events } = await API.getUpcomingEventsData()
+        const { featured, events } = await API.getFutureEventsData({ size: 9 })
         setUpcomingEventsData(events)
         setfeaturedEventData(featured)
     }
-
-    const getPastEvents = async () => {
-        const results = await API.getPastEventsData()
-        setPastEventsData(results.events)
+    const getArtists = async () => {
+        const artists = await API.getArtistsData({ size: 9 })
+        setArtistsData(artists)
     }
+
 
     useEffect(() => {
         (async () => {
             await getUpcomingEventsData()
-            await getPastEvents()
+            await getArtists()
             setLoading(false)
         })()
     }, [])
@@ -45,7 +46,22 @@ const UpcomingEvent = () => {
                         className='homepage'
                     >
                         <FeaturedEvent featuredEvent={featuredEventData} />
-                        <Hero />
+                        {
+                            Auth.auth ?
+                                <Hero>
+                                    <HomepageLogo/>
+                                </Hero>
+                                :
+                                <Hero>
+                                    <HeroBtnMain to='/SignUp' text='Join Us' pink />
+                                    <HeroBtnMain
+                                        to={{
+                                            pathname: '/SignIn',
+                                            state: { referrer: '/User/Welcome' }
+                                        }}
+                                        text='Sign In' />
+                                </Hero>
+                        }
                         <Carousel>
                             {
                                 upcomingEventsData.map((data, i) => {
@@ -53,27 +69,25 @@ const UpcomingEvent = () => {
                                 })
                             }
                         </Carousel>
-                        <SubHero/>
-                        {/* <section className='section'>
-                            <SectionHeading title='Upcoming Events' />
-                            <EventsPanel
-                                eventsData={upcomingEventsData}
-                                setLoading={setLoading}
-                                loading={loading}
-                            />
-                        </section>
-                        <section className='section'>
-                            <SectionHeading title='Past Events' />
-                            <EventsPanel
-                                eventsData={pastEventsData}
-                                setLoading={setLoading}
-                                loading={loading}
-                            />
-                        </section> */}
+                        <Hero>
+                            <HeroBtnLink to='/events' text='Events' />
+                            <HeroBtnLink to='/artists' text='Artists' />
+                            <HeroBtnLink to='/requests' text='Requests' />
+                        </Hero>
+                        <Carousel
+                            dir="rtl"
+                        >
+                            {
+                                artistsData.map((data, i) => {
+                                    return <ArtistThumbnail key={i} thumbData={data} />
+                                })
+                            }
+                        </Carousel>
+                        <Hero></Hero>
                     </section>
             }
         </>
     )
 }
 
-export default UpcomingEvent
+export default HomePage

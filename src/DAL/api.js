@@ -33,14 +33,16 @@ const getEventData = async (id) => {
 }
 
 const getFutureEventsData = async (filters) => {
+    console.log('filters', filters);
     const results = await httpRequest(
         `/events?size=${filters.size || -1}&pageNum=${filters.pageNum || 1}`
         + `${filters.artist ? `&artist=${filters.artist}` : ''}`
         + `${filters.city ? `&city=${filters.city}` : ''}`
         + `${filters.when ? `&when=${filters.when}` : ''}`
-        + `${filters.tags.length > 0 ? `&tags=${filters.tags.join('&tags=')}` : ''}`
+        + `${filters?.tags?.length > 0 ? `&tags=${filters.tags.join('&tags=')}` : ''}`
         , 'GET'
-    )
+        )
+        console.log(2);
     return results
 }
 
@@ -50,7 +52,7 @@ const getRequestsData = async (filters, userData) => {
         + `${filters.artist ? `&artist=${filters.artist}` : ''}`
         + `${filters.city ? `&city=${filters.city}` : ''}`,
         'GET',
-        userData
+        userData // ?
     )
     return results
 
@@ -62,7 +64,10 @@ const getPastEventsData = async () => {
 }
 
 const getUpcomingEventsData = async () => {
-    const results = await httpRequest(`/events`, 'GET')
+    const results = await httpRequest(
+        `/events?size=${9}`,
+        'GET'
+        )
     return results
 }
 

@@ -1,29 +1,30 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-function Hero() {
+
+
+function Hero(props) {
     return (
         <div className='homepage-hero'>
             <div className='homepage-hero-links'>
-                <div className='homepage-hero-link'>
+                {props.children}
+                {/* <div className='homepage-hero-link'>
                     <FontAwesomeIcon icon={faSearch} />
-                    <h1>
+                    <span>
                         Artists
-                    </h1>
+                    </span>
                 </div>
                 <div className='homepage-hero-link'>
                     <FontAwesomeIcon icon={faSearch} />
-                    <h1>
+                    <span>
                         Events
-                    </h1>
+                    </span>
                 </div>
                 <div className='homepage-hero-link'>
                     <FontAwesomeIcon icon={faSearch} />
-                    <h1>
+                    <span>
                         Requests
-                    </h1>
-                </div>
+                    </span>
+                </div> */}
             </div>
         </div>
     )
