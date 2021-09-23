@@ -1,7 +1,7 @@
 header {
   position: fixed;
   width: 100%;
-  background: $main-color;
+  background: #fff;
   box-shadow: $med-blur-shadow;
   z-index: 5;
   
@@ -17,16 +17,15 @@ header {
   justify-content: space-between;
   align-items: flex-start;
   padding: 0.8rem 1.2rem;
-  font-family: $third-font;
-  font-size: 1.1rem;
+  font-family: $main-font;
+  font-size: 1.2rem;
   font-style: normal;
   min-height: 90px;
-  // letter-spacing: 1px;
   
   @include breakpoint-md {
     flex-direction: row;
     align-items: center;
-
+    
     &:hover .sign-out-link {
       width: 38px;
       opacity: 1;
@@ -36,7 +35,6 @@ header {
 
 .navbar-links {
   display: none;
-  
   
   @include breakpoint-md {
     & {
@@ -71,6 +69,8 @@ header {
       }
     }
   }
+
+
 }
 
 .display-menu li:nth-child(2) {animation-delay: 0.1s;}

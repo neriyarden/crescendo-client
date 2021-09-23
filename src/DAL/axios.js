@@ -1,5 +1,5 @@
 export const currentServer = process.env.REACT_APP_DEV_SERVER
-console.log('currentServer', currentServer);
+console.log('currentServer -', currentServer);
 
 export const axios = require('axios').create({
     baseURL: currentServer,

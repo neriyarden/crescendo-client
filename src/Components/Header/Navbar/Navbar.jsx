@@ -17,7 +17,7 @@ const Navbar = () => {
 
     return (
         <nav className='navbar' onClick={showToggleBtnMenu} ref={ref}>
-            <NavLink to='/Upcoming'>
+            <NavLink to='/Home'>
                 <Logo />
             </NavLink>
 

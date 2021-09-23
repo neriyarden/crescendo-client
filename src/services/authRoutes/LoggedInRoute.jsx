@@ -12,7 +12,7 @@ const LoggedInRoute = ({ component: Component, ...params }) => {
             render={() => !Auth.auth ? (
                 <Component />
             ) : (
-                <Redirect to={referrer} />
+                <Redirect to={ referrer } />
             )}
         />
     )

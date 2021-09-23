@@ -1,6 +1,5 @@
-$bg-height: 1000px;
-
-
+$featured-sm: 350px;
+$featured-xs: 450px;
 
 .featured-events {
   display: flex;
@@ -11,27 +10,43 @@ $bg-height: 1000px;
   background: $secondary-color;
   width: 100%;
   font-family: $main-font;
-  min-height: $bg-height;
-  margin-bottom: 4rem;
+  min-height: $featured-xs;
+  // margin-block: 1rem;
+  position: relative;
+
   
   @include breakpoint-sm {
-    min-height: $bg-height;
+    min-height: $featured-sm;
   }
 }
 
 .featured-events-bg {
   position: absolute;
-  top: 90px;
+  top: 0px;
+  right: 0;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   filter: blur(10px) brightness(0.8);
-  min-height: $bg-height;
+  min-height: $featured-xs;
+    
+  @include breakpoint-sm {
+    min-height: $featured-sm;
+  }
+}
+
+.featured-event-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
   
   @include breakpoint-sm {
-    min-height: $bg-height;
+    flex-direction: row;
+    gap: 15vw;
   }
 }
 
@@ -41,9 +56,9 @@ $bg-height: 1000px;
   justify-content: flex-end;
   position: relative;
   width: 70%;
-  max-width: 400px;
+  max-width: 250px;
   aspect-ratio: 3/4;
-  box-shadow: inset 0px 0px 200px 30px rgba(0,0,0,0.5), $low-blur-shadow;
+  box-shadow: inset 0px 0px 200px 30px rgba(0,0,0,0.2), $low-blur-shadow;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -65,8 +80,8 @@ $bg-height: 1000px;
   color: $solid-white;
   
   & h3 {
-    font-size: 1.5rem;
-    padding: 0.5em 1em;
+    font-size: 0.75rem;
+    padding: 0.25em 0.5em;
     font-family: $third-font;
     background-color: $third-color;
     text-align: center;
@@ -76,40 +91,40 @@ $bg-height: 1000px;
     z-index: 1;
     
     @include breakpoint-sm {
-      font-size: 2rem;
+      font-size: 1.2rem;
     }
   }
   & .dets {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem;
+    padding: 0.25rem;
     
     @include breakpoint-sm {
-      padding: 1.5rem;
+      padding: 0.75rem;
     }
     
   }
   
   & .date {
-    font-size: 1.5rem;
-    font-family: $third-font;
+    font-size: 0.75rem;
+    font-family: $secondary-font;
 
     text-shadow: 4px -2px 3px $third-color;
-    padding-inline: 0.3em;
+    padding-inline: 0.15em;
     
     @include breakpoint-sm {
-      font-size: 3rem;
+      font-size: 1.5rem;
     }
   }
   
   & .venue {
-    font-size: 0.8rem;
+    font-size: 0.4rem;
     text-decoration: overline underline double $third-color;
-    padding-inline: 0.3em;
+    padding-inline: 0.15em;
 
       @include breakpoint-sm {
-        font-size: 1.5rem;
+        font-size: 0.75rem;
       }
   }
 
@@ -118,39 +133,37 @@ $bg-height: 1000px;
     width: 0;
     height: 0;
     bottom: 100%;
-    border-bottom: 3vw solid $third-color;
+    border-bottom: 1.5vw solid $third-color;
     transition: all .5s;
     z-index: -1;
 
     &.l-triangle {
       left: -5%;
-      border-left: 3.4vw solid transparent;
+      border-left: 1.7vw solid transparent;
       
     }
     
     &.r-triangle {
       right: -5%;
-      border-right: 3.4vw solid transparent;
+      border-right: 1.7vw solid transparent;
     }
     
     @include breakpoint-sm {
-      border-bottom: 20px solid $third-color;
+      border-bottom: 10px solid $third-color;
 
       &.l-triangle {
-        border-left: 20px solid transparent;
+        border-left: 11px solid transparent;
       }
       
       &.r-triangle {
-        border-right: 20px solid transparent;
-      
+        border-right: 11px solid transparent;
       }
     }
   }
-  
 }
 
 .featured {
-  margin-block: 2rem;
+  margin-block: 1rem;
   color: $main-color;
   letter-spacing: 5px;
   font-size: 1.3rem;
@@ -165,7 +178,7 @@ $bg-height: 1000px;
   
   & > *:not(:first-child) {
     padding-block: 0.3rem;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     
   }
   
