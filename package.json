@@ -37,6 +37,12 @@
       "react-app/jest"
     ]
   },
+  "prettier": {
+    "jsxBracketSameLine": false,
+    "jsxSingleQuote": true,
+    "singleQuote": true,
+    "tabWidth": 4
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -48,5 +54,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
