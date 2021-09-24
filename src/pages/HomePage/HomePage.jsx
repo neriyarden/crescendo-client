@@ -13,6 +13,7 @@ import HomepageLogo from './components/Hero/HomepageLogo'
 
 const HomePage = () => {
     const Auth = useContext(AuthApi)
+
     const [loading, setLoading] = useState(true)
     const [upcomingEventsData, setUpcomingEventsData] = useState([])
     const [artistsData, setArtistsData] = useState([])
@@ -49,7 +50,7 @@ const HomePage = () => {
                         {
                             Auth.auth ?
                                 <Hero>
-                                    <HomepageLogo/>
+                                    <HomepageLogo />
                                 </Hero>
                                 :
                                 <Hero>
