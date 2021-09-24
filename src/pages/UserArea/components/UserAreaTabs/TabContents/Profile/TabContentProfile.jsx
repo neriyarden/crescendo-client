@@ -4,7 +4,7 @@ import UploadBtn from '../../../../../../components/General/Inputs/UploadBtn/Upl
 import { Formik, Form } from 'formik';
 import validations from '../../../../../../services/validations/validations'
 import TextBtn from '../../../../../../components/General/Inputs/TextBtn/TextBtn'
-import API from '../../../../../../DAL/api';
+import api from '../../../../../../DAL/api';
 import { AuthApi } from '../../../../../../services/contexts/AuthApi'
 
 import Loader from '../../../../../../components/General/Loader'
@@ -20,7 +20,7 @@ const TabContentProfile = () => {
         Object.keys(values).forEach(key => {
             formData.set(key, values[key])
         })
-        await API.editArtistDetails(formData)
+        await api.editArtistDetails(formData)
         Auth.reloadAuth()
         setShowSubmittedMsg(true)
         setTimeout(() => {

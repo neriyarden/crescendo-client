@@ -4,7 +4,7 @@ import { Formik, Form } from 'formik';
 import validations from '../../../../../../services/validations/validations'
 import TextBtn from '../../../../../../components/General/Inputs/TextBtn/TextBtn'
 import Loader from '../../../../../../components/General/Loader'
-import API from '../../../../../../DAL/api';
+import api from '../../../../../../DAL/api';
 import { AuthApi } from '../../../../../../services/contexts/AuthApi';
 
 const TabContentAccount = () => {
@@ -14,7 +14,7 @@ const TabContentAccount = () => {
 
     const onSubmitHandler = async (values) => {
         //  TODO generalize this
-        await API.editUserData(values)
+        await api.editUserData(values)
         Auth.reloadAuth()
         setShowSubmittedMsg(true)
         setTimeout(() => {

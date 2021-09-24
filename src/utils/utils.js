@@ -1,4 +1,4 @@
-import API from "../DAL/api"
+import api from "../DAL/api"
 
 const getTags = async () => {
     try {
@@ -7,7 +7,7 @@ const getTags = async () => {
     } catch {
         sessionStorage.removeItem('tags')
     }
-    const tagsRemote = await API.getTags()
+    const tagsRemote = await api.getTags()
     sessionStorage.setItem('tags', JSON.stringify(tagsRemote))
     return tagsRemote
 }

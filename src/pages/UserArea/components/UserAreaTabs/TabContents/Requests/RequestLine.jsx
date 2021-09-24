@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons'
-import API from '../../../../../../DAL/api';
+import api from '../../../../../../DAL/api';
 import { AuthApi } from '../../../../../../services/contexts/AuthApi';
 import EditRequest from './EditRequest';
 import NewEvent from '../Events/NewEvent';
 
 
-const RequestLine = ({ request, i, reloadRequests }) =>{
+const RequestLine = ({ request, i, reloadRequests }) => {
     const Auth = useContext(AuthApi)
     const [deletionMsg, setDeletionMsg] = useState('')
     const [completed, setCompleted] = useState(request.votes / request.cap >= 1)
@@ -19,7 +19,7 @@ const RequestLine = ({ request, i, reloadRequests }) =>{
         //  TODO generalize this - custom hook
         values.user_id = Auth.auth.user_id
         values.request_id = request.id
-        const editedRequestData = await API.editRequest(values)
+        const editedRequestData = await api.editRequest(values)
         if (editedRequestData.error) setErrMsg(editedRequestData.error)
         sessionStorage.removeItem('myRequests')
         reloadRequests(Auth.auth.user_id)
@@ -35,7 +35,7 @@ const RequestLine = ({ request, i, reloadRequests }) =>{
     const onConfirmClick = async (requestId) => {
         setDeletionMsg('Request deleted successfully.')
         setTimeout(async () => {
-            const deletedRequest = await API.deleteRequest(requestId)
+            const deletedRequest = await api.deleteRequest(requestId)
             if (deletedRequest.error)
                 return setDeletionMsg(deletedRequest.error)
             sessionStorage.removeItem('myRequests')
@@ -122,7 +122,7 @@ const RequestLine = ({ request, i, reloadRequests }) =>{
                     }}
                     setShowForm={setShowAddForm}
                     fromRequestValues={request}
-                    />
+                />
             }
         </li>
     )

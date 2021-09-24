@@ -5,7 +5,7 @@ import TextBtn from '../../../../components/General/Inputs/TextBtn/TextBtn'
 import FormFooterText from '../../../../components/General/Inputs/FormFooterText/FormFooterText'
 import { Formik, Form } from 'formik';
 import validations from '../../../../services/validations/validations'
-import API from '../../../../DAL/api'
+import api from '../../../../DAL/api'
 import { Redirect } from 'react-router-dom'
 import Toggles from '../../../../components/General/Inputs/Toggles/Toggles'
 
@@ -18,7 +18,7 @@ const RegisterForm = () => {
         'You can change this later in your personal settings'
     ]
     const onSubmitHanlder = async (values) => {
-        const response = await API.registerNewUser(values)
+        const response = await api.registerNewUser(values)
         if (response.data?.error) return setServerErrorMsg(response.data?.error)
         setRegisteredSuccessfully(true)
     }

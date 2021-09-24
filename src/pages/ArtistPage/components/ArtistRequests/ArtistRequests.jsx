@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react'
 import RequestsPanel from '../../../BrowseRequests/components/RequestsPanel/RequestsPanel'
 import SectionHeading from '../../../../components/General/Headings/SectionHeading/SectionHeading'
-import API from '../../../../DAL/api'
+import api from '../../../../DAL/api'
 import { AuthApi } from '../../../../services/contexts/AuthApi'
 import { Link } from 'react-router-dom'
 
@@ -10,10 +10,10 @@ const ArtistRequests = ({ artistId }) => {
     const [loading, setLoading] = useState(true)
     const [requests, setRequests] = useState([])
 
-    
+
     useEffect(() => {
         const getRequestsOfArtist = async () => {
-            const results = await API.getArtistRequests(artistId)
+            const results = await api.getArtistRequests(artistId)
             setRequests(results)
         }
 
@@ -39,8 +39,7 @@ const ArtistRequests = ({ artistId }) => {
                         <Link to={{
                             pathname: '/SignIn',
                             state: { referrer: `/Artists/${artistId}` }
-                        }}
-                        >
+                        }}>
                             Sign in</Link> to see the artist's requests</p>
             }
         </section>

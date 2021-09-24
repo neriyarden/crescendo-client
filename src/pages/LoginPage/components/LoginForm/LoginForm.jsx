@@ -6,7 +6,7 @@ import TextBtn from '../../../../components/General/Inputs/TextBtn/TextBtn'
 import FormFooterText from '../../../../components/General/Inputs/FormFooterText/FormFooterText'
 import { Formik, Form } from 'formik';
 import validations from '../../../../services/validations/validations'
-import API from '../../../../DAL/api'
+import api from '../../../../DAL/api'
 import { AuthApi } from '../../../../services/contexts/AuthApi'
 
 
@@ -14,10 +14,10 @@ import { AuthApi } from '../../../../services/contexts/AuthApi'
 const LoginForm = () => {
     const Auth = useContext(AuthApi)
     const [serverErrorMsg, setServerErrorMsg] = useState('')
-    
+
     const authLogin = async (loginData) => {
-        const response = await API.signIn(loginData)
-        if(response.error) setServerErrorMsg(response.error)
+        const response = await api.signIn(loginData)
+        if (response.error) setServerErrorMsg(response.error)
         Auth.reloadAuth(response.user_id, response.token)
     }
 
@@ -34,37 +34,37 @@ const LoginForm = () => {
                 validationSchema={validations.signIn}
 
                 onSubmit={(values, { setSubmitting }) => {
-                        authLogin(values)
-                        setSubmitting(false);
+                    authLogin(values)
+                    setSubmitting(false);
                 }}
             >
-                    <Form className="form">
-                        <TextInputPink
-                            label='email address'
-                            name='email'
-                        />
-                        <TextInputPink
-                            name='password'
-                            label='password'
-                            type='password'
-                        />
-                        {/* <FormCheckbox
+                <Form className="form">
+                    <TextInputPink
+                        label='email address'
+                        name='email'
+                    />
+                    <TextInputPink
+                        name='password'
+                        label='password'
+                        type='password'
+                    />
+                    {/* <FormCheckbox
                             label='Remember Me'
                             name='remember-me'
                         /> */}
-                        <span className='server-error-msg'>{serverErrorMsg}</span>
-                        <TextBtn
-                            text='Sign in'
-                            type='submit'
-                        />
-                    </Form>
+                    <span className='server-error-msg'>{serverErrorMsg}</span>
+                    <TextBtn
+                        text='Sign in'
+                        type='submit'
+                    />
+                </Form>
             </Formik>
-        <FormFooterText
-            text='Not A Member Yet?'
-            linkText='Join Us!'
-            linkHref='/SignUp'
-        />
-    </div>
+            <FormFooterText
+                text='Not A Member Yet?'
+                linkText='Join Us!'
+                linkHref='/SignUp'
+            />
+        </div>
     )
 }
 

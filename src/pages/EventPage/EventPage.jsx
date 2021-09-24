@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import API from '../../DAL/api'
+import api from '../../DAL/api'
 import { currentServer } from '../../DAL/axios'
 
 
@@ -9,10 +9,10 @@ const EventPage = () => {
     const [eventData, setEventData] = useState({})
 
     useEffect(() => {
-    const getEventDataOnLoad = async () => {
-        const data = await API.getEventData(id)
-        setEventData(data)
-    }
+        const getEventDataOnLoad = async () => {
+            const data = await api.getEventData(id)
+            setEventData(data)
+        }
         getEventDataOnLoad()
     }, [id])
 

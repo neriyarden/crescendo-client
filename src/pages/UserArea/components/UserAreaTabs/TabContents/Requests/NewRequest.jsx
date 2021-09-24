@@ -3,7 +3,7 @@ import TextInputGray from '../../../../../../components/General/Inputs/TextInput
 import { Formik, Form } from 'formik';
 import validations from '../../../../../../services/validations/validations'
 import TextBtn from '../../../../../../components/General/Inputs/TextBtn/TextBtn'
-import API from '../../../../../../DAL/api';
+import api from '../../../../../../DAL/api';
 import { AuthApi } from '../../../../../../services/contexts/AuthApi';
 
 const NewRequest = ({ reloadRequests }) => {
@@ -14,7 +14,7 @@ const NewRequest = ({ reloadRequests }) => {
     const onSubmitHandler = async (values) => {
         //  TODO generalize this
         values.user_id = Auth.auth.user_id
-        const newRequestData = await API.addNewRequest(values)
+        const newRequestData = await api.addNewRequest(values)
         if (newRequestData.error) setErrMsg(newRequestData.error)
         sessionStorage.removeItem('myRequests')
         reloadRequests(Auth.auth.user_id)

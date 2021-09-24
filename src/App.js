@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import Crescendo from './pages/Crescendo'
-import API from './DAL/api'
+import api from './DAL/api'
 import { AuthApi } from './services/contexts/AuthApi'
 import { getTags } from './utils/utils'
 import jwt_decode from 'jwt-decode'
@@ -16,7 +16,7 @@ const App = () => {
   const [tokenExpirationDate, setTokenExpirationDate] = useState(null)
 
   const cacheUserVotedRequests = async (userId) => {
-    const userVotedRequests = await API.getUserVotes(userId)
+    const userVotedRequests = await api.getUserVotes(userId)
     if (userVotedRequests?.error) {
       return sessionStorage.setItem('user_voted_requests', JSON.stringify([]))
     }
@@ -38,7 +38,7 @@ const App = () => {
     }
     let userData = jwt_decode(token)
     if (userData.is_artist) {
-      const artistData = await API.getArtistData(userId)
+      const artistData = await api.getArtistData(userId)
       userData = { ...userData, ...artistData }
     }
 

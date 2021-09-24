@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons'
-import API from '../../../../../../DAL/api';
+import api from '../../../../../../DAL/api';
 import { AuthApi } from '../../../../../../services/contexts/AuthApi';
 import EditEvent from './EditEvent';
 
@@ -12,7 +12,7 @@ const EventLine = ({ event, i, reloadEvents }) => {
     const [deletionMsg, setDeletionMsg] = useState('')
     const [showEditForm, setEditShowForm] = useState(false)
     const [errMsg, setErrMsg] = useState('')
-    
+
     const onEditHandler = async (values) => {
         //  TODO generalize this
         const formData = new FormData()
@@ -21,7 +21,7 @@ const EventLine = ({ event, i, reloadEvents }) => {
         })
         formData.append('id', event.id)
         formData.set('user_id', Auth.auth.user_id)
-        const editedEventData = await API.editEvent(formData)
+        const editedEventData = await api.editEvent(formData)
         if (editedEventData.error) setErrMsg(editedEventData.error)
         sessionStorage.removeItem('myEvents')
         reloadEvents(Auth.auth.user_id)
@@ -35,7 +35,7 @@ const EventLine = ({ event, i, reloadEvents }) => {
     const onConfirmClick = async (eventId) => {
         setDeletionMsg('Event deleted successfully.')
         setTimeout(async () => {
-            const deletedEvent = await API.deleteEvent(eventId)
+            const deletedEvent = await api.deleteEvent(eventId)
             if (deletedEvent.error)
                 return setDeletionMsg(deletedEvent.error)
             sessionStorage.removeItem('myEvents')

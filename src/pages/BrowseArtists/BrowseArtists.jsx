@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import SectionHeading from "../../components/General/Headings/SectionHeading/SectionHeading";
 import ArtistSearchBar from "./components/ArtistsSearchBar/ArtistsSearchBar";
 import ArtistsPanel from "./components/ArtistsPanel/ArtistsPanel"
-import API from "../../DAL/api"
+import api from "../../DAL/api"
 import TextBtn from "../../components/General/Inputs/TextBtn/TextBtn"
 import { useHttp } from '../../hooks/useHttp'
 import Loader from "../../components/General/Loader"
@@ -29,7 +29,7 @@ const BrowseArtists = () => {
 
     const loadMoreResults = async () => {
         const moreResults = await sendRequest(
-            API.getArtistsData,
+            api.getArtistsData,
             { ...searchFilters, pageNum: pageNum + 1 }
         )
         if (moreResults.error) return
@@ -39,7 +39,7 @@ const BrowseArtists = () => {
 
     useEffect(() => {
         const getArtists = async () => {
-            const results = await sendRequest(API.getArtistsData, searchFilters);
+            const results = await sendRequest(api.getArtistsData, searchFilters);
             if (results.error) return
             setArtistsData(results)
         };
@@ -63,8 +63,7 @@ const BrowseArtists = () => {
             <ArtistsPanel artistsData={artistsData} />
             {
                 isLoading ? <Loader /> : <></>
-            }
-            {
+            } {
                 error ? <p className="results-msg">{error}</p>
                     :
                     <div className="load-more-results">

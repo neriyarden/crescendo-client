@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SectionHeading from '../../components/General/Headings/SectionHeading/SectionHeading'
 import EventsSearchBar from './components/EventsSearchBar/EventsSearchBar'
 import EventsPanel from './components/EventsPanel/EventsPanel'
-import API from '../../DAL/api'
+import api from '../../DAL/api'
 import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
 import Loader from '../../components/General/Loader'
 import { useHttp } from '../../hooks/useHttp'
@@ -30,7 +30,7 @@ const BrowseEvents = () => {
 
     const loadMoreEvents = async () => {
         const moreResults = await sendRequest(
-            API.getFutureEventsData,
+            api.getFutureEventsData,
             { ...searchFilters, pageNum: pageNum + 1 }
         )
         if (moreResults.error) return
@@ -41,7 +41,7 @@ const BrowseEvents = () => {
 
     useEffect(() => {
         const getEvents = async () => {
-            const results = await sendRequest(API.getFutureEventsData, searchFilters)
+            const results = await sendRequest(api.getFutureEventsData, searchFilters)
             if (results.error) return
             setEventsData(results.events)
         }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react'
-import API from '../../../../../../DAL/api'
+import api from '../../../../../../DAL/api'
 import EventLine from './EventLine'
 import NewEvent from './NewEvent'
 import Loader from '../../../../../../components/General/Loader'
@@ -18,7 +18,7 @@ const TabContentEvents = () => {
         const localData = JSON.parse(sessionStorage.getItem('myEvents'))
         if (localData?.error) sessionStorage.removeItem('myEvents')
         if (localData) return setEvents(localData)
-        const results = await API.getArtistEvents(Auth.auth.user_id)
+        const results = await api.getArtistEvents(Auth.auth.user_id)
         if (results.error) {
             setEvents([])
             return setErrorMsg((results.error))

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react'
-import API from '../../../../../../DAL/api'
+import api from '../../../../../../DAL/api'
 import RequestLine from './RequestLine'
 import NewRequest from './NewRequest'
 import Loader from '../../../../../../components/General/Loader'
@@ -18,7 +18,7 @@ const TabContentRequests = () => {
         const localData = JSON.parse(sessionStorage.getItem('myRequests'))
         if (localData?.error) sessionStorage.removeItem('myRequests')
         if (localData) return setRequests(localData)
-        const results = await API.getArtistRequests(Auth.auth.user_id)
+        const results = await api.getArtistRequests(Auth.auth.user_id)
         if (results?.error) {
             setRequests([])
             return setErrorMsg((results?.error))

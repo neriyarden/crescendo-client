@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import SectionHeading from '../../components/General/Headings/SectionHeading/SectionHeading'
-import API from '../../DAL/api'
+import api from '../../DAL/api'
 import { msg } from '../../constants/messages'
 import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
 import RequestsSearchBar from './components/RequestsSearchBar/RequestsSearchBar'
@@ -31,7 +31,7 @@ const BrowseRequests = () => {
 
     const loadMoreRequests = async () => {
         const moreResults = await sendRequest(
-            API.getRequestsData,
+            api.getRequestsData,
             { ...searchFilters, pageNum: pageNum + 1 },
         )
         if (moreResults.error) return
@@ -42,7 +42,7 @@ const BrowseRequests = () => {
 
     useEffect(() => {
         const getRequests = async () => {
-            const requests = await sendRequest(API.getRequestsData, searchFilters)
+            const requests = await sendRequest(api.getRequestsData, searchFilters)
             if (requests.error) return
 
             const userVotedRequests = JSON.parse(

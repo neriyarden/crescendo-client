@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react'
-import API from '../../../../../../DAL/api'
+import api from '../../../../../../DAL/api'
 import VoteLine from './VoteLine'
 import Loader from '../../../../../../components/General/Loader'
 import { AuthApi } from '../../../../../../services/contexts/AuthApi'
@@ -14,7 +14,7 @@ const TabContentVotes = () => {
         const localData = JSON.parse(sessionStorage.getItem('user_voted_requests'))
         if (localData?.error) sessionStorage.removeItem('myRequests')
         if (localData?.length > 0) return setVotes(localData)
-        const results = await API.getUserVotes(Auth.auth.user_id)
+        const results = await api.getUserVotes(Auth.auth.user_id)
         if (results?.error || !results) {
             setVotes([])
             return setErrorMsg((results?.error))

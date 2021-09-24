@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import FeaturedEvent from './components/FeaturedEvent/FeaturedEvent'
-import API from '../../DAL/api'
+import api from '../../DAL/api'
 import Loader from '../../components/General/Loader'
 import Carousel from './components/Carousel/Carousel'
 import EventThumbnail from '../BrowseEvents/components/EventsPanel/Thumbnails/EventThumbnail'
@@ -24,13 +24,13 @@ const HomePage = () => {
     useEffect(() => {
         const getUpcomingEventsData = async () => {
             const { featured, events } = await sendRequest(
-                API.getFutureEventsData, { size: 9 }
+                api.getFutureEventsData, { size: 9 }
             )
             setUpcomingEventsData(events)
             setfeaturedEventData(featured)
         }
         const getArtists = async () => {
-            const artists = await sendRequest(API.getArtistsData, { size: 9 })
+            const artists = await sendRequest(api.getArtistsData, { size: 9 })
             setArtistsData(artists)
         }
         getUpcomingEventsData()

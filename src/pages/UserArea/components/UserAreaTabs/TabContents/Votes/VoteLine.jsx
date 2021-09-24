@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons'
-import API from '../../../../../../DAL/api';
+import api from '../../../../../../DAL/api';
 import { AuthApi } from '../../../../../../services/contexts/AuthApi';
 import { Link } from 'react-router-dom'
 
@@ -19,7 +19,7 @@ const VoteLine = ({ vote, i, reloadVotes }) => {
             // sessionStorage cleared so user who votes for his own req will get updated req dashboard
             sessionStorage.removeItem('myRequests')
             const userId = Auth.auth.user_id
-            const removedVote = await API.removeVote(requestId, userId)
+            const removedVote = await api.removeVote(requestId, userId)
             if (removedVote.error)
                 return setUnvoteMsg(removedVote.error)
             sessionStorage.removeItem('user_voted_requests')
