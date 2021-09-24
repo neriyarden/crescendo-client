@@ -4,33 +4,32 @@ import SectionHeading from '../../../../components/General/Headings/SectionHeadi
 import api from '../../../../DAL/api'
 import { AuthApi } from '../../../../services/contexts/AuthApi'
 import { Link } from 'react-router-dom'
+import Loader from '../../components/General/Loader'
+import { useHttp } from '../../hooks/useHttp'
 
 const ArtistRequests = ({ artistId }) => {
 	const isLoggedIn = useContext(AuthApi).auth
-	const [loading, setLoading] = useState(true)
+	const { isLoading, error, sendRequest } = useHttp()
 	const [requests, setRequests] = useState([])
 
 	useEffect(() => {
 		const getRequestsOfArtist = async () => {
-			const results = await api.getArtistRequests(artistId)
+			const results = await sendRequest(api.getArtistRequests, artistId)
+			if (error) return
 			setRequests(results)
 		}
-
-		setLoading(true)
 		getRequestsOfArtist()
-	}, [artistId])
+	}, [artistId, error, sendRequest])
 
 	return (
 		<section className='artist-page-section section'>
 			<SectionHeading title='Requests' />
 			{isLoggedIn ? (
 				<>
+					{isLoading ? <Loader /> : <></>}
+					{error ? <p className='center-text'>{error}</p> : <></>}
 					{requests.length > 0 ? (
-						<RequestsPanel
-							requestsData={requests}
-							loading={loading}
-							setLoading={setLoading}
-						/>
+						<RequestsPanel requestsData={requests} />
 					) : (
 						<p className='no-events'>
 							No Requests for this Artist.
