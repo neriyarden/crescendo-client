@@ -4,8 +4,8 @@ import SectionHeading from '../../../../components/General/Headings/SectionHeadi
 import api from '../../../../DAL/api'
 import { AuthApi } from '../../../../services/contexts/AuthApi'
 import { Link } from 'react-router-dom'
-import Loader from '../../components/General/Loader'
-import { useHttp } from '../../hooks/useHttp'
+import Loader from '../../../../components/General/Loader'
+import { useHttp } from '../../../../hooks/useHttp'
 
 const ArtistRequests = ({ artistId }) => {
 	const isLoggedIn = useContext(AuthApi).auth
@@ -26,9 +26,9 @@ const ArtistRequests = ({ artistId }) => {
 			<SectionHeading title='Requests' />
 			{isLoggedIn ? (
 				<>
-					{isLoading ? <Loader /> : <></>}
 					{error ? <p className='center-text'>{error}</p> : <></>}
-					{requests.length > 0 ? (
+					{isLoading ? <Loader /> : <></>}
+					{requests.length > 0 && !isLoading ? (
 						<RequestsPanel requestsData={requests} />
 					) : (
 						<p className='no-events'>
@@ -37,7 +37,7 @@ const ArtistRequests = ({ artistId }) => {
 					)}
 				</>
 			) : (
-				<p className='form-end-text'>
+				<p className='form-end-text p-block'>
 					<Link
 						to={{
 							pathname: '/SignIn',

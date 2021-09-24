@@ -2,31 +2,29 @@ import React, { useEffect, useState } from 'react'
 import EventsPanel from '../../../BrowseEvents/components/EventsPanel/EventsPanel'
 import SectionHeading from '../../../../components/General/Headings/SectionHeading/SectionHeading'
 import api from '../../../../DAL/api'
+import Loader from '../../../../components/General/Loader'
+import { useHttp } from '../../../../hooks/useHttp'
 
 const ArtistShows = ({ artistId }) => {
-	const [loading, setLoading] = useState(true)
+	const { isLoading, error, sendRequest } = useHttp()
 	const [events, setEvents] = useState([])
 
 	useEffect(() => {
 		const getEventsOfArtist = async () => {
-			const results = await api.getArtistEvents(artistId)
+			const results = await sendRequest(api.getArtistEvents, artistId)
 			if (results.error) return
 			setEvents(results)
 		}
-
-		setLoading(true)
 		getEventsOfArtist()
-	}, [artistId])
+	}, [artistId, sendRequest])
 
 	return (
 		<section className='artist-page-section section'>
 			<SectionHeading title='Upcoming Shows' />
-			{events.length > 0 ? (
-				<EventsPanel
-					eventsData={events}
-					loading={loading}
-					setLoading={setLoading}
-				/>
+			{error ? <p className='center-text'>{error}</p> : <></>}
+			{isLoading ? <Loader /> : <></>}
+			{events.length > 0 && !isLoading ? (
+				<EventsPanel eventsData={events} />
 			) : (
 				<p className='no-events'>No Upcoming Shows.</p>
 			)}
