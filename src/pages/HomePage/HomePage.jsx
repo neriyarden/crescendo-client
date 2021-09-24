@@ -10,43 +10,47 @@ import HeroBtnMain from './components/Hero/HeroBtns/HeroBtnMain'
 import HeroBtnLink from './components/Hero/HeroBtns/HeroBtnLink'
 import { AuthApi } from '../../services/contexts/AuthApi'
 import HomepageLogo from './components/Hero/HomepageLogo'
+import { useHttp } from '../../hooks/useHttp'
 
 const HomePage = () => {
     const Auth = useContext(AuthApi)
+    const { isLoading, error, sendRequest } = useHttp()
+    const [featuredEventData, setfeaturedEventData] = useState(null)
+    const [upcomingEventsData, setUpcomingEventsData] = useState(null)
+    const [artistsData, setArtistsData] = useState(null)
 
-    const [loading, setLoading] = useState(true)
-    const [upcomingEventsData, setUpcomingEventsData] = useState([])
-    const [artistsData, setArtistsData] = useState([])
-    const [featuredEventData, setfeaturedEventData] = useState({})
-    console.log('Auth.auth:', Auth.auth);
-    const getUpcomingEventsData = async () => {
-        const { featured, events } = await API.getFutureEventsData({ size: 9 })
-        setUpcomingEventsData(events)
-        setfeaturedEventData(featured)
-    }
-    const getArtists = async () => {
-        const artists = await API.getArtistsData({ size: 9 })
-        setArtistsData(artists)
-    }
 
 
     useEffect(() => {
-        (async () => {
-            await getUpcomingEventsData()
-            await getArtists()
-            setLoading(false)
-        })()
-    }, [])
+        const getUpcomingEventsData = async () => {
+            const { featured, events } = await sendRequest(
+                API.getFutureEventsData, { size: 9 }
+            )
+            setUpcomingEventsData(events)
+            setfeaturedEventData(featured)
+        }
+        const getArtists = async () => {
+            const artists = await sendRequest(API.getArtistsData, { size: 9 })
+            setArtistsData(artists)
+        }
+        getUpcomingEventsData()
+        getArtists()
+    }, [sendRequest])
 
     return (
         <>
             {
-                loading ? <Loader /> :
+                isLoading ? <Loader /> :
                     <section
                         style={{ backgroundImage: `url(${window.location.origin + '/img/bghome30.png'})` }}
                         className='homepage'
                     >
                         <FeaturedEvent featuredEvent={featuredEventData} />
+                        {
+                            error ?
+                                <p className='results-msg'>{error}</p>
+                                : <></>
+                        }
                         {
                             Auth.auth ?
                                 <Hero>
@@ -63,27 +67,35 @@ const HomePage = () => {
                                         text='Sign In' />
                                 </Hero>
                         }
-                        <Carousel>
-                            {
-                                upcomingEventsData.map((data, i) => {
-                                    return <EventThumbnail key={i} thumbData={data} />
-                                })
-                            }
-                        </Carousel>
+                        {
+                            upcomingEventsData ?
+                                <Carousel>
+                                    {
+                                        upcomingEventsData.map((data, i) => {
+                                            return <EventThumbnail key={i} thumbData={data} />
+                                        })
+                                    }
+                                </Carousel>
+                                : <></>
+                        }
                         <Hero>
                             <HeroBtnLink to='/events' text='Events' />
                             <HeroBtnLink to='/artists' text='Artists' />
                             <HeroBtnLink to='/requests' text='Requests' />
                         </Hero>
-                        <Carousel
-                            dir="rtl"
-                        >
-                            {
-                                artistsData.map((data, i) => {
-                                    return <ArtistThumbnail key={i} thumbData={data} />
-                                })
-                            }
-                        </Carousel>
+                        {
+                            artistsData ?
+                                <Carousel
+                                    dir="rtl"
+                                >
+                                    {
+                                        artistsData.map((data, i) => {
+                                            return <ArtistThumbnail key={i} thumbData={data} />
+                                        })
+                                    }
+                                </Carousel>
+                                : <></>
+                        }
                         <Hero></Hero>
                     </section>
             }
