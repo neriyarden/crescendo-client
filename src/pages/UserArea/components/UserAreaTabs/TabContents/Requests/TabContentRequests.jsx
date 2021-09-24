@@ -34,9 +34,7 @@ const TabContentRequests = () => {
 
     useEffect(() => {
         getRequestsOfArtist()
-        setTimeout(() => {
-            setLoading(false)
-        }, 500)
+        setLoading(false)
     }, [getRequestsOfArtist])
 
     return (

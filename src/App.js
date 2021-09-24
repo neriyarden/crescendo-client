@@ -4,6 +4,8 @@ import API from './DAL/api'
 import { AuthApi } from './services/contexts/AuthApi'
 import { getTags } from './utils/utils'
 import jwt_decode from 'jwt-decode'
+import { ErrorBoundary } from './services/errors/ErrorBoundary'
+
 
 let logoutTimer;
 const expirationTime = 1000 * 60 * 60
@@ -85,14 +87,16 @@ const App = () => {
   }, [authenticateUser])
 
   return (
-    <AuthApi.Provider value={{
-      auth,
-      setAuth,
-      logout,
-      reloadAuth: authenticateUser,
-    }}>
-      <Crescendo />
-    </AuthApi.Provider>
+    <ErrorBoundary>
+      <AuthApi.Provider value={{
+        auth,
+        setAuth,
+        logout,
+        reloadAuth: authenticateUser,
+      }}>
+        <Crescendo />
+      </AuthApi.Provider>
+    </ErrorBoundary>
   );
 }
 

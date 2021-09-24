@@ -5,14 +5,14 @@ import EventsPanel from './components/EventsPanel/EventsPanel'
 import API from '../../DAL/api'
 import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
 import Loader from '../../components/General/Loader'
-import { useHttp } from '.././../hooks/useHttp'
+import { useHttp } from '../../hooks/useHttp'
 
 const searchDelay = 500
 
 const BrowseEvents = () => {
+    const { isLoading, error, sendRequest, clearError } = useHttp()
     const [eventsData, setEventsData] = useState([])
     const [pageNum, setPageNum] = useState(1)
-    const { isLoading, error, sendRequest, clearError } = useHttp()
     const [searchFilters, setSearchFilters] = useState({
         artist: '',
         city: '',
@@ -28,7 +28,7 @@ const BrowseEvents = () => {
         setPageNum(1)
     }
 
-    const getMoreEvents = async () => {
+    const loadMoreEvents = async () => {
         const moreResults = await sendRequest(
             API.getFutureEventsData,
             { ...searchFilters, pageNum: pageNum + 1 }
@@ -56,34 +56,28 @@ const BrowseEvents = () => {
     }, [searchFilters])
 
     return (
-        <>
-            <section className='section'>
-                <SectionHeading title='Events' />
-                <EventsSearchBar
-                    searchFilters={searchFilters}
-                    setSearchFilters={setSearchFilters}
-                />
-                {
-                    isLoading ? <Loader />
-                        :
-                        eventsData.length > 0 ?
-                            <EventsPanel eventsData={eventsData} />
-                            :
-                            <></>
-                }
-                {
-                    error ?
-                        <p className='results-msg'>{error}</p>
-                        :
-                        <div className='load-more-results'>
-                            <TextBtn
-                                text='More Results'
-                                clickHandler={getMoreEvents}
-                            />
-                        </div>
-                }
-            </section>
-        </>
+        <section className='section'>
+            <SectionHeading title='Events' />
+            <EventsSearchBar
+                searchFilters={searchFilters}
+                setSearchFilters={setSearchFilters}
+            />
+            <EventsPanel eventsData={eventsData} />
+            {
+                isLoading ? <Loader /> : <></>
+            }
+            {
+                error ?
+                    <p className='results-msg'>{error}</p>
+                    :
+                    <div className='load-more-results'>
+                        <TextBtn
+                            text='More Results'
+                            clickHandler={loadMoreEvents}
+                        />
+                    </div>
+            }
+        </section>
     )
 }
 

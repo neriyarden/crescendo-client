@@ -4,11 +4,15 @@
 
 .homepage-logo {
   color: $third-color;
-  height: 10rem;
+  height: 5rem;
   animation: ease 5s flash-neon infinite alternate;
 
   & * {
     animation: ease 5s flash-color infinite alternate;
+  }
+
+  @include breakpoint-sm {
+    height: 10rem;
   }
 }
 
@@ -16,7 +20,7 @@
   0% {
     filter: drop-shadow(0px 0px 0px #e4217c00);
   } 100% {
-    filter: drop-shadow(0px 0px 3px #e4217c8a);
+    filter: drop-shadow(0px 0px 9px #e4217c8a);
   }
 }
 
@@ -31,17 +35,20 @@
 
 .homepage-hero-links {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   width: 80%;
+  
+  @include breakpoint-md {
+    flex-direction: row;
+  }
 }
 
 .homepage-hero-link {
-  margin-block: 50px;
+  margin-block: 16px;
   background: #fff;
-  backdrop-filter: blur(1px);
-  flex-basis: 200px;
+  min-width: 200px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, .3);
   border-radius: 100px;
   padding-block: 0.5em;
@@ -60,6 +67,10 @@
   letter-spacing: 1px;
   color: #000;
   
+  @include breakpoint-md {
+    margin-block: 50px;
+  }
+  
   &:hover {
     box-shadow: 0 3px 12px rgba(0, 0, 0, .2);
     transform: scale(1.1);
@@ -72,8 +83,6 @@
   & img {
     margin-top: .4em;
   }
-  
-
 
   &.pink-link {
     background: $third-color;

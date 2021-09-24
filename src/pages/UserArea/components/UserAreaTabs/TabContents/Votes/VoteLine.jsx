@@ -27,6 +27,8 @@ const VoteLine = ({ vote, i, reloadVotes }) => {
             setUnvoteMsg('')
         }, 1500);
     }
+
+
     return (
         <li key={i} >
             {
@@ -37,9 +39,9 @@ const VoteLine = ({ vote, i, reloadVotes }) => {
                         Un-Vote
                     </span>
                     <Link to={`/Artists/${vote.artist_id}`}>
-                    <span className='user-votes-spans artist'>
-                        {vote.artist}
-                    </span>
+                        <span className='user-votes-spans artist'>
+                            {vote.artist}
+                        </span>
                     </Link>
                     <span className='user-votes-spans city'>
                         {vote.city}

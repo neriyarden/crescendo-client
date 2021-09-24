@@ -6,12 +6,14 @@ import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
 import RequestsSearchBar from './components/RequestsSearchBar/RequestsSearchBar'
 import RequestsPanel from './components/RequestsPanel/RequestsPanel'
 import { AuthApi } from '../../services/contexts/AuthApi'
+import Loader from '../../components/General/Loader'
+import { useHttp } from '../../hooks/useHttp'
 
 const searchDelay = 300
 
 const BrowseRequests = () => {
     const Auth = useContext(AuthApi)
-    const [loading, setLoading] = useState(true)
+    const { isLoading, error, sendRequest, clearError } = useHttp()
     const [requestsData, setRequestsData] = useState([])
     const [resultsMsg, setResultsMsg] = useState('')
     const [pageNum, setPageNum] = useState(1)
@@ -22,58 +24,46 @@ const BrowseRequests = () => {
         size: 7,
     })
     const cleanUpResults = () => {
-        setResultsMsg('')
-        setPageNum(1)
         setRequestsData([])
+        clearError()
+        setPageNum(1)
     }
 
-    
-    const getMoreRequests = async (pageNum) => {
-        const moreResults = await API.getRequestsData(
-            { ...searchFilters, pageNum: pageNum },
-            { user_id: Auth.auth.user_id }
+    const loadMoreRequests = async () => {
+        const moreResults = await sendRequest(
+            API.getRequestsData,
+            { ...searchFilters, pageNum: pageNum + 1 },
         )
-        if (moreResults.length === 0) setResultsMsg(msg.END_OF_RESULTS_MSG)
+        if (moreResults.error) return
         setRequestsData([...requestsData, ...moreResults])
-    }
-    
-    const loadMoreResults = () => {
-        setLoading(true)
-        getMoreRequests(pageNum + 1)
         setPageNum((prev) => prev + 1)
     }
-    
+
+
     useEffect(() => {
         const getRequests = async () => {
-            const requests = await API.getRequestsData(
-                searchFilters,
-                { user_id: Auth.auth.user_id }
-                )
-            if (requests.error) return Auth.logout()
-            if (requests.length === 0) return setResultsMsg(msg.NO_RESULTS_MSG)
+            const requests = await sendRequest(API.getRequestsData, searchFilters)
+            if (requests.error) return
+
             const userVotedRequests = JSON.parse(
                 sessionStorage.getItem('user_voted_requests')
             )
-            const userVotedRequestsIds = userVotedRequests ?
-                userVotedRequests.map(request => (
-                    request.request_id
-                ))
+            const userVotedRequestsIds = userVotedRequests
+                ? userVotedRequests.map(request => (request.request_id))
                 : []
             const requestsWithUserVotes = requests.map(request => (
-                    {
-                        ...request, userVote: userVotedRequestsIds.includes(request.id)
-                            ? true : false
-                    }
-                ))
+                { ...request, userVote: userVotedRequestsIds.includes(request.id) }
+            ))
             setRequestsData(requestsWithUserVotes)
         }
-        
+
         const setTid = setTimeout(() => {
             cleanUpResults()
             getRequests(searchFilters)
         }, searchDelay)
 
         return () => clearTimeout(setTid)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchFilters, Auth])
 
 
@@ -84,20 +74,21 @@ const BrowseRequests = () => {
                 searchFilters={searchFilters}
                 setSearchFilters={setSearchFilters}
             />
-            <RequestsPanel
-                requestsData={requestsData}
-                setLoading={setLoading}
-                loading={loading}
-            />
-            {resultsMsg && <p className='results-msg'>{resultsMsg}</p>}
-            <div className='load-more-results'>
-                {resultsMsg
-                    ?
-                    <TextBtn text='More Results' />
+            <RequestsPanel requestsData={requestsData} />
+            {
+                isLoading ? <Loader /> : <></>
+            }
+            {
+                error ?
+                    <p className='results-msg'>{error}</p>
                     :
-                    <TextBtn text='More Results' clickHandler={loadMoreResults} />
-                }
-            </div>
+                    <div className='load-more-results'>
+                        <TextBtn
+                            text='More Results'
+                            clickHandler={loadMoreRequests}
+                        />
+                    </div>
+            }
         </section>
     )
 }

@@ -29,9 +29,7 @@ const TabContentProfile = () => {
     }
 
     useEffect(() => {
-        setTimeout(() => {
-            setLoading(false)
-        }, 500)
+        setLoading(false)
     }, [])
 
     return (
