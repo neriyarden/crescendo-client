@@ -33,10 +33,8 @@ const TabContentEvents = () => {
     ))
 
     useEffect(() => {
-        setTimeout(() => {
-            getEventsOfArtist()
-            setLoading(false)
-        }, 500)
+        getEventsOfArtist()
+        setLoading(false)
     }, [getEventsOfArtist])
 
     return (
@@ -55,9 +53,9 @@ const TabContentEvents = () => {
                         </span>
                     }
                     {showForm &&
-                        <NewEvent 
+                        <NewEvent
                             reloadEvents={getEventsOfArtist}
-                            setShowForm={setShowForm}/>
+                            setShowForm={setShowForm} />
                     }
                 </ul>
             }

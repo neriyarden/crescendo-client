@@ -46,13 +46,12 @@ const getFutureEventsData = async (filters) => {
     return results
 }
 
-const getRequestsData = async (filters, userData) => {
+const getRequestsData = async (filters) => {
     const results = await httpRequest(
         `/requests?size=${filters.size || -1}&pageNum=${filters.pageNum || 1}`
         + `${filters.artist ? `&artist=${filters.artist}` : ''}`
         + `${filters.city ? `&city=${filters.city}` : ''}`,
         'GET',
-        userData // ?
     )
     return results
 

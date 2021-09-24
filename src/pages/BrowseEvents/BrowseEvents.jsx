@@ -10,9 +10,9 @@ import { useHttp } from '../../hooks/useHttp'
 const searchDelay = 500
 
 const BrowseEvents = () => {
+    const { isLoading, error, sendRequest, clearError } = useHttp()
     const [eventsData, setEventsData] = useState([])
     const [pageNum, setPageNum] = useState(1)
-    const { isLoading, error, sendRequest, clearError } = useHttp()
     const [searchFilters, setSearchFilters] = useState({
         artist: '',
         city: '',

@@ -10,9 +10,9 @@ import Loader from "../../components/General/Loader"
 const searchDelay = 500
 
 const BrowseArtists = () => {
+    const { isLoading, error, sendRequest, clearError } = useHttp()
     const [artistsData, setArtistsData] = useState([])
     const [pageNum, setPageNum] = useState(1)
-    const { isLoading, error, sendRequest, clearError } = useHttp()
     const [searchFilters, setSearchFilters] = useState({
         startsWith: "",
         searchTerm: "",
