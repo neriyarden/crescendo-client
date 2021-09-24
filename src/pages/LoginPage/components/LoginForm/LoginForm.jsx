@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import FormHeading from '../../../../components/General/Headings/FormHeading/FormHeading'
 import TextInputPink from '../../../../components/General/Inputs/TextInputPink/TextInputPink'
 import TextBtn from '../../../../components/General/Inputs/TextBtn/TextBtn'
@@ -8,14 +8,15 @@ import { Formik, Form } from 'formik'
 import validations from '../../../../services/validations/validations'
 import api from '../../../../DAL/api'
 import { AuthApi } from '../../../../services/contexts/AuthApi'
+import { useHttp } from '../../../../hooks/useHttp'
 
 const LoginForm = () => {
 	const Auth = useContext(AuthApi)
-	const [serverErrorMsg, setServerErrorMsg] = useState('')
+	const { error, sendRequest } = useHttp()
 
 	const authLogin = async loginData => {
-		const response = await api.signIn(loginData)
-		if (response.error) setServerErrorMsg(response.error)
+		const response = await sendRequest(api.signIn, loginData)
+		if (error) return
 		Auth.reloadAuth(response.user_id, response.token)
 	}
 
@@ -45,7 +46,7 @@ const LoginForm = () => {
                             label='Remember Me'
                             name='remember-me'
                         /> */}
-					<span className='server-error-msg'>{serverErrorMsg}</span>
+					<span className='server-error-msg'>{error}</span>
 					<TextBtn text='Sign in' type='submit' />
 				</Form>
 			</Formik>
