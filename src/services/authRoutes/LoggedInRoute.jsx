@@ -4,18 +4,18 @@ import { AuthApi } from '../../services/contexts/AuthApi'
 import { useLocation } from 'react-router'
 
 const LoggedInRoute = ({ component: Component, ...params }) => {
-    const Auth = useContext(AuthApi)
-    const { state: { referrer } } = useLocation()
-    return (
-        <Route
-            {...params}
-            render={() => !Auth.auth ? (
-                <Component />
-            ) : (
-                <Redirect to={ referrer } />
-            )}
-        />
-    )
-} 
+	const Auth = useContext(AuthApi)
+	const {
+		state: { referrer },
+	} = useLocation()
+	return (
+		<Route
+			{...params}
+			render={() =>
+				!Auth.auth ? <Component /> : <Redirect to={referrer} />
+			}
+		/>
+	)
+}
 
 export default LoggedInRoute

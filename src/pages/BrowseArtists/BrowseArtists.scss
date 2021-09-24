@@ -1,24 +1,23 @@
 .load-more-results {
-  width: 100%;
-  padding-block: 1rem;
-  background: $solid-white;
-  border-radius: 5px;
-  margin-block: 2rem;
-  box-shadow: $high-blur-shadow;
+    width: 100%;
+    padding-block: 1rem;
+    background: $solid-white;
+    border-radius: 5px;
+    margin-block: 2rem;
+    box-shadow: $high-blur-shadow;
 
-  & .form-button {
-    display: block;
-    margin-inline: auto;
-  }
+    & .form-button {
+        display: block;
+        margin-inline: auto;
+    }
 }
 
-
 .results-msg {
-  display: block;
-  margin-block: 1rem;
-  background: $solid-white;
-  box-shadow: $high-blur-shadow;
-  border-radius: 5px;
-  padding-block: 0.5em;
-  text-align: center;
+    display: block;
+    margin-block: 1rem;
+    background: $solid-white;
+    box-shadow: $high-blur-shadow;
+    border-radius: 5px;
+    padding-block: 0.5em;
+    text-align: center;
 }

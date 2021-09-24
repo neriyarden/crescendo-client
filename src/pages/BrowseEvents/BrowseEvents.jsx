@@ -10,75 +10,74 @@ import { useHttp } from '../../hooks/useHttp'
 const searchDelay = 500
 
 const BrowseEvents = () => {
-    const { isLoading, error, sendRequest, clearError } = useHttp()
-    const [eventsData, setEventsData] = useState([])
-    const [pageNum, setPageNum] = useState(1)
-    const [searchFilters, setSearchFilters] = useState({
-        artist: '',
-        city: '',
-        pageNum: 1,
-        size: 7,
-        when: '',
-        tags: []
-    })
+	const { isLoading, error, sendRequest, clearError } = useHttp()
+	const [eventsData, setEventsData] = useState([])
+	const [pageNum, setPageNum] = useState(1)
+	const [searchFilters, setSearchFilters] = useState({
+		artist: '',
+		city: '',
+		pageNum: 1,
+		size: 7,
+		when: '',
+		tags: [],
+	})
 
-    const cleanUpResults = () => {
-        setEventsData([])
-        clearError()
-        setPageNum(1)
-    }
+	const cleanUpResults = () => {
+		setEventsData([])
+		clearError()
+		setPageNum(1)
+	}
 
-    const loadMoreEvents = async () => {
-        const moreResults = await sendRequest(
-            api.getFutureEventsData,
-            { ...searchFilters, pageNum: pageNum + 1 }
-        )
-        if (moreResults.error) return
-        setEventsData([...eventsData, ...moreResults.events])
-        setPageNum((prev) => prev + 1)
-    }
+	const loadMoreEvents = async () => {
+		const moreResults = await sendRequest(api.getFutureEventsData, {
+			...searchFilters,
+			pageNum: pageNum + 1,
+		})
+		if (moreResults.error) return
+		setEventsData([...eventsData, ...moreResults.events])
+		setPageNum(prev => prev + 1)
+	}
 
+	useEffect(() => {
+		const getEvents = async () => {
+			const results = await sendRequest(
+				api.getFutureEventsData,
+				searchFilters
+			)
+			if (results.error) return
+			setEventsData(results.events)
+		}
 
-    useEffect(() => {
-        const getEvents = async () => {
-            const results = await sendRequest(api.getFutureEventsData, searchFilters)
-            if (results.error) return
-            setEventsData(results.events)
-        }
+		const setTid = setTimeout(() => {
+			cleanUpResults()
+			getEvents()
+		}, searchDelay)
 
-        const setTid = setTimeout(() => {
-            cleanUpResults()
-            getEvents()
-        }, searchDelay)
+		return () => clearTimeout(setTid)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [searchFilters])
 
-        return () => clearTimeout(setTid)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [searchFilters])
-
-    return (
-        <section className='section'>
-            <SectionHeading title='Events' />
-            <EventsSearchBar
-                searchFilters={searchFilters}
-                setSearchFilters={setSearchFilters}
-            />
-            <EventsPanel eventsData={eventsData} />
-            {
-                isLoading ? <Loader /> : <></>
-            }
-            {
-                error ?
-                    <p className='results-msg'>{error}</p>
-                    :
-                    <div className='load-more-results'>
-                        <TextBtn
-                            text='More Results'
-                            clickHandler={loadMoreEvents}
-                        />
-                    </div>
-            }
-        </section>
-    )
+	return (
+		<section className='section'>
+			<SectionHeading title='Events' />
+			<EventsSearchBar
+				searchFilters={searchFilters}
+				setSearchFilters={setSearchFilters}
+			/>
+			<EventsPanel eventsData={eventsData} />
+			{isLoading ? <Loader /> : <></>}
+			{error ? (
+				<p className='results-msg'>{error}</p>
+			) : (
+				<div className='load-more-results'>
+					<TextBtn
+						text='More Results'
+						clickHandler={loadMoreEvents}
+					/>
+				</div>
+			)}
+		</section>
+	)
 }
 
 export default BrowseEvents
