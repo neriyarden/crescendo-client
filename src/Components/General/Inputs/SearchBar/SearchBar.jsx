@@ -13,7 +13,6 @@ const SearchBar = ({ isCollapsable, labelValue, searchOnChange }) => {
     }
 
     const onValueChange = ({ target: { value } }) => {
-        console.log('value:', value);
         setSearchTerm(value)
         searchOnChange(value)
     }

@@ -7,7 +7,8 @@ import CategoryTags from './Tags/CategoryTags'
 const EventsSearchBar = ({ searchFilters, setSearchFilters }) => {
 
     const onValueUpdate = (key) => (value) => {
-        setSearchFilters({ ...searchFilters, [key]: value.trim() })
+        if (value === ' ') return
+        setSearchFilters({ ...searchFilters, [key]: value })
     }
 
     return (

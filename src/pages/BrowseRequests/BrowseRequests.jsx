@@ -27,7 +27,6 @@ const BrowseRequests = () => {
         setRequestsData([])
     }
 
-    
     const getMoreRequests = async (pageNum) => {
         const moreResults = await API.getRequestsData(
             { ...searchFilters, pageNum: pageNum },
@@ -36,19 +35,19 @@ const BrowseRequests = () => {
         if (moreResults.length === 0) setResultsMsg(msg.END_OF_RESULTS_MSG)
         setRequestsData([...requestsData, ...moreResults])
     }
-    
+
     const loadMoreResults = () => {
         setLoading(true)
         getMoreRequests(pageNum + 1)
         setPageNum((prev) => prev + 1)
     }
-    
+
     useEffect(() => {
         const getRequests = async () => {
             const requests = await API.getRequestsData(
                 searchFilters,
                 { user_id: Auth.auth.user_id }
-                )
+            )
             if (requests.error) return Auth.logout()
             if (requests.length === 0) return setResultsMsg(msg.NO_RESULTS_MSG)
             const userVotedRequests = JSON.parse(
@@ -60,14 +59,14 @@ const BrowseRequests = () => {
                 ))
                 : []
             const requestsWithUserVotes = requests.map(request => (
-                    {
-                        ...request, userVote: userVotedRequestsIds.includes(request.id)
-                            ? true : false
-                    }
-                ))
+                {
+                    ...request, userVote: userVotedRequestsIds.includes(request.id)
+                        ? true : false
+                }
+            ))
             setRequestsData(requestsWithUserVotes)
         }
-        
+
         const setTid = setTimeout(() => {
             cleanUpResults()
             getRequests(searchFilters)

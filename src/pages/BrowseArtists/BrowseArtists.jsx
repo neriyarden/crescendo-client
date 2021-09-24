@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import SectionHeading from "../../components/General/Headings/SectionHeading/SectionHeading";
 import ArtistSearchBar from "./components/ArtistsSearchBar/ArtistsSearchBar";
-import ArtistsPanel from "./components/ArtistsPanel/ArtistsPanel";
-import API from "../../DAL/api";
-import TextBtn from "../../components/General/Inputs/TextBtn/TextBtn";
+import ArtistsPanel from "./components/ArtistsPanel/ArtistsPanel"
+import API from "../../DAL/api"
+import TextBtn from "../../components/General/Inputs/TextBtn/TextBtn"
 import { useHttp } from '../../hooks/useHttp'
-import Loader from "../../components/General/Loader";
+import Loader from "../../components/General/Loader"
 
-const searchDelay = 500;
+const searchDelay = 500
 
 const BrowseArtists = () => {
-    const [artistsData, setArtistsData] = useState([]);
-    const [pageNum, setPageNum] = useState(1);
+    const [artistsData, setArtistsData] = useState([])
+    const [pageNum, setPageNum] = useState(1)
     const { isLoading, error, sendRequest, clearError } = useHttp()
     const [searchFilters, setSearchFilters] = useState({
         startsWith: "",
@@ -21,9 +21,9 @@ const BrowseArtists = () => {
     });
 
     const cleanUpResults = () => {
-        setArtistsData([]);
-        clearError();
-        setPageNum(1);
+        setArtistsData([])
+        clearError()
+        setPageNum(1)
     };
 
 
@@ -33,23 +33,23 @@ const BrowseArtists = () => {
             { ...searchFilters, pageNum: pageNum + 1 }
         )
         if (moreResults.error) return
-        setArtistsData([...artistsData, ...moreResults]);
-        setPageNum((prev) => prev + 1);
+        setArtistsData([...artistsData, ...moreResults])
+        setPageNum((prev) => prev + 1)
     };
 
     useEffect(() => {
         const getArtists = async () => {
             const results = await sendRequest(API.getArtistsData, searchFilters);
             if (results.error) return
-            setArtistsData(results);
+            setArtistsData(results)
         };
 
         const setTid = setTimeout(() => {
-            cleanUpResults();
-            getArtists();
-        }, searchDelay);
+            cleanUpResults()
+            getArtists()
+        }, searchDelay)
 
-        return () => clearTimeout(setTid);
+        return () => clearTimeout(setTid)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchFilters]);
 
@@ -75,7 +75,7 @@ const BrowseArtists = () => {
                     </div>
             }
         </section>
-    );
-};
+    )
+}
 
 export default BrowseArtists;
