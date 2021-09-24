@@ -16,17 +16,18 @@
 @import '../pages/ArtistPage/index';
 @import '../pages/BrowseArtists/index';
 @import '../pages/BrowseEvents/index';
+@import '../pages/BrowseRequests/index';
 @import '../pages/EventPage/index';
 @import '../components/Header/index';
-@import '../components/General/Headings/index';
-@import '../components/General/Inputs/index';
 @import '../pages/LoginPage/index';
 @import '../pages/RegisterPage/index';
 @import '../pages/HomePage/';
 @import '../pages/UserArea/index';
+@import '../components/General/Headings/index';
+@import '../components/General/Inputs/index';
 @import '../components/Footer/index';
 @import '../components/General/index';
-@import '../pages/BrowseRequests/index'
+@import '../services/index';
 
 
 

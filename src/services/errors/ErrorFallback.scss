@@ -1,0 +1,26 @@
+.error-fallback {
+  margin-top: 10vh;
+  margin-bottom: auto;
+  margin-inline: auto;
+  text-align: center;
+
+  & > * {
+    padding-bottom: 2rem;
+  }
+
+  & h1 {
+    font-size: 5rem;
+    color: $third-color;
+  }
+  
+  & pre {
+    font-size: 1rem;
+    text-align: left;
+    color: transparent;
+    @include user-select(all);
+  }
+
+  & p {
+    font-weight: 300;
+  }
+}
