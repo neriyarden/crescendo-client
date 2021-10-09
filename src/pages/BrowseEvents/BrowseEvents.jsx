@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useReducer } from 'react'
 import SectionHeading from '../../components/General/Headings/SectionHeading/SectionHeading'
 import EventsSearchBar from './components/EventsSearchBar/EventsSearchBar'
 import EventsPanel from './components/EventsPanel/EventsPanel'
@@ -7,49 +7,68 @@ import TextBtn from '../../components/General/Inputs/TextBtn/TextBtn'
 import Loader from '../../components/General/Loader'
 import { useHttp } from '../../hooks/useHttp'
 
-const searchDelay = 500
+let searchDelay = 500
+
+const filtersReducer = (state, action) => {
+	if (action.type === 'FILTERS_CHANGE') {
+		return { filters: { ...state.filters, ...action.val }, pageNum: 1 }
+	}
+	if (action.type === 'LOAD_MORE_RESULTS') {
+		return { filters: state.filters, pageNum: state.pageNum + 1 }
+	}
+	return {
+		filters: {
+			artist: '',
+			city: '',
+			size: 4,
+			when: '',
+			tags: [],
+		},
+		pageNum: 1,
+	}
+}
 
 const BrowseEvents = () => {
 	const { isLoading, error, sendRequest, clearError } = useHttp()
 	const [eventsData, setEventsData] = useState([])
-	const [pageNum, setPageNum] = useState(1)
-	const [searchFilters, setSearchFilters] = useState({
-		artist: '',
-		city: '',
+	const [searchFilters, dispatchSearchFilters] = useReducer(filtersReducer, {
+		filters: {
+			artist: '',
+			city: '',
+			size: 7,
+			when: '',
+			tags: [],
+		},
 		pageNum: 1,
-		size: 7,
-		when: '',
-		tags: [],
 	})
+
+	const updateFilters = filterObj => {
+		cleanUpResults()
+		dispatchSearchFilters({ type: 'FILTERS_CHANGE', val: filterObj })
+		searchDelay = 500
+	}
 
 	const cleanUpResults = () => {
 		setEventsData([])
 		clearError()
-		setPageNum(1)
 	}
 
 	const loadMoreEvents = async () => {
-		const moreResults = await sendRequest(api.getFutureEventsData, {
-			...searchFilters,
-			pageNum: pageNum + 1,
-		})
-		if (moreResults.error) return
-		setEventsData([...eventsData, ...moreResults.events])
-		setPageNum(prev => prev + 1)
+		dispatchSearchFilters({ type: 'LOAD_MORE_RESULTS' })
+		searchDelay = 0
 	}
 
 	useEffect(() => {
 		const getEvents = async () => {
-			const results = await sendRequest(
-				api.getFutureEventsData,
-				searchFilters
-			)
+			const results = await sendRequest(api.getFutureEventsData, {
+				...searchFilters.filters,
+				pageNum: searchFilters.pageNum,
+			})
 			if (results.error) return
-			setEventsData(results.events)
+			setEventsData(events => [...events, ...results.events])
 		}
 
 		const setTid = setTimeout(() => {
-			cleanUpResults()
 			getEvents()
 		}, searchDelay)
 
@@ -60,10 +79,7 @@ const BrowseEvents = () => {
 	return (
 		<section className='section'>
 			<SectionHeading title='Events' />
-			<EventsSearchBar
-				searchFilters={searchFilters}
-				setSearchFilters={setSearchFilters}
-			/>
+			<EventsSearchBar onFilterChange={updateFilters} />
 			<EventsPanel eventsData={eventsData} />
 			{isLoading ? <Loader /> : <></>}
 			{error ? (

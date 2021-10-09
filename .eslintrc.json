@@ -25,7 +25,8 @@
               "singleQuote": true,
               "useTabs": true,
               "endOfLine": "auto",
-			  "arrowParens": "avoid"
+			  "arrowParens": "avoid",
+			  "tabWidth": 4
             }
           ]
     }

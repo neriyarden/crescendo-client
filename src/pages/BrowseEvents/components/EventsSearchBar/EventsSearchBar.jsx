@@ -3,10 +3,10 @@ import SelectInput from '../../../../components/General/Inputs/SelectInput/Selec
 import SearchBar from '../../../../components/General/Inputs/SearchBar/SearchBar'
 import CategoryTags from './Tags/CategoryTags'
 
-const EventsSearchBar = ({ searchFilters, setSearchFilters }) => {
+const EventsSearchBar = ({ onFilterChange }) => {
 	const onValueUpdate = key => value => {
 		if (value === ' ') return
-		setSearchFilters({ ...searchFilters, [key]: value })
+		onFilterChange({ [key]: value })
 	}
 
 	return (
