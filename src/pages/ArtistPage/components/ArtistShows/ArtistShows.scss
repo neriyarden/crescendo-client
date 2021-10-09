@@ -1,15 +1,15 @@
 .artist-page-section {
-
   & .section-heading {
     letter-spacing: 0px;
     @include breakpoint-xs {
-      letter-spacing: .2em;
+      letter-spacing: 0.2em;
     }
   }
-  
-  & .upcoming-events-grid, .requests-panel {
+
+  & .upcoming-events-grid,
+  .requests-panel {
     background: rgba(255, 255, 255, 0.1);
-    box-shadow:  inset 0 0 35px rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 35px rgba(255, 255, 255, 0.1);
   }
 
   & .requests-grid {
@@ -17,9 +17,11 @@
   }
 }
 
-
-
 .no-events {
   padding-block: 11rem;
   text-align: center;
+}
+
+.p-block {
+  padding-block: 178px;
 }

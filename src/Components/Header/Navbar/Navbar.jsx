@@ -6,30 +6,28 @@ import Logo from './Logo/Logo'
 import MenuToggleBtn from './MenuToggleBtn/MenuToggleBtn'
 
 const Navbar = () => {
-    const ref = useRef()
-    useClickOutside(ref, () => setDisplayToggleBtnMenu(''))
-    const [displayToggleBtnMenu, setDisplayToggleBtnMenu] = useState('')
+	const ref = useRef()
+	useClickOutside(ref, () => setDisplayToggleBtnMenu(''))
+	const [displayToggleBtnMenu, setDisplayToggleBtnMenu] = useState('')
 
-    const showToggleBtnMenu = () => {
-        const active = displayToggleBtnMenu ? '' : 'display-menu'
-        setDisplayToggleBtnMenu(active)
-    }
+	const showToggleBtnMenu = () => {
+		const active = displayToggleBtnMenu ? '' : 'display-menu'
+		setDisplayToggleBtnMenu(active)
+	}
 
-    return (
-        <nav className='navbar' onClick={showToggleBtnMenu} ref={ref}>
-            <NavLink to='/Home'>
-                <Logo />
-            </NavLink>
+	return (
+		<nav className='navbar' onClick={showToggleBtnMenu} ref={ref}>
+			<NavLink to='/Home'>
+				<Logo />
+			</NavLink>
 
-            <MenuToggleBtn showToggleBtnMenu={showToggleBtnMenu}/>
-            
-            <div className={`navbar-links ${displayToggleBtnMenu}`}>
-                <NavbarLinks />
-            </div>
-        </nav>
-    )
+			<MenuToggleBtn showToggleBtnMenu={showToggleBtnMenu} />
+
+			<div className={`navbar-links ${displayToggleBtnMenu}`}>
+				<NavbarLinks />
+			</div>
+		</nav>
+	)
 }
 
 export default Navbar
-
-

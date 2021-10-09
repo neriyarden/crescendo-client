@@ -4,23 +4,33 @@
   margin-inline: auto;
   text-align: center;
 
-  & > * {
-    padding-bottom: 2rem;
-  }
-
   & h1 {
     font-size: 5rem;
     color: $third-color;
+    padding-bottom: 2rem;
   }
-  
+
   & pre {
     font-size: 1rem;
     text-align: left;
     color: transparent;
     @include user-select(all);
+    padding-bottom: 0;
   }
 
   & p {
     font-weight: 300;
+    padding-bottom: 2rem;
+  }
+
+  & .refresh-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 1rem;
+
+    & svg {
+      font-size: 2rem;
+    }
   }
 }
