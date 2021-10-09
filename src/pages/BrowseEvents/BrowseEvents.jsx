@@ -42,15 +42,14 @@ const BrowseEvents = () => {
 		pageNum: 1,
 	})
 
+	const cleanUpResults = () => {
+		setEventsData([])
+		clearError()
+	}
 	const updateFilters = filterObj => {
 		cleanUpResults()
 		dispatchSearchFilters({ type: 'FILTERS_CHANGE', val: filterObj })
 		searchDelay = 500
-	}
-
-	const cleanUpResults = () => {
-		setEventsData([])
-		clearError()
 	}
 
 	const loadMoreEvents = async () => {

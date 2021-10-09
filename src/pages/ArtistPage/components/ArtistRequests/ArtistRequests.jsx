@@ -31,9 +31,7 @@ const ArtistRequests = ({ artistId }) => {
 					{requests.length > 0 && !isLoading ? (
 						<RequestsPanel requestsData={requests} />
 					) : (
-						<p className='no-events'>
-							No Requests for this Artist.
-						</p>
+						<p className=' '>No Requests for this Artist.</p>
 					)}
 				</>
 			) : (

@@ -1,11 +1,16 @@
 .request-top-layer {
-  transform: translateY(35%);
-  transition: transform 0.5s ease;
-
-  &.clickable:hover {
-    transform: translateY(0%);
+  &:not(.clickable) {
+    transform: translateY(35%);
   }
 
+  @include breakpoint-sm {
+    transition: transform 0.5s ease;
+    transform: translateY(35%);
+
+    &.clickable:hover {
+      transform: translateY(0%);
+    }
+  }
 }
 
 .request-artist {
@@ -17,8 +22,7 @@
   text-align: center;
   font-style: italic;
   // letter-spacing: 2px;
-  background: linear-gradient(to top, 
-  rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
 }
 
 .request-details {
@@ -28,7 +32,7 @@
   color: $solid-white;
   background: rgba(0, 0, 0, 0.7);
   padding: 1.5rem;
-  
+
   & .request-location {
     display: block;
     font-size: 1rem;
@@ -45,14 +49,14 @@
     font-size: 0.9rem;
     letter-spacing: 2px;
 
-    &  .request-votes {
+    & .request-votes {
       display: flex;
       flex-direction: column;
       // justify-content: flex-end;
       // text-align: end;
       align-items: center;
 
-      & .request-votes-count{
+      & .request-votes-count {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -65,7 +69,6 @@
         font-size: 0.8rem;
       }
     }
-
   }
   & button {
     font-size: 1rem;
@@ -80,11 +83,11 @@
     margin-block: 0.5em;
 
     &::after {
-      content: '?';
+      content: "?";
     }
 
     &:hover::after {
-      content: '!';
+      content: "!";
     }
 
     &:hover {
@@ -98,8 +101,6 @@
     }
   }
 }
-
-
 
 .pink-slash {
   display: block;
