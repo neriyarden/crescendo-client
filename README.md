@@ -1,6 +1,45 @@
-# Crescendo
+![image](https://user-images.githubusercontent.com/62503534/212411943-392c316a-73b1-43ea-84fa-1d3d81a7b382.png)
 
-Where Artists and Fans Meet.
+<h1 align="center">Crescendo</h1>
+
+<p align="center" style="font-size: 12pt;">Where Artists and Fans Meet.</p>
+<p align="center" style="font-size: 12pt;">https://crescendo-events.web.app/ (currently unavailable)</p>
+
+## Built with
+
+### Client
+* React Js
+* React Router
+* Sass (Css)
+* Axios
+* Formik
+* Yup
+* Js-Cookie
+* Font Awesome
+
+### Server
+* Node Js
+* Express
+* MySQL
+* Multer
+* mysql2
+* Joi
+* Cookie-Parser
+* Sendgrid
+
+## Getting started - How to run the project locally
+1. Clone the repo
+   ```sh
+   git clone https://github.com/neriyarden/crescendo-client.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Run the local server
+   ```sh
+   npm start
+   ```
 
 ## Project Description:
 Crescendo is a social-platform for musicians to advertize their upcoming **Events** and **Requests**, and for fans to find their local events lineup and to vote for requests.
@@ -18,27 +57,4 @@ After the request is published, other users can vote for it, one vote per user p
 Once the request votes reach the cap, the artist recieves a message and he can make it into a real event on Crescendo.
 
 
-## Technologies I Used
 
-### Client
-* React Js
-* React Router
-* Sass (Css)
-
-* Axios
-* Formik
-* Yup
-* Js-Cookie
-* Font Awesome
-
-
-### Server
-* Node Js
-* Express
-* MySQL
-
-* Multer
-* mysql2
-* Joi
-* Cookie-Parser
-* Sendgrid
